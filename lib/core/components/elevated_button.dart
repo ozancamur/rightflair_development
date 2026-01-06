@@ -36,7 +36,7 @@ class ElevatedButtonComponent extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         fixedSize: Size(
           width ?? context.width,
-          height ?? context.height * .065,
+          height ?? context.height * .0625,
         ),
         elevation: elevation,
         backgroundColor: color,

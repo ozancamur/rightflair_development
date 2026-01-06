@@ -15,6 +15,7 @@ List<InlineSpan> helperTextStyle(BuildContext context, String text) {
             fontSize: 32,
             color: Colors.white,
             fontWeight: FontWeight.w600,
+            height: 1.25,
           ),
         ),
       );
@@ -26,6 +27,7 @@ List<InlineSpan> helperTextStyle(BuildContext context, String text) {
           fontSize: 32,
           color: AppDarkColors.YELLOW,
           fontWeight: FontWeight.w600,
+          height: 1.25,
         ),
       ),
     );
@@ -40,6 +42,7 @@ List<InlineSpan> helperTextStyle(BuildContext context, String text) {
           fontSize: 32,
           color: Colors.white,
           fontWeight: FontWeight.w600,
+          height: 1.25,
         ),
       ),
     );
