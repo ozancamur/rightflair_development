@@ -7,7 +7,7 @@ part 'navigation_state.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
   final PageController controller = PageController();
-  NavigationCubit() : super(NavigationState(0, []));
+  NavigationCubit() : super(NavigationState.initial());
 
   void route(int index) {
     controller.jumpToPage(index);

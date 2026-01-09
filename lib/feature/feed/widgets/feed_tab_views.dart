@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'feed_post_item.dart';
+
 class FeedTabViews extends StatelessWidget {
   const FeedTabViews({super.key});
 
@@ -9,10 +11,7 @@ class FeedTabViews extends StatelessWidget {
       child: TabBarView(
         children: [
           Center(
-            child: Text(
-              'Content for Tab 1',
-              style: TextStyle(color: Colors.white),
-            ),
+            child: FeedPostItem()
           ),
           Center(
             child: Text(

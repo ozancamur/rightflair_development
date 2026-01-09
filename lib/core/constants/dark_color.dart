@@ -26,6 +26,7 @@ class AppDarkColors {
   static Color get TRANSPARENT_YELLOW => Color(0xFF2C2C1E);
 
   static List<Color> get BUTTON => [YELLOW, ORANGE];
+  static List<Color> get SHADOW => [SECONDARY.withOpacity(.8), SECONDARY.withOpacity(.0)];
   static Color get DARK_BUTTON => Color(0xFF2E2E30);
   static Color get INACTIVE => Color(0xFF1C1B1B);
 }
