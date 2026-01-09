@@ -1,0 +1,16 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rightflair/feature/feed/page/feed_page.dart';
+
+part 'navigation_state.dart';
+
+class NavigationCubit extends Cubit<NavigationState> {
+  final PageController controller = PageController();
+  NavigationCubit() : super(NavigationState(0, []));
+
+  void route(int index) {
+    controller.jumpToPage(index);
+    emit(state.copyWith(currentIndex: index));
+  }
+}

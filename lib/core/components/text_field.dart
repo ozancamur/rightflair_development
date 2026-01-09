@@ -34,6 +34,7 @@ class TextFieldComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: false,
       focusNode: focusNode,
       controller: controller,
       onTap: onTap,
@@ -65,9 +66,9 @@ class TextFieldComponent extends StatelessWidget {
       ),
       validator: (value) {
         if (value == null || value.trim().isEmpty) {
-          return "";
+          return errorText.tr();
         } else if (!regExp.hasMatch(value)) {
-          return errorText;
+          return errorText.tr();
         }
         return null;
       },

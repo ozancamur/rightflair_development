@@ -1,4 +1,17 @@
 {
+    "validation": {
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "passwordRequired": "Password is required",
+        "passwordInvalid": "Password must be at least 6 characters",
+        "confirmPasswordRequired": "Please confirm your password",
+        "confirmPasswordMismatch": "Passwords do not match"
+    },
+    "dialog": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+    },
     "authentication": {
         "login": "Log In",
         "email": "Email",
@@ -18,7 +31,6 @@
             "appbar": "Sign Up",
             "title": "Rightflair",
             "subtitle": "Create your account",
-            "password": "Password must be at least 6 characters",
             "createAccount": "Create Account"
         },
         "pageChooseUsername": {
@@ -40,6 +52,41 @@
             "title": "Forgot password?",
             "subtitle": "We'll send you a reset link",
             "sendResetEmail": "Send Reset Email"
+        },
+        "errors": {
+            "weakPassword": "Password is too weak",
+            "emailAlreadyInUse": "This email address is already in use",
+            "invalidEmail": "Invalid email address",
+            "userNotFound": "User not found",
+            "wrongPassword": "Wrong password",
+            "userDisabled": "This user account has been disabled",
+            "tooManyRequests": "Too many attempts. Please try again later",
+            "operationNotAllowed": "This operation is not allowed",
+            "requiresRecentLogin": "You need to log in again to perform this operation",
+            "invalidCredential": "Invalid credentials",
+            "accountExistsWithDifferentCredential": "This email is registered with a different sign-in method",
+            "default": "An error occurred: {}",
+            "genericSignup": "An error occurred during registration: {}",
+            "genericSignin": "An error occurred during login: {}",
+            "genericGoogle": "An error occurred during Google sign in: {}",
+            "genericApple": "An error occurred during Apple sign in: {}",
+            "genericPasswordReset": "Failed to send password reset email: {}",
+            "genericSignout": "An error occurred during sign out: {}",
+            "genericDeleteAccount": "An error occurred while deleting account: {}",
+            "genericEmailVerification": "An error occurred while sending email verification: {}",
+            "genericUpdateProfile": "An error occurred while updating profile: {}",
+            "genericUpdatePassword": "An error occurred while updating password: {}"
         }
+    },
+    "navigation": {
+        "home": "Home",
+        "analytics": "Analytics",
+        "inbox": "Inbox",
+        "profile": "Profile"
+    },
+    "feed": {
+        "discover": "Discover",
+        "following": "Following",
+        "friends": "Friends"
     }
 }

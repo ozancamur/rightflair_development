@@ -9,10 +9,5 @@ class RouteConstants {
   static const String FORGOT_PASSWORD = '/forgot_password';
   static const String REGISTER = '/register';
   static const String CHOOSE_USERNAME = '/choose_username';
-  
-  static const String HOME = '/home';
-  static const String PROFILE = '/profile';
-  static const String SETTINGS = '/settings';
-  static const String ABOUT = '/about';
-
+  static const String NAVIGATION = '/navigation';
 }

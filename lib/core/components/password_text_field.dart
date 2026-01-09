@@ -17,6 +17,7 @@ class PasswordTextFieldComponent extends StatefulWidget {
   final TextCapitalization? textCapitalization;
   final Function(String)? onFieldSubmitted;
   final int? maxLength;
+  final String? Function(String?)? customValidator;
   const PasswordTextFieldComponent({
     super.key,
     required this.controller,
@@ -29,6 +30,7 @@ class PasswordTextFieldComponent extends StatefulWidget {
     this.textCapitalization,
     this.onFieldSubmitted,
     this.maxLength,
+    this.customValidator,
   });
 
   @override
@@ -91,10 +93,13 @@ class _PasswordTextFieldComponentState
       ),
       obscureText: obscureText,
       validator: (value) {
+        if (widget.customValidator != null) {
+          return widget.customValidator!(value);
+        }
         if (value == null || value.trim().isEmpty) {
-          return "";
+          return widget.errorText.tr();
         } else if (!widget.regExp.hasMatch(value)) {
-          return widget.errorText;
+          return widget.errorText.tr();
         }
         return null;
       },
