@@ -3,11 +3,17 @@ import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../../../core/components/post_icon_button.dart';
+import '../models/feed_post_model.dart';
 import 'post/post_shadow.dart';
 import 'post/post_user_info.dart';
 
+enum SwipeDirection { left, right, none }
+
 class FeedPostItem extends StatefulWidget {
-  const FeedPostItem({super.key});
+  final FeedPostModel post;
+  final void Function(String postId, SwipeDirection direction)? onSwipeComplete;
+
+  const FeedPostItem({super.key, required this.post, this.onSwipeComplete});
 
   @override
   State<FeedPostItem> createState() => _FeedPostItemState();
@@ -70,6 +76,8 @@ class _FeedPostItemState extends State<FeedPostItem>
   void _swipeRight() {
     // Beğenme animasyonu
     final screenWidth = MediaQuery.of(context).size.width;
+
+    _animationController.reset();
     _animation =
         Tween<Offset>(
           begin: _dragOffset,
@@ -81,6 +89,7 @@ class _FeedPostItemState extends State<FeedPostItem>
     _animationController.forward().then((_) {
       // Beğenme işlemi burada yapılır
       print('Beğenildi! ❤️');
+      widget.onSwipeComplete?.call(widget.post.id, SwipeDirection.right);
       _resetCard();
     });
   }
@@ -88,6 +97,8 @@ class _FeedPostItemState extends State<FeedPostItem>
   void _swipeLeft() {
     // Beğenmeme animasyonu
     final screenWidth = MediaQuery.of(context).size.width;
+
+    _animationController.reset();
     _animation =
         Tween<Offset>(
           begin: _dragOffset,
@@ -99,13 +110,15 @@ class _FeedPostItemState extends State<FeedPostItem>
     _animationController.forward().then((_) {
       // Beğenmeme işlemi burada yapılır
       print('Beğenilmedi! 👎');
+      widget.onSwipeComplete?.call(widget.post.id, SwipeDirection.left);
       _resetCard();
     });
   }
 
   void _resetPosition() {
+    _animationController.reset();
     _animation = Tween<Offset>(begin: _dragOffset, end: Offset.zero).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.elasticOut),
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
     );
 
     _animationController.forward().then((_) {
@@ -120,23 +133,19 @@ class _FeedPostItemState extends State<FeedPostItem>
     });
   }
 
-  double _getRotation() {
+  double _getRotation(Offset offset) {
     const rotationStrength = 0.0003;
-    return _dragOffset.dx * rotationStrength;
+    return offset.dx * rotationStrength;
   }
 
-  double _getOpacity() {
+  double _getOpacity(Offset offset) {
     const opacityThreshold = 100.0;
-    final opacity =
-        1 - (_dragOffset.dx.abs() / opacityThreshold).clamp(0.0, 0.5);
+    final opacity = 1 - (offset.dx.abs() / opacityThreshold).clamp(0.0, 0.5);
     return opacity;
   }
 
   @override
   Widget build(BuildContext context) {
-    final String url =
-        "https://static.ticimax.cloud/cdn-cgi/image/width=851,quality=99/6601//uploads/editoruploads/smart-casual-kombinleri-3.jpg";
-
     final currentOffset = _animationController.isAnimating
         ? _animation.value
         : _dragOffset;
@@ -213,9 +222,9 @@ class _FeedPostItemState extends State<FeedPostItem>
           Transform.translate(
             offset: currentOffset,
             child: Transform.rotate(
-              angle: _getRotation(),
+              angle: _getRotation(currentOffset),
               child: Opacity(
-                opacity: _getOpacity(),
+                opacity: _getOpacity(currentOffset),
                 child: Container(
                   height: context.height,
                   width: context.width,
@@ -223,7 +232,7 @@ class _FeedPostItemState extends State<FeedPostItem>
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(24),
                     image: DecorationImage(
-                      image: NetworkImage(url),
+                      image: NetworkImage(widget.post.imageUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -243,17 +252,17 @@ class _FeedPostItemState extends State<FeedPostItem>
                             PostIconButtonComponent(
                               onTap: () {},
                               icon: AppIcons.MESSAGE_FILLED,
-                              value: 234,
+                              value: widget.post.commentCount,
                             ),
                             PostIconButtonComponent(
                               onTap: () {},
                               icon: AppIcons.SAVE_FILLED,
-                              value: 53,
+                              value: widget.post.shareCount,
                             ),
                             PostIconButtonComponent(
                               onTap: () {},
                               icon: AppIcons.SHARE_FILLED,
-                              value: 27,
+                              value: widget.post.likeCount,
                             ),
                           ],
                         ),

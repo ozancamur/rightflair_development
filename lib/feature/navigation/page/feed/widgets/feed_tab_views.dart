@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'feed_post_item.dart';
+import 'swipeable_post_stack.dart';
 
 class FeedTabViews extends StatelessWidget {
   const FeedTabViews({super.key});
@@ -9,21 +9,14 @@ class FeedTabViews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
-          Center(child: FeedPostItem()),
-          Center(
-            child: Text(
-              'Content for Tab 2',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          Center(
-            child: Text(
-              'Content for Tab 3',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+          // Tab 0 - Trend
+          SwipeablePostStack(tabIndex: 0),
+          // Tab 1 - Takip
+          SwipeablePostStack(tabIndex: 1),
+          // Tab 2 - Keşfet
+          SwipeablePostStack(tabIndex: 2),
         ],
       ),
     );
