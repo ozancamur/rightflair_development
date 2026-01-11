@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
-import '../../../../../core/components/post_icon_button.dart';
 import '../models/feed_post_model.dart';
+import 'post/post_actions.dart';
 import 'post/post_shadow.dart';
 import 'post/post_user_info.dart';
 
@@ -241,31 +240,10 @@ class _FeedPostItemState extends State<FeedPostItem>
                     children: [
                       const PostShadowWidget(),
                       const PostUserInfoWidget(),
-                      Positioned(
-                        right: context.width * .04,
-                        bottom: context.width * .08,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          spacing: context.height * .01,
-                          children: [
-                            PostIconButtonComponent(
-                              onTap: () {},
-                              icon: AppIcons.MESSAGE_FILLED,
-                              value: widget.post.commentCount,
-                            ),
-                            PostIconButtonComponent(
-                              onTap: () {},
-                              icon: AppIcons.SAVE_FILLED,
-                              value: widget.post.shareCount,
-                            ),
-                            PostIconButtonComponent(
-                              onTap: () {},
-                              icon: AppIcons.SHARE_FILLED,
-                              value: widget.post.likeCount,
-                            ),
-                          ],
-                        ),
+                      PostActionsWidget(
+                        comment: widget.post.commentCount,
+                        like: widget.post.likeCount,
+                        share: widget.post.shareCount,
                       ),
                     ],
                   ),
