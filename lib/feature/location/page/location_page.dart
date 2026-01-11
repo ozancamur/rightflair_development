@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +12,7 @@ import 'package:rightflair/feature/location/widgets/location_list.dart';
 import '../cubit/location_cubit.dart';
 import '../cubit/location_state.dart';
 import '../widgets/location_empty.dart';
-import '../widgets/location_error.dart';
+import '../../../core/components/error_message.dart';
 import '../widgets/location_input.dart';
 
 class LocationPage extends StatefulWidget {
@@ -82,7 +81,7 @@ class _LocationPageState extends State<LocationPage> {
             }
             return LocationListWidget(list: state.locations);
           } else if (state is LocationError) {
-            return LocationErrorWidget(message: state.message);
+            return ErrorMessageComponent(message: state.message);
           }
           return const SizedBox.shrink();
         },

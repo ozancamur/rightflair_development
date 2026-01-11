@@ -149,4 +149,12 @@ class AppStrings {
   static const String CREATE_POST_POST = 'createPost.post';
   static const String CREATE_POST_SELECT_LOCATION = 'createPost.selectLocation';
   static const String CREATE_POST_SEARCH_LOCATION = 'createPost.searchLocation';
+
+  // INBOX
+  static const String INBOX_TITLE = 'inbox.title';
+  static const String INBOX_MESSAGES = 'inbox.messages';
+  static const String INBOX_NOTIFICATIONS = 'inbox.notifications';
+  static const String INBOX_SENT_A_PHOTO = 'inbox.sentAPhoto';
+  static const String INBOX_TODAYS_ACTIVITY = 'inbox.todaysActivity';
+  static const String INBOX_KEEP_POSTING = 'inbox.keepPosting';
 }

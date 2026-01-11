@@ -114,5 +114,11 @@
         "post": "Post Outfit",
         "selectLocation": "Location Selection",
         "searchLocation": "Search location..."
+    },
+    "inbox": {
+        "title": "InBox",
+        "messages": "Messages",
+        "notifications": "Notifications",
+        "sentAPhoto": "Sent a photo"
     }
 }

@@ -18,6 +18,8 @@ class AppDarkColors {
   static Color get GREY => Color(0xFF9E9E9E);
   static Color get DARK_GREY => Color(0xFFB9B9B9);
   static Color get RED => Color(0xFFEF4444);
+  static Color get BLUE => Color(0xFF3B82F6);
+  static Color get PURPLE => Color(0xFFA855F7);
 
   static Color get TRANSPARENT_GREEN => Color(0xFF0C1F13);
   static Color get TRANSPARENT_RED => Color(0xFF251010);
@@ -26,7 +28,10 @@ class AppDarkColors {
   static Color get TRANSPARENT_YELLOW => Color(0xFF2C2C1E);
 
   static List<Color> get BUTTON => [YELLOW, ORANGE];
-  static List<Color> get SHADOW => [SECONDARY.withOpacity(.8), SECONDARY.withOpacity(.0)];
+  static List<Color> get SHADOW => [
+    SECONDARY.withOpacity(.8),
+    SECONDARY.withOpacity(.0),
+  ];
   static Color get DARK_BUTTON => Color(0xFF2E2E30);
   static Color get INACTIVE => Color(0xFF1C1B1B);
 }

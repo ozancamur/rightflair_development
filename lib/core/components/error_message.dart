@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/components/text.dart';
+import 'text.dart';
 
-class LocationErrorWidget extends StatelessWidget {
+class ErrorMessageComponent extends StatelessWidget {
   final String message;
-  const LocationErrorWidget({super.key, required this.message});
+  const ErrorMessageComponent({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {

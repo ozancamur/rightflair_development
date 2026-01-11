@@ -1,0 +1,36 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:rightflair/core/extensions/context.dart';
+
+import '../../../../../core/components/appbar.dart';
+import '../../../../../core/components/back_button.dart';
+import '../../../../../core/components/icon_button.dart';
+import '../../../../../core/constants/icons.dart';
+import '../../../../../core/constants/string.dart';
+
+class InboxAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  const InboxAppBarWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBarComponent(
+      title: AppStrings.INBOX_TITLE.tr(),
+      leading: const BackButtonComponent(),
+      actions: [
+        Padding(
+          padding: EdgeInsets.only(
+            right: MediaQuery.of(context).size.width * 0.04,
+          ),
+          child: IconButtonComponent(
+            size: context.height * 0.045,
+            icon: AppIcons.SEARCH_FILLED,
+            onTap: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}

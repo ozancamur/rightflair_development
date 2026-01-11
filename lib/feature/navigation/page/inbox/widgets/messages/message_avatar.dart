@@ -1,0 +1,27 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+
+import '../../../../../../core/constants/dark_color.dart';
+
+class MessageAvatarWidget extends StatelessWidget {
+  final String url;
+  const MessageAvatarWidget({super.key, required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.13,
+      height: MediaQuery.of(context).size.width * 0.13,
+      decoration: const BoxDecoration(shape: BoxShape.circle),
+      clipBehavior: Clip.antiAlias,
+      child: CachedNetworkImage(
+        imageUrl: url,
+        fit: BoxFit.cover,
+        placeholder: (context, url) =>
+            Container(color: AppDarkColors.DARK_GREY),
+        errorWidget: (context, url, error) =>
+            Container(color: AppDarkColors.GREY),
+      ),
+    );
+  }
+}

@@ -7,11 +7,13 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final double? leadingWidth;
   final String? title;
+  final List<Widget>? actions;
   const AppBarComponent({
     super.key,
     this.leading,
     this.leadingWidth,
     this.title,
+    this.actions,
   });
 
   @override
@@ -22,6 +24,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: leading,
       leadingWidth: leadingWidth,
+      actions: actions,
       title: TextComponent(
         text: title ?? "",
         size: FontSizeConstants.X_LARGE,
