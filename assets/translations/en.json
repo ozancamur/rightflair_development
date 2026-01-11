@@ -88,5 +88,9 @@
         "discover": "Discover",
         "following": "Following",
         "friends": "Friends"
+    },
+    "search": {
+        "placeholder": "Search, styles, brands, users...",
+        "recentSearches": "RECENT SEARCHES"
     }
 }

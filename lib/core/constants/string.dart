@@ -112,15 +112,17 @@ class AppStrings {
   static const String ERROR_GENERIC_UPDATE_PASSWORD =
       'authentication.errors.genericUpdatePassword';
 
+  // NAVIGATION
+  static const String NAVIGATION_HOME = 'navigation.home';
+  static const String NAVIGATION_ANALYTICS = 'navigation.analytics';
+  static const String NAVIGATION_INBOX = 'navigation.inbox';
+  static const String NAVIGATION_PROFILE = 'navigation.profile';
+  // FEED
+  static const String FEED_DISCOVER = 'feed.discover';
+  static const String FEED_FOLLOWING = 'feed.following';
+  static const String FEED_FRIENDS = 'feed.friends';
 
-    // NAVIGATION
-    static const String NAVIGATION_HOME = 'navigation.home';
-    static const String NAVIGATION_ANALYTICS = 'navigation.analytics';
-    static const String NAVIGATION_INBOX = 'navigation.inbox';
-    static const String NAVIGATION_PROFILE = 'navigation.profile';
-    // FEED
-    static const String FEED_DISCOVER = 'feed.discover';
-    static const String FEED_FOLLOWING = 'feed.following';
-    static const String FEED_FRIENDS = 'feed.friends';
-    
+  // SEARCH
+  static const String SEARCH_PLACEHOLDER = 'search.placeholder';
+  static const String SEARCH_RECENT_SEARCHES = 'search.recentSearches';
 }

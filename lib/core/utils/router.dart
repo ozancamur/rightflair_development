@@ -6,6 +6,7 @@ import 'package:rightflair/feature/authentication/pages/forgot_password_page.dar
 import 'package:rightflair/feature/authentication/pages/login_page.dart';
 import 'package:rightflair/feature/authentication/pages/welcome_page.dart';
 import 'package:rightflair/feature/navigation/page/navigation_page.dart';
+import 'package:rightflair/feature/search/page/search_page.dart';
 
 import '../../feature/authentication/pages/register_page.dart';
 
@@ -43,6 +44,12 @@ final GoRouter router = GoRouter(
       path: RouteConstants.NAVIGATION,
       name: RouteConstants.NAVIGATION,
       builder: (context, state) => const NavigationPage(),
+    ),
+
+    GoRoute(
+      path: RouteConstants.SEARCH,
+      name: RouteConstants.SEARCH,
+      builder: (context, state) => const SearchPage(),
     ),
   ],
 
