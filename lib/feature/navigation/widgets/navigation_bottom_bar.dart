@@ -21,7 +21,7 @@ class NavigationBottomBar extends StatelessWidget {
         vertical: context.height * .02,
       ),
       child: Container(
-        height: context.height * .09,
+        height: context.height * .08,
         padding: EdgeInsets.symmetric(horizontal: context.width * .04),
         decoration: BoxDecoration(
           color: AppDarkColors.DARK_BUTTON,
@@ -53,6 +53,7 @@ class NavigationBottomBar extends StatelessWidget {
       child: Container(
         height: context.width * .09,
         width: context.width * .15,
+        margin: EdgeInsets.only(bottom: context.height * .005),
         padding: EdgeInsets.all(context.width * .024),
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: AppDarkColors.BUTTON),
