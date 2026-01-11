@@ -5,8 +5,10 @@ import 'package:rightflair/core/constants/font_family.dart';
 import 'package:rightflair/core/utils/router.dart';
 import 'package:rightflair/feature/authentication/bloc/authentication_bloc.dart';
 import 'package:rightflair/feature/choose_username/bloc/choose_username_bloc.dart';
+import 'package:rightflair/feature/create_post/repository/create_post_repository.dart';
 import 'package:rightflair/feature/navigation/page/feed/bloc/feed_bloc.dart';
 
+import 'feature/create_post/cubit/create_post_cubit.dart';
 import 'feature/navigation/cubit/navigation_cubit.dart';
 import 'feature/navigation/page/analytics/cubit/analytics_cubit.dart';
 import 'feature/navigation/page/analytics/repository/analytics_repository.dart';
@@ -24,6 +26,7 @@ class RightFlair extends StatelessWidget {
         BlocProvider(create: (_) => NavigationCubit()),
         BlocProvider(create: (_) => FeedBloc()),
         BlocProvider(create: (_) => AnalyticsCubit(AnalyticsRepository())),
+        BlocProvider(create: (_) => CreatePostCubit(CreatePostRepositoryImpl())),
 
       ],
       child: MaterialApp.router(

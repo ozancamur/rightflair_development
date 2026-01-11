@@ -13,4 +13,5 @@ class RouteConstants {
   static const String NAVIGATION = '/navigation';
 
   static const String SEARCH = '/search';
+  static const String CREATE_POST = '/create_post';
 }

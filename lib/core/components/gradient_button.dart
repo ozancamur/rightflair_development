@@ -1,8 +1,8 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rightflair/core/constants/dark_color.dart';
+import 'package:rightflair/core/extensions/context.dart';
 
-import '../../constants/color.dart';
-import '../../utils/extensions/context.dart';
 
 class GradientButtonComponent extends StatelessWidget {
   final Function()? onPressed;
@@ -34,7 +34,7 @@ class GradientButtonComponent extends StatelessWidget {
       width: width ?? context.width,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: colors ?? ColorConstants.BUTTON_GRADIENT,
+          colors: colors ?? AppDarkColors.BUTTON  ,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -71,4 +71,3 @@ class GradientButtonComponent extends StatelessWidget {
     );
   }
 }
-*/

@@ -5,8 +5,14 @@ import 'package:rightflair/core/constants/font_size.dart';
 
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
+  final double? leadingWidth;
   final String? title;
-  const AppBarComponent({super.key, this.leading, this.title});
+  const AppBarComponent({
+    super.key,
+    this.leading,
+    this.leadingWidth,
+    this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +21,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       foregroundColor: AppDarkColors.PRIMARY,
       elevation: 0,
       leading: leading,
+      leadingWidth: leadingWidth,
       title: TextComponent(
         text: title ?? "",
         size: FontSizeConstants.X_LARGE,

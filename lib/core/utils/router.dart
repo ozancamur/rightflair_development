@@ -5,6 +5,7 @@ import 'package:rightflair/feature/choose_username/page/choose_username_page.dar
 import 'package:rightflair/feature/authentication/pages/forgot_password_page.dart';
 import 'package:rightflair/feature/authentication/pages/login_page.dart';
 import 'package:rightflair/feature/authentication/pages/welcome_page.dart';
+import 'package:rightflair/feature/create_post/page/create_post_page.dart';
 import 'package:rightflair/feature/navigation/page/navigation_page.dart';
 import 'package:rightflair/feature/search/page/search_page.dart';
 
@@ -50,6 +51,11 @@ final GoRouter router = GoRouter(
       path: RouteConstants.SEARCH,
       name: RouteConstants.SEARCH,
       builder: (context, state) => const SearchPage(),
+    ),
+    GoRoute(
+      path: RouteConstants.CREATE_POST,
+      name: RouteConstants.CREATE_POST,
+      builder: (context, state) => const CreatePostPage(),
     ),
   ],
 

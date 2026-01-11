@@ -11,11 +11,11 @@ import '../widgets/login/login_inputs.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-  
+
   final GlobalKey<FormState> keyLogin = GlobalKey<FormState>();
   final TextEditingController ctrlEmail = TextEditingController();
   final TextEditingController ctrlPassword = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

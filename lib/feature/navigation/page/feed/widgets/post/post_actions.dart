@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/components/post_icon_button.dart';
+import '../../../../../../core/components/icon_button.dart';
 import '../../../../../../core/constants/icons.dart';
 import '../../../../../../core/extensions/context.dart';
 import '../../../../../comments/examples/comments_dialog_example.dart';
@@ -26,17 +26,17 @@ class PostActionsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         spacing: context.height * .01,
         children: [
-          PostIconButtonComponent(
+          IconButtonComponent(
             onTap: () => CommentsDialogExample.showCommentsDialog(context),
             icon: AppIcons.MESSAGE_FILLED,
             value: comment,
           ),
-          PostIconButtonComponent(
+          IconButtonComponent(
             onTap: () {},
             icon: AppIcons.SAVE_FILLED,
             value: share,
           ),
-          PostIconButtonComponent(
+          IconButtonComponent(
             onTap: () {},
             icon: AppIcons.SHARE_FILLED,
             value: like,

@@ -134,4 +134,17 @@ class AppStrings {
   // SEARCH
   static const String SEARCH_PLACEHOLDER = 'search.placeholder';
   static const String SEARCH_RECENT_SEARCHES = 'search.recentSearches';
+
+  // CREATE POST
+  static const String CREATE_POST_APPBAR = 'createPost.appbar';
+  static const String CREATE_POST_ABOUT_OUTFIT = 'createPost.aboutOutfit';
+  static const String CREATE_POST_DESCRIPTION_PLACEHOLDER =
+      'createPost.descriptionPlaceholder';
+  static const String CREATE_POST_LOCATION = 'createPost.location';
+  static const String CREATE_POST_ANONYMOUSLY = 'createPost.postAnonymously';
+  static const String CREATE_POST_ANONYMOUSLY_SUBTITLE =
+      'createPost.postAnonymouslySubtitle';
+  static const String CREATE_POST_ALLOW_COMMENTS = 'createPost.allowComments';
+  static const String CREATE_POST_DRAFT = 'createPost.draft';
+  static const String CREATE_POST_POST = 'createPost.post';
 }
