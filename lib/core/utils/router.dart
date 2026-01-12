@@ -8,6 +8,8 @@ import 'package:rightflair/feature/authentication/pages/welcome_page.dart';
 import 'package:rightflair/feature/create_post/page/create_post_page.dart';
 import 'package:rightflair/feature/navigation/page/navigation_page.dart';
 import 'package:rightflair/feature/search/page/search_page.dart';
+import 'package:rightflair/feature/navigation/page/inbox/page/system_notifications_page.dart';
+import 'package:rightflair/feature/navigation/page/inbox/page/new_followers_page.dart';
 
 import '../../feature/authentication/pages/register_page.dart';
 
@@ -56,6 +58,16 @@ final GoRouter router = GoRouter(
       path: RouteConstants.CREATE_POST,
       name: RouteConstants.CREATE_POST,
       builder: (context, state) => const CreatePostPage(),
+    ),
+    GoRoute(
+      path: RouteConstants.SYSTEM_NOTIFICATIONS,
+      name: RouteConstants.SYSTEM_NOTIFICATIONS,
+      builder: (context, state) => const SystemNotificationsPage(),
+    ),
+    GoRoute(
+      path: RouteConstants.NEW_FOLLOWERS,
+      name: RouteConstants.NEW_FOLLOWERS,
+      builder: (context, state) => const NewFollowersPage(),
     ),
   ],
 

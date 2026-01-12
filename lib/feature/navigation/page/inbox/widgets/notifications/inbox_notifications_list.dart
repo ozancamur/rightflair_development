@@ -25,7 +25,7 @@ class InboxNotificationsList extends StatelessWidget {
     );
   }
 
-  Padding _zero(BuildContext context) { 
+  Padding _zero(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
         top: context.height * 0.02,
