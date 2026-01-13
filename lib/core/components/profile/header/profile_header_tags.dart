@@ -10,9 +10,9 @@ class ProfileHeaderTagsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: context.width * 0.02,
+      spacing: context.width * 0.025,
       runSpacing: context.height * 0.01,
-      alignment: WrapAlignment.center,
+      alignment: WrapAlignment.start,
       children: tags.map((tag) => ProfileTagComponent(text: tag)).toList(),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/extensions/context.dart';
-import 'package:rightflair/feature/profile/widgets/profile_action_buttons_widget.dart';
+import 'package:rightflair/core/components/profile/profile_action_buttons_widget.dart';
 
 import 'header/profile_header_bio.dart';
 import 'header/profile_header_image.dart';
@@ -16,8 +16,8 @@ class ProfileHeaderWidget extends StatelessWidget {
   final int followingCount;
   final String bio;
   final List<String> tags;
-  final VoidCallback onFollowTap;
-  final VoidCallback onMessageTap;
+  final VoidCallback? onFollowTap;
+  final VoidCallback? onMessageTap;
 
   const ProfileHeaderWidget({
     super.key,
@@ -28,8 +28,8 @@ class ProfileHeaderWidget extends StatelessWidget {
     required this.followingCount,
     required this.bio,
     required this.tags,
-    required this.onFollowTap,
-    required this.onMessageTap,
+    this.onFollowTap,
+    this.onMessageTap,
   });
 
   @override
@@ -43,10 +43,12 @@ class ProfileHeaderWidget extends StatelessWidget {
           followerCount: followerCount,
           followingCount: followingCount,
         ),
-        ProfileActionButtonsWidget(
-          onFollowTap: onFollowTap,
-          onMessageTap: onMessageTap,
-        ),
+        (onFollowTap == null && onMessageTap == null)
+            ? SizedBox.shrink()
+            : ProfileActionButtonsWidget(
+                onFollowTap: onFollowTap!,
+                onMessageTap: onMessageTap!,
+              ),
         ProfileHeaderBioWidget(text: bio),
         ProfileHeaderTagsWidget(tags: tags),
       ],

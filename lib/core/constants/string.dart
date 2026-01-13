@@ -213,4 +213,6 @@ class AppStrings {
   static const String PROFILE_PHOTOS = 'profile.photos';
   static const String PROFILE_SAVES = 'profile.saves';
   static const String PROFILE_DRAFTS = 'profile.drafts';
+static const String PROFILE_READ_MORE = 'profile.readMore';
+static const String PROFILE_HIDE = 'profile.hide';
 }

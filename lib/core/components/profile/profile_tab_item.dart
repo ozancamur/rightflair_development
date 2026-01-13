@@ -7,26 +7,23 @@ import '../../../../../core/extensions/context.dart';
 
 class ProfileTabItemWidget extends StatelessWidget {
   final String text;
-  final bool isActive;
-  const ProfileTabItemWidget({
-    super.key,
-    required this.text,
-    required this.isActive,
-  });
+  const ProfileTabItemWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      spacing: context.height * 0.005,
-      children: [
-        TextComponent(
-          text: text,
-          size: FontSizeConstants.NORMAL,
-          weight: isActive ? FontWeight.w600 : FontWeight.w400,
-          color: isActive ? AppDarkColors.PRIMARY : AppDarkColors.WHITE60,
-        ),
-        if (isActive)
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: context.height * 0.005,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextComponent(
+            text: text,
+            size: FontSizeConstants.LARGE,
+            weight: FontWeight.w600,
+            color: AppDarkColors.PRIMARY,
+          ),
           Container(
             height: context.height * 0.003,
             width: context.width * 0.1,
@@ -35,7 +32,8 @@ class ProfileTabItemWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(context.width * 0.01),
             ),
           ),
-      ],
+        ],
+      ),
     );
   }
 }

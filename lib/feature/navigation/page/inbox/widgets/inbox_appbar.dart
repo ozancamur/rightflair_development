@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../../../core/components/appbar.dart';
-import '../../../../../core/components/back_button.dart';
 import '../../../../../core/components/icon_button.dart';
 import '../../../../../core/constants/icons.dart';
 import '../../../../../core/constants/string.dart';
@@ -15,7 +14,6 @@ class InboxAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBarComponent(
       title: AppStrings.INBOX_TITLE.tr(),
-      leading: const BackButtonComponent(),
       actions: [
         Padding(
           padding: EdgeInsets.only(

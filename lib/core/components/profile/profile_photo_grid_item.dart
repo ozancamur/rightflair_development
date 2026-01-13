@@ -6,9 +6,10 @@ import '../../../../../core/components/text.dart';
 import '../../../../../core/constants/dark_color.dart';
 import '../../../../../core/constants/font_size.dart';
 import '../../../../../core/extensions/context.dart';
+import '../../../feature/navigation/page/profile/model/photo.dart';
 
 class ProfilePhotoGridItemWidget extends StatelessWidget {
-  final String photo;
+  final PhotoModel photo;
   const ProfilePhotoGridItemWidget({super.key, required this.photo});
 
   @override
@@ -21,21 +22,21 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(context.width * 0.03),
         color: Colors.red,
-        image: DecorationImage(image: NetworkImage(photo), fit: BoxFit.cover),
+        image: DecorationImage(image: NetworkImage(photo.url ?? ''), fit: BoxFit.cover),
       ),
     );
   }
 
   Container _shadow() {
     return Container(
-      decoration: BoxDecoration(color: Colors.black.withOpacity(.25)),
+      decoration: BoxDecoration(color: Colors.black.withOpacity(.4)),
     );
   }
 
   Widget _view(BuildContext context) {
     return Positioned(
-      bottom: context.height * 0.01,
-      right: context.width * 0.02,
+      bottom: context.height * 0.015,
+      left: context.width * 0.0225,
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: context.width * 0.02,
@@ -47,16 +48,16 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
+          spacing: context.width * 0.01,
           children: [
             SvgPicture.asset(
               AppIcons.POST_VIEWED,
               color: AppDarkColors.PRIMARY,
               height: context.width * 0.05,
             ),
-            SizedBox(width: context.width * 0.01),
             TextComponent(
-              text: '1,247',
-              size: FontSizeConstants.XXX_SMALL,
+              text: '${photo.viewed}',
+              size: FontSizeConstants.XX_SMALL,
               weight: FontWeight.w600,
               color: AppDarkColors.PRIMARY,
               tr: false,

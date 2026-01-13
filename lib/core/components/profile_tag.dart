@@ -7,25 +7,22 @@ import '../constants/dark_color.dart';
 
 class ProfileTagComponent extends StatelessWidget {
   final String text;
-  const ProfileTagComponent({
-    super.key,
-    required this.text,
-  });
+  const ProfileTagComponent({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: context.width * 0.04,
-        vertical: context.height * 0.007,
+        horizontal: context.width * 0.055,
+        vertical: context.height * 0.006,
       ),
       decoration: BoxDecoration(
-        color: AppDarkColors.WHITE16,
+        color: AppDarkColors.GREY12,
         borderRadius: BorderRadius.circular(context.width * 0.05),
       ),
       child: TextComponent(
         text: text,
-        size: FontSizeConstants.XXX_SMALL,
+        size: FontSizeConstants.X_SMALL,
         weight: FontWeight.w500,
         color: AppDarkColors.PRIMARY,
       ),

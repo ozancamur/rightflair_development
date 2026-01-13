@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
+import '../../../feature/navigation/page/profile/model/photo.dart';
 import 'profile_photo_grid_item.dart';
 
 class ProfilePhotoGridWidget extends StatelessWidget {
-  final List<String> photos;
+  final List<PhotoModel> photos;
   const ProfilePhotoGridWidget({super.key, required this.photos});
 
   @override

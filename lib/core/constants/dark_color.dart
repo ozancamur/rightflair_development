@@ -12,6 +12,10 @@ class AppDarkColors {
   static Color get WHITE32 => Colors.white.withOpacity(.32);
   static Color get WHITE16 => Colors.white.withOpacity(.16);
 
+  static Color get GREY12 => Color(0xFFD9D9D9).withOpacity(.12);
+  static Color get GREY24 => Color(0xFFD9D9D9).withOpacity(.24);
+  static Color get GREY36 => Color(0xFFD9D9D9).withOpacity(.36);
+
   static Color get YELLOW => Color(0xFFFFAB00);
   static Color get ORANGE => Color(0xFFFF7600);
   static Color get GREEN => Color(0xFF22C55E);

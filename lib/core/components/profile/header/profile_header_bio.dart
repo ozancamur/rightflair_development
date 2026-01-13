@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/constants/string.dart';
+
+import '../../../constants/dark_color.dart';
 
 class ProfileHeaderBioWidget extends StatefulWidget {
   final String text;
@@ -16,18 +19,35 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
 
   @override
   Widget build(BuildContext context) {
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 300),
+      alignment: Alignment.topLeft,
+      curve: Curves.easeInOut,
+      child: _buildContent(context),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    final textStyle = TextStyle(
+      color: AppDarkColors.WHITE75,
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+    );
+    final actionStyle = TextStyle(
+      color: AppDarkColors.PRIMARY,
+      fontWeight: FontWeight.w500,
+      fontSize: 15,
+    );
+
     if (isExpanded) {
       return RichText(
         text: TextSpan(
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
+          style: textStyle,
           children: [
-            TextSpan(text: widget.text.tr()),
+            TextSpan(text: widget.text),
             TextSpan(
-              text: " Hide",
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              text: AppStrings.PROFILE_HIDE.tr(),
+              style: actionStyle,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   setState(() {
@@ -42,13 +62,7 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final localizedText = widget.text.tr();
-        final defaultTextStyle = const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w400,
-        );
-
-        final span = TextSpan(text: localizedText, style: defaultTextStyle);
+        final span = TextSpan(text: widget.text, style: textStyle);
 
         final tp = TextPainter(
           text: span,
@@ -58,13 +72,16 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
         tp.layout(maxWidth: constraints.maxWidth);
 
         if (!tp.didExceedMaxLines) {
-          return TextComponent(text: widget.text);
+          return TextComponent(
+            text: widget.text,
+            tr: false,
+            color: Colors.white,
+          );
         }
 
-        final linkText = '... Read more';
         final linkSpan = TextSpan(
-          text: linkText,
-          style: defaultTextStyle.copyWith(fontWeight: FontWeight.bold),
+          text: AppStrings.PROFILE_READ_MORE.tr(),
+          style: actionStyle,
         );
 
         final linkTp = TextPainter(
@@ -79,25 +96,22 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
         );
         int offset = pos.offset;
 
-        if (offset > localizedText.length) offset = localizedText.length;
+        if (offset > widget.text.length) offset = widget.text.length;
 
-        final truncatedText = localizedText.substring(0, offset);
+        final truncatedText = widget.text.substring(0, offset - 10);
 
         return RichText(
+          textAlign: TextAlign.start,
           text: TextSpan(
-            style: defaultTextStyle,
+            style: textStyle,
             children: [
               TextSpan(text: truncatedText),
-              TextSpan(text: "..."),
+              TextSpan(text: "...      "),
               TextSpan(
-                text: " Read more",
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                text: AppStrings.PROFILE_READ_MORE.tr(),
+                style: actionStyle,
                 recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    setState(() {
-                      isExpanded = true;
-                    });
-                  },
+                  ..onTap = () => setState(() => isExpanded = true),
               ),
             ],
           ),

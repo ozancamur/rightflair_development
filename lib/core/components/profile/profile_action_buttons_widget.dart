@@ -34,10 +34,10 @@ class ProfileActionButtonsWidget extends StatelessWidget {
     return GradientButtonComponent(
       onPressed: onFollowTap,
       radius: 14,
-      height: context.height * 0.0425,
+      height: context.height * 0.04,
       child: TextComponent(
         text: AppStrings.PROFILE_FOLLOW,
-        size: FontSizeConstants.SMALL,
+        size: FontSizeConstants.NORMAL,
         weight: FontWeight.w600,
         color: AppDarkColors.PRIMARY,
       ),
@@ -47,14 +47,14 @@ class ProfileActionButtonsWidget extends StatelessWidget {
   Widget _messageButton(BuildContext context) {
     return ElevatedButtonComponent(
       onPressed: onMessageTap,
-      height: context.height * 0.0425,
+      height: context.height * 0.04,
       radius: 14,
-      color: AppDarkColors.WHITE16,
-      borderColor: AppDarkColors.WHITE32,
+      color: AppDarkColors.GREY24,
+      borderColor: AppDarkColors.GREY36,
       borderWidth: .5,
       child: TextComponent(
         text: AppStrings.PROFILE_MESSAGE,
-        size: FontSizeConstants.SMALL,
+        size: FontSizeConstants.NORMAL,
         weight: FontWeight.w600,
         color: AppDarkColors.PRIMARY,
       ),
