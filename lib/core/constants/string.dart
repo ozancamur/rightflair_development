@@ -189,13 +189,19 @@ class AppStrings {
   static const String FEED_ERROR_LOADING_MORE = 'feed.error.loadingMore';
 
   // FIREBASE ERRORS (Backend)
-  static const String FIREBASE_ERROR_CREATE_DOCUMENT = 'firebase.error.createDocument';
-  static const String FIREBASE_ERROR_READ_DOCUMENT = 'firebase.error.readDocument';
-  static const String FIREBASE_ERROR_READ_DOCUMENTS = 'firebase.error.readDocuments';
+  static const String FIREBASE_ERROR_CREATE_DOCUMENT =
+      'firebase.error.createDocument';
+  static const String FIREBASE_ERROR_READ_DOCUMENT =
+      'firebase.error.readDocument';
+  static const String FIREBASE_ERROR_READ_DOCUMENTS =
+      'firebase.error.readDocuments';
   static const String FIREBASE_ERROR_QUERY = 'firebase.error.query';
-  static const String FIREBASE_ERROR_UPDATE_DOCUMENT = 'firebase.error.updateDocument';
-  static const String FIREBASE_ERROR_SET_DOCUMENT = 'firebase.error.setDocument';
-  static const String FIREBASE_ERROR_DELETE_DOCUMENT = 'firebase.error.deleteDocument';
+  static const String FIREBASE_ERROR_UPDATE_DOCUMENT =
+      'firebase.error.updateDocument';
+  static const String FIREBASE_ERROR_SET_DOCUMENT =
+      'firebase.error.setDocument';
+  static const String FIREBASE_ERROR_DELETE_DOCUMENT =
+      'firebase.error.deleteDocument';
   static const String FIREBASE_ERROR_CHECK_USER = 'firebase.error.checkUser';
 
   // GENERAL
@@ -213,6 +219,11 @@ class AppStrings {
   static const String PROFILE_PHOTOS = 'profile.photos';
   static const String PROFILE_SAVES = 'profile.saves';
   static const String PROFILE_DRAFTS = 'profile.drafts';
-static const String PROFILE_READ_MORE = 'profile.readMore';
-static const String PROFILE_HIDE = 'profile.hide';
+  static const String PROFILE_READ_MORE = 'profile.readMore';
+  static const String PROFILE_HIDE = 'profile.hide';
+
+  // POST DETAIL
+  static const String POST_DETAIL_COMMENTS = 'postDetail.comments';
+  static const String POST_DETAIL_BOOKMARKED = 'postDetail.bookmarked';
+  static const String POST_DETAIL_SHARES = 'postDetail.shares';
 }

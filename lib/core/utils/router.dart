@@ -12,6 +12,7 @@ import 'package:rightflair/feature/navigation/page/inbox/page/system_notificatio
 import 'package:rightflair/feature/navigation/page/inbox/page/new_followers_page.dart';
 
 import '../../feature/authentication/pages/register_page.dart';
+import '../../feature/post_detail/page/post_detail_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: RouteConstants.NAVIGATION,
@@ -42,7 +43,7 @@ final GoRouter router = GoRouter(
       name: RouteConstants.FORGOT_PASSWORD,
       builder: (context, state) => ForgotPasswordPage(),
     ),
-    
+
     GoRoute(
       path: RouteConstants.NAVIGATION,
       name: RouteConstants.NAVIGATION,
@@ -58,6 +59,11 @@ final GoRouter router = GoRouter(
       path: RouteConstants.CREATE_POST,
       name: RouteConstants.CREATE_POST,
       builder: (context, state) => const CreatePostPage(),
+    ),
+    GoRoute(
+      path: RouteConstants.POST_DETAIL,
+      name: RouteConstants.POST_DETAIL,
+      builder: (context, state) => const PostDetailPage(),
     ),
     GoRoute(
       path: RouteConstants.SYSTEM_NOTIFICATIONS,

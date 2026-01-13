@@ -182,5 +182,10 @@
         "drafts": "Drafts",
         "readMore": "read more",
         "hide": "   hide"
+    },
+    "postDetail": {
+        "comments": "Comments",
+        "bookmarked": "Bookmarked",
+        "shares": "Shares"
     }
 }

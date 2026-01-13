@@ -15,6 +15,7 @@ class AppIcons {
   static const String ANALYTICS = '${_path}analytics.svg';
   static const String ANONYMOUS = '${_path}anonymous.svg';
   static const String APPLE = '${_path}apple.svg';
+  static const String ARROW_LEFT = '${_path}arrow_left.svg';
   static const String ARROW_UP = '${_path}arrow_up.svg';
   static const String ARROW_DOWN = '${_path}arrow_down.svg';
   static const String ARROW_RIGHT = '${_path}arrow_right.svg';

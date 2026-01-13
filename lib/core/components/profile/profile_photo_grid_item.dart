@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/icons.dart';
+import 'package:rightflair/core/constants/route.dart';
 
 import '../../../../../core/components/text.dart';
 import '../../../../../core/constants/dark_color.dart';
@@ -14,7 +16,11 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [_image(context), _shadow(), _view(context)]);
+    return InkWell(
+      onTap: () => context.push(RouteConstants.POST_DETAIL),
+      borderRadius: BorderRadius.circular(context.width * 0.03),
+      child: Stack(children: [_image(context), _shadow(), _view(context)]),
+    );
   }
 
   Container _image(BuildContext context) {
@@ -22,7 +28,10 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(context.width * 0.03),
         color: Colors.red,
-        image: DecorationImage(image: NetworkImage(photo.url ?? ''), fit: BoxFit.cover),
+        image: DecorationImage(
+          image: NetworkImage(photo.url ?? ''),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
