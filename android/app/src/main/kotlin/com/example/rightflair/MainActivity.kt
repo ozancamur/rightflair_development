@@ -1,4 +1,4 @@
-package com.ozancamur.development.rightflair
+package com.ozancamur.app.rightflair
 
 import io.flutter.embedding.android.FlutterActivity
 

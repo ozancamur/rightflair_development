@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ozancamur.development.rightflair"
+    namespace = "com.ozancamur.app.rightflair"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -25,7 +25,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.ozancamur.development.rightflair"
+        applicationId = "com.ozancamur.app.rightflair"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

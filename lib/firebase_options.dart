@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '305916236954',
     projectId: 'rightflair-development',
     storageBucket: 'rightflair-development.firebasestorage.app',
-    iosBundleId: 'com.ozancamur.development.rightflair',
+    iosBundleId: 'com.ozancamur.app.rightflair',
   );
 }
