@@ -10,6 +10,7 @@ import 'package:rightflair/feature/navigation/page/navigation_page.dart';
 import 'package:rightflair/feature/search/page/search_page.dart';
 import 'package:rightflair/feature/navigation/page/inbox/page/system_notifications_page.dart';
 import 'package:rightflair/feature/navigation/page/inbox/page/new_followers_page.dart';
+import 'package:rightflair/feature/settings/page/settings_page.dart';
 
 import '../../feature/authentication/pages/register_page.dart';
 import '../../feature/post_detail/page/post_detail_page.dart';
@@ -71,7 +72,7 @@ final GoRouter router = GoRouter(
       name: RouteConstants.EDIT_PROFILE,
       builder: (context, state) => const ProfileEditPage(),
     ),
-    
+
     GoRoute(
       path: RouteConstants.SYSTEM_NOTIFICATIONS,
       name: RouteConstants.SYSTEM_NOTIFICATIONS,
@@ -81,6 +82,11 @@ final GoRouter router = GoRouter(
       path: RouteConstants.NEW_FOLLOWERS,
       name: RouteConstants.NEW_FOLLOWERS,
       builder: (context, state) => const NewFollowersPage(),
+    ),
+    GoRoute(
+      path: RouteConstants.SETTINGS,
+      name: RouteConstants.SETTINGS,
+      builder: (context, state) => const SettingsPage(),
     ),
   ],
 

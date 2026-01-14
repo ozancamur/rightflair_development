@@ -7,7 +7,7 @@ import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../../../core/components/appbar.dart';
 import '../../../../../core/components/back_button.dart';
-import '../../../../../core/components/icon_button.dart';
+import '../../../../../core/components/settings_button.dart';
 import '../../../../../core/constants/icons.dart';
 import '../widgets/follower/follower_item.dart';
 import '../widgets/suggested_account/suggested_account_item.dart';
@@ -37,11 +37,7 @@ class _NewFollowersPageState extends State<NewFollowersPage> {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: context.width * .04),
-          child: IconButtonComponent(
-            size: context.height * .045,
-            onTap: () {},
-            icon: AppIcons.SETTINGS,
-          ),
+          child: SettingsButtonComponent(),
         ),
       ],
     );

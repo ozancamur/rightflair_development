@@ -4,6 +4,7 @@ import '../../../../../../../core/components/appbar.dart';
 import '../../../../../../../core/components/icon_button.dart';
 import '../../../../../../../core/constants/icons.dart';
 import '../../../../../../../core/extensions/context.dart';
+import '../../../../../core/components/settings_button.dart';
 
 class ProfileAppbarWidget extends StatelessWidget
     implements PreferredSizeWidget {
@@ -16,7 +17,7 @@ class ProfileAppbarWidget extends StatelessWidget
       actions: [
         IconButtonComponent(onTap: () {}, icon: AppIcons.SHARE),
         SizedBox(width: context.width * 0.03),
-        IconButtonComponent(onTap: () {}, icon: AppIcons.SETTINGS),
+        SettingsButtonComponent(),
         SizedBox(width: context.width * .04),
       ],
     );

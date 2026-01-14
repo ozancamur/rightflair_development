@@ -12,6 +12,7 @@ import 'package:rightflair/feature/navigation/page/feed/bloc/feed_bloc.dart';
 import 'package:rightflair/feature/navigation/page/profile/cubit/profile_cubit.dart';
 import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
 import 'package:rightflair/feature/profile_edit/cubit/profile_edit_cubit.dart';
+import 'package:rightflair/feature/settings/cubit/settings_cubit.dart';
 import 'package:rightflair/feature/user/cubit/user_cubit.dart';
 
 import 'feature/create_post/cubit/create_post_cubit.dart';
@@ -42,6 +43,7 @@ class RightFlair extends StatelessWidget {
         BlocProvider(create: (_) => UserCubit()),
         BlocProvider(create: (_) => PostDetailCubit()),
         BlocProvider(create: (_) => ProfileEditCubit()),
+        BlocProvider(create: (_) => SettingsCubit()),
 
 
 

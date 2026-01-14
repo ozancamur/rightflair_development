@@ -197,5 +197,30 @@
         "bio": "Bio",
         "myStyles": "My Styles",
         "addNew": "+ Add New"
+    },
+    "settings": {
+        "title": "Settings",
+        "account": "ACCOUNT",
+        "username": "Username",
+        "email": "Email",
+        "changePassword": "Change Password",
+        "support": "SUPPORT",
+        "contactSupport": "Contact Support",
+        "notifications": "NOTIFICATIONS",
+        "likes": "Likes",
+        "saves": "Saves",
+        "milestones": "Milestones",
+        "trending": "Trending",
+        "follow": "Follow",
+        "app": "APP",
+        "darkMode": "Dark Mode",
+        "language": "Language",
+        "languageValue": "english",
+        "about": "ABOUT",
+        "termsOfService": "Terms of Service",
+        "privacyPolicy": "Privacy Policy",
+        "logOut": "Log Out",
+        "deactiveAccount": "Deactive Account",
+        "version": "version {}"
     }
 }

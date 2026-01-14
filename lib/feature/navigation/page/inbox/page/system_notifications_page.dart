@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/components/back_button.dart';
-import 'package:rightflair/core/components/icon_button.dart';
 import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
+import '../../../../../core/components/settings_button.dart';
 import '../widgets/system_notifications_list.dart';
 
 class SystemNotificationsPage extends StatelessWidget {
@@ -20,11 +19,7 @@ class SystemNotificationsPage extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: context.width * .04),
-            child: IconButtonComponent(
-              size: context.height * .045,
-              onTap: () {},
-              icon: AppIcons.SETTINGS,
-            ),
+            child: SettingsButtonComponent()
           ),
         ],
       ),

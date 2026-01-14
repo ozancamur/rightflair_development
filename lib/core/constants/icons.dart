@@ -28,11 +28,14 @@ class AppIcons {
   static const String CHECK = '${_path}check.svg';
   static const String CLOSE = '${_path}close.svg';
   static const String COMMENTS = '${_path}comments.svg';
+  static const String CONTACT = '${_path}contact.svg';
 
+  static const String DARK_MODE = '${_path}dark.svg';
   static const String DELETE = '${_path}delete.svg';
   static const String DRAFT = '${_path}draft.svg';
 
   static const String EDIT = '${_path}edit.svg';
+  static const String EMAIL = '${_path}email.svg';
 
   static const String FAVORITE = '${_path}favorite.svg';
 

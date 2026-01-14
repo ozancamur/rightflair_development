@@ -5,6 +5,7 @@ import '../../../../../../../core/components/appbar.dart';
 import '../../../../../../../core/components/icon_button.dart';
 import '../../../../../../../core/constants/icons.dart';
 import '../../../../../../../core/extensions/context.dart';
+import '../../../core/components/settings_button.dart';
 
 class UserAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const UserAppbarWidget({super.key});
@@ -16,7 +17,7 @@ class UserAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButtonComponent(onTap: () {}, icon: AppIcons.SHARE),
         SizedBox(width: context.width * 0.03),
-        IconButtonComponent(onTap: () {}, icon: AppIcons.SETTINGS),
+        SettingsButtonComponent(),
         SizedBox(width: context.width * .04),
       ],
     );

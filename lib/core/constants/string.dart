@@ -236,4 +236,29 @@ class AppStrings {
   static const String PROFILE_EDIT_BIO = 'profileEdit.bio';
   static const String PROFILE_EDIT_MY_STYLES = 'profileEdit.myStyles';
   static const String PROFILE_EDIT_ADD_NEW = 'profileEdit.addNew';
+
+  // SETTINGS
+  static const String SETTINGS_TITLE = 'settings.title';
+  static const String SETTINGS_ACCOUNT = 'settings.account';
+  static const String SETTINGS_USERNAME = 'settings.username';
+  static const String SETTINGS_EMAIL = 'settings.email';
+  static const String SETTINGS_CHANGE_PASSWORD = 'settings.changePassword';
+  static const String SETTINGS_SUPPORT = 'settings.support';
+  static const String SETTINGS_CONTACT_SUPPORT = 'settings.contactSupport';
+  static const String SETTINGS_NOTIFICATIONS = 'settings.notifications';
+  static const String SETTINGS_LIKES = 'settings.likes';
+  static const String SETTINGS_SAVES = 'settings.saves';
+  static const String SETTINGS_MILESTONES = 'settings.milestones';
+  static const String SETTINGS_TRENDING = 'settings.trending';
+  static const String SETTINGS_FOLLOW = 'settings.follow';
+  static const String SETTINGS_APP = 'settings.app';
+  static const String SETTINGS_DARK_MODE = 'settings.darkMode';
+  static const String SETTINGS_LANGUAGE = 'settings.language';
+  static const String SETTINGS_LANGUAGE_VALUE = 'settings.languageValue';
+  static const String SETTINGS_ABOUT = 'settings.about';
+  static const String SETTINGS_TERMS_OF_SERVICE = 'settings.termsOfService';
+  static const String SETTINGS_PRIVACY_POLICY = 'settings.privacyPolicy';
+  static const String SETTINGS_LOG_OUT = 'settings.logOut';
+  static const String SETTINGS_DEACTIVE_ACCOUNT = 'settings.deactiveAccount';
+  static const String SETTINGS_VERSION = 'settings.version';
 }
