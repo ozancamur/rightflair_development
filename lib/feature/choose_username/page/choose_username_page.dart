@@ -11,31 +11,8 @@ import '../widget/choose_username_button.dart';
 import '../widget/choose_username_textfield.dart';
 import '../widget/choose_username_validation.dart';
 
-class ChooseUsernamePage extends StatefulWidget {
+class ChooseUsernamePage extends StatelessWidget {
   const ChooseUsernamePage({super.key});
-
-  @override
-  State<ChooseUsernamePage> createState() => _ChooseUsernamePageState();
-}
-
-class _ChooseUsernamePageState extends State<ChooseUsernamePage> {
-  final TextEditingController ctrlUsername = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    ctrlUsername.addListener(() {
-      context.read<ChooseUsernameBloc>().add(
-        ChooseUsernameCheckEvent(username: ctrlUsername.text),
-      );
-    });
-  }
-
-  @override
-  void dispose() {
-    ctrlUsername.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +46,10 @@ class _ChooseUsernamePageState extends State<ChooseUsernamePage> {
               ),
               ChooseUsernameTextField(
                 isValid: state.isUnique,
-                controller: ctrlUsername,
               ),
               ChooseUsernameValidationWidget(isUnique: state.isUnique),
               SizedBox(height: context.height * .025),
-              ChooseUsernameButtonWidget(
-                isEnabled: state.isUnique,
-                username: ctrlUsername.text,
-              ),
+              ChooseUsernameButtonWidget(),
             ],
           ),
         );

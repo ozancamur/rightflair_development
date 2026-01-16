@@ -1,5 +1,5 @@
 enum CollectionEnum {
-  USERSNAMES("USERSNAMES"),
+  USERNAMES("USERNAMES"),
   USERS("USERS");
 
   final String path;

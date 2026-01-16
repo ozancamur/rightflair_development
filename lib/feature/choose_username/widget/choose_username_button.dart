@@ -10,30 +10,17 @@ import '../../../core/extensions/context.dart';
 import '../bloc/choose_username_bloc.dart';
 
 class ChooseUsernameButtonWidget extends StatelessWidget {
-  final bool isEnabled;
-  final String username;
-
-  const ChooseUsernameButtonWidget({
-    super.key,
-    required this.isEnabled,
-    required this.username,
-  });
+  const ChooseUsernameButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButtonComponent(
       height: context.height * .07,
       radius: 100,
-      color: isEnabled
-          ? AppDarkColors.DARK_BUTTON
-          : AppDarkColors.DARK_BUTTON.withOpacity(0.5),
-      onPressed: isEnabled
-          ? () {
-              context.read<ChooseUsernameBloc>().add(
-                ChooseUsernameSaveEvent(username: username),
-              );
-            }
-          : null,
+      color: AppDarkColors.DARK_BUTTON.withOpacity(0.5),
+      onPressed: () {
+        context.read<ChooseUsernameBloc>().add(ChooseUsernameSaveEvent());
+      },
       child: TextComponent(
         color: AppDarkColors.WHITE75,
         text: AppStrings.CONTINUE,

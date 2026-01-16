@@ -11,7 +11,7 @@ class WelcomeLogoWidget extends StatelessWidget {
     return SizedBox(
       height: context.height * .35,
       width: context.width,
-      child: Image.asset(AppImages.logo, fit: BoxFit.cover),
+      child: Image.asset(AppImages.LOGO, fit: BoxFit.cover),
     );
   }
 }

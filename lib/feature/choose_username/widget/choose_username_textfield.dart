@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/text.dart';
 import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/constants/font_size.dart';
@@ -7,25 +8,30 @@ import 'package:rightflair/core/constants/font_size.dart';
 import '../../../core/components/text_field.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
+import '../bloc/choose_username_bloc.dart';
 
 class ChooseUsernameTextField extends StatelessWidget {
-  final TextEditingController controller;
   final bool? isValid;
-  const ChooseUsernameTextField({
-    super.key,
-    required this.controller,
-    this.isValid,
-  });
+  const ChooseUsernameTextField({super.key, this.isValid});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = context
+        .read<ChooseUsernameBloc>()
+        .controller;
+
+    final FocusNode focusNode = context.read<ChooseUsernameBloc>().focusNode;
     return controller.text == ""
-        ? _field()
-        : _valid(context, controller.text, isValid ?? false);
+        ? _field(controller, focusNode)
+        : _valid(context, controller, focusNode, isValid ?? false);
   }
 
-  TextFieldComponent _field() {
+  TextFieldComponent _field(
+    TextEditingController controller,
+    FocusNode focusNode,
+  ) {
     return TextFieldComponent(
+      focusNode: focusNode,
       key: const ValueKey('username_textfield'),
       controller: controller,
       hintText: AppStrings.CHOOSE_USERNAME_USERNAME,
@@ -34,11 +40,19 @@ class ChooseUsernameTextField extends StatelessWidget {
     );
   }
 
-  Column _valid(BuildContext context, String username, bool isValid) {
+  Column _valid(
+    BuildContext context,
+    TextEditingController controller,
+    FocusNode focusNode,
+    bool isValid,
+  ) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [_field(), _text(context, username, isValid)],
+      children: [
+        _field(controller, focusNode),
+        _text(context, controller.text, isValid),
+      ],
     );
   }
 

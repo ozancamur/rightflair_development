@@ -15,11 +15,17 @@ import 'package:rightflair/feature/settings/page/settings_page.dart';
 import '../../feature/authentication/pages/register_page.dart';
 import '../../feature/post_detail/page/post_detail_page.dart';
 import '../../feature/profile_edit/page/profile_edit_page.dart';
+import '../../feature/splash/page/splash_page.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RouteConstants.NAVIGATION,
+  initialLocation: RouteConstants.SPLASH,
   debugLogDiagnostics: true,
   routes: [
+    GoRoute(
+      path: RouteConstants.SPLASH,
+      name: RouteConstants.SPLASH,
+      builder: (context, state) => const SplashPage(),
+    ),
     GoRoute(
       path: RouteConstants.WELCOME,
       name: RouteConstants.WELCOME,

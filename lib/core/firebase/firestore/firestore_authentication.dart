@@ -47,7 +47,7 @@ class FirestoreAuthenticationManager extends FirestoreManager {
   Future<bool> isUsernameUnique(String username) async {
     try {
       final data = await firestore
-          .collection(CollectionEnum.USERSNAMES.path)
+          .collection(CollectionEnum.USERNAMES.path)
           .doc(username)
           .get();
       return !data.exists;
@@ -69,7 +69,7 @@ class FirestoreAuthenticationManager extends FirestoreManager {
 
       // Usernames koleksiyonuna kaydet
       await firestore
-          .collection(CollectionEnum.USERSNAMES.path)
+          .collection(CollectionEnum.USERNAMES.path)
           .doc(username)
           .set({'uid': uid});
     } catch (e) {

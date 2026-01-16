@@ -12,25 +12,16 @@ part 'choose_username_state.dart';
 
 class ChooseUsernameBloc
     extends Bloc<ChooseUsernameEvent, ChooseUsernameState> {
+  final FocusNode focusNode = FocusNode();
+  final TextEditingController controller = TextEditingController();
+
   final FirestoreAuthenticationManager _firestoreAuthentication =
       FirestoreAuthenticationManager();
   final FirebaseAuthenticationManager _authentication =
       FirebaseAuthenticationManager();
 
   ChooseUsernameBloc() : super(ChooseUsernameState()) {
-    on<ChooseUsernameCheckEvent>(_onCheck);
     on<ChooseUsernameSaveEvent>(_onSave);
-  }
-
-  Future<void> _onCheck(
-    ChooseUsernameCheckEvent event,
-    Emitter<ChooseUsernameState> emit,
-  ) async {
-    if (event.username.trim().isEmpty) return;
-    final isUnique = await _firestoreAuthentication.isUsernameUnique(
-      event.username,
-    );
-    emit(state.copyWith(isUnique: isUnique));
   }
 
   Future<void> _onSave(
@@ -38,14 +29,26 @@ class ChooseUsernameBloc
     Emitter<ChooseUsernameState> emit,
   ) async {
     try {
-      final uid = _authentication.currentUser?.uid;
-      if (uid == null) {
-        return;
-      }
-      await _firestoreAuthentication.saveUsername(
-        uid: uid,
-        username: event.username,
+      if (controller.text.trim().isEmpty) return;
+      final isUnique = await _firestoreAuthentication.isUsernameUnique(
+        controller.text,
       );
+      debugPrint("USERNAME ${controller.text} is UNOQUE :> $isUnique");
+      emit(state.copyWith(isUnique: isUnique));
+      if (isUnique) {
+        try {
+          final uid = _authentication.currentUser?.uid;
+          if (uid == null) {
+            return;
+          }
+          await _firestoreAuthentication.saveUsername(
+            uid: uid,
+            username: controller.text,
+          );
+        } catch (e) {
+          debugPrint('Kullanıcı adı kaydedilirken hata oluştu: $e');
+        }
+      }
     } catch (e) {
       debugPrint('Username kaydedilemedi: $e');
     }
