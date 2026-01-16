@@ -1,4 +1,5 @@
 enum CollectionEnum {
+  PROFILES("PROFILES"),
   USERNAMES("USERNAMES"),
   USERS("USERS");
 

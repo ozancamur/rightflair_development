@@ -1,6 +1,6 @@
 import '../../../../../core/base/base_modeld.dart';
 
-class AnalysisModel extends BaseModel {
+class AnalysisModel extends BaseModel<AnalysisModel> {
   String? id;
   String? name;
   String? value;

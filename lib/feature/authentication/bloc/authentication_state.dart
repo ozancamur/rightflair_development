@@ -11,27 +11,7 @@ final class AuthenticationInitial extends AuthenticationState {}
 
 final class AuthenticationLoading extends AuthenticationState {}
 
-final class AuthenticationSetUsername extends AuthenticationState {
-  final bool isUnique;
-  final bool isCaseInsensitive;
-  const AuthenticationSetUsername({
-    required this.isUnique,
-     this.isCaseInsensitive = true,
-  });
-
-  AuthenticationSetUsername copyWith({
-    bool? isUnique,
-    bool? isCaseInsensitive,
-  }) {
-    return AuthenticationSetUsername(
-      isUnique: isUnique ?? this.isUnique,
-      isCaseInsensitive: isCaseInsensitive ?? this.isCaseInsensitive,
-    );
-  }
-
-  @override
-  List<Object> get props => [isUnique, isCaseInsensitive];
-}
+final class AuthenticationSetUsername extends AuthenticationState {}
 
 final class AuthenticationSuccess extends AuthenticationState {}
 

@@ -34,23 +34,6 @@ class AuthtenticationAppleEvent extends AuthenticationEvent {}
 
 class AuthtenticationGoogleEvent extends AuthenticationEvent {}
 
-class AuthenticationSetUsernameEvent extends AuthenticationEvent {
-  final String username;
-
-  const AuthenticationSetUsernameEvent({required this.username});
-
-  @override
-  List<Object> get props => [username];
-}
-
-class AuthenticationSaveUsernameEvent extends AuthenticationEvent {
-  final String username;
-
-  const AuthenticationSaveUsernameEvent({required this.username});
-
-  @override
-  List<Object> get props => [username];
-}
 
 class AuthenticationResetPasswordEvent extends AuthenticationEvent {
   final String email;

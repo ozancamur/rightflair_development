@@ -1,6 +1,6 @@
 import '../../../core/base/base_modeld.dart';
 
-class CommentModel extends BaseModel {
+class CommentModel extends BaseModel<CommentModel> {
   final String userName;
   final String? userAvatar;
   final String text;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../model/message.dart';
+import '../../model/comment.dart';
 import 'inbox_message_item.dart';
 
 class InboxMessagesListWidget extends StatelessWidget {
-  final List<MessageModel> messages;
+  final List<CommentModel> messages;
   const InboxMessagesListWidget({super.key, required this.messages});
 
   @override

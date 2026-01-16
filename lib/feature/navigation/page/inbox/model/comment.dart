@@ -1,20 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../../../core/base/base_modeld.dart';
 
-class MessageModel extends BaseModel {
+class CommentModel extends BaseModel<CommentModel> {
   String? id;
   String? ownerId;
   String? message;
   String? image;
   List<String>? likes;
   DateTime? createdAt;
+  List<CommentModel>? replies;
 
-  MessageModel({
+  CommentModel({
     this.id,
     this.ownerId,
     this.message,
     this.image,
     this.likes,
     this.createdAt,
+    this.replies,
   });
 
   @override
@@ -26,7 +30,7 @@ class MessageModel extends BaseModel {
     List<String>? likes,
     DateTime? createdAt,
   }) {
-    return MessageModel(
+    return CommentModel(
       id: id ?? this.id,
       ownerId: ownerId ?? this.ownerId,
       message: message ?? this.message,
@@ -38,7 +42,7 @@ class MessageModel extends BaseModel {
 
   @override
   fromJson(Map<String, dynamic> json) {
-    return MessageModel(
+    return CommentModel(
       id: json['id'] as String?,
       ownerId: json['ownerId'] as String?,
       message: json['message'] as String?,
@@ -47,7 +51,7 @@ class MessageModel extends BaseModel {
           ?.map((e) => e as String)
           .toList(),
       createdAt: json['createdAt'] != null
-          ? DateTime.parse(json['createdAt'] as String)
+          ? (json['createdAt'] as Timestamp).toDate()
           : null,
     );
   }
@@ -60,7 +64,7 @@ class MessageModel extends BaseModel {
       'message': message,
       'image': image,
       'likes': likes,
-      'createdAt': createdAt?.toIso8601String(),
+      'createdAt': createdAt != null ? Timestamp.fromDate(createdAt!) : null,
     };
   }
 }

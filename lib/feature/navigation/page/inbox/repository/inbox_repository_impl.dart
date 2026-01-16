@@ -2,30 +2,30 @@ import 'package:rightflair/feature/navigation/page/inbox/model/notification_mode
 
 import 'package:rightflair/core/constants/string.dart';
 
-import '../model/message.dart';
+import '../model/comment.dart';
 import '../model/notification_type.dart';
 import 'inbox_repository.dart';
 
 class InboxRepositoryImpl implements InboxRepository {
   @override
-  Future<List<MessageModel>> getMessages() async {
+  Future<List<CommentModel>> getMessages() async {
     await Future.delayed(const Duration(milliseconds: 500));
     return [
-      MessageModel(
+      CommentModel(
         id: '1',
         ownerId: 'Elena Miles',
         image: 'https://i.pravatar.cc/150?u=1',
         message: 'Omg I love that jacket! Where did you...',
         createdAt: DateTime.now().subtract(const Duration(minutes: 2)),
       ),
-      MessageModel(
+      CommentModel(
         id: '2',
         ownerId: 'Sophie Turner',
         image: 'https://i.pravatar.cc/150?u=2',
         message: 'Can we collab on the next shoot?',
         createdAt: DateTime.now().subtract(const Duration(hours: 19)),
       ),
-      MessageModel(
+      CommentModel(
         id: '3',
         ownerId: 'Alex Johnson',
         image: 'https://i.pravatar.cc/150?u=3',

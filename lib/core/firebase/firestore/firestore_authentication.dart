@@ -6,7 +6,7 @@ class FirestoreAuthenticationManager extends FirestoreManager {
   Future<bool> userExists(String userId) async {
     try {
       final doc = await firestore
-          .collection(CollectionEnum.USERS.path)
+          .collection(CollectionEnum.PROFILES.path)
           .doc(userId)
           .get();
       return doc.exists;
@@ -18,7 +18,7 @@ class FirestoreAuthenticationManager extends FirestoreManager {
   Future<bool> isUserExists(String uid) async {
     try {
       final doc = await firestore
-          .collection(CollectionEnum.USERS.path)
+          .collection(CollectionEnum.PROFILES.path)
           .doc(uid)
           .get();
       return doc.exists;
@@ -31,7 +31,7 @@ class FirestoreAuthenticationManager extends FirestoreManager {
   Future<bool> isUsernameNull(String userId) async {
     try {
       final doc = await firestore
-          .collection(CollectionEnum.USERS.path)
+          .collection(CollectionEnum.PROFILES.path)
           .doc(userId)
           .get();
 
@@ -63,7 +63,7 @@ class FirestoreAuthenticationManager extends FirestoreManager {
   }) async {
     try {
       // Users koleksiyonunda username'i güncelle
-      await firestore.collection(CollectionEnum.USERS.path).doc(uid).update({
+      await firestore.collection(CollectionEnum.PROFILES.path).doc(uid).update({
         'username': username,
       });
 

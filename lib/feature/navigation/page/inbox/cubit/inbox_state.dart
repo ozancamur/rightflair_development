@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../model/message.dart';
+import '../model/comment.dart';
 import '../model/notification_model.dart';
 
 abstract class InboxState extends Equatable {
@@ -14,7 +14,7 @@ class InboxInitial extends InboxState {}
 class InboxLoading extends InboxState {}
 
 class InboxLoaded extends InboxState {
-  final List<MessageModel> messages;
+  final List<CommentModel> messages;
   final List<NotificationModel> notifications;
 
   const InboxLoaded(this.messages, this.notifications);

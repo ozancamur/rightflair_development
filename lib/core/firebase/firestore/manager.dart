@@ -125,8 +125,6 @@ abstract class FirestoreManager {
 
   // USERS koleksiyonu için özel fonksiyonlar
 
- 
-
   // Stream ile gerçek zamanlı veri dinle
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamDocument({
     required CollectionEnum collection,

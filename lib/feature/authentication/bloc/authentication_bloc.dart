@@ -5,6 +5,7 @@ import 'package:rightflair/core/firebase/messaging.dart';
 
 import '../../../core/firebase/authentication.dart';
 import '../../../core/firebase/firestore/firestore_authentication.dart';
+import '../model/profile.dart';
 import '../model/user.dart';
 
 part 'authentication_event.dart';
@@ -24,8 +25,6 @@ class AuthenticationBloc
     on<AuthtenticationAppleEvent>(_onApple);
     on<AuthtenticationGoogleEvent>(_onGoogle);
     on<AuthenticationResetPasswordEvent>(_onReset);
-    on<AuthenticationSetUsernameEvent>(_onSetUsername);
-    on<AuthenticationSaveUsernameEvent>(_onSaveUsername);
   }
 
   Future<void> _onRegister(
@@ -50,24 +49,17 @@ class AuthenticationBloc
     if (isUserExists) {
       final check = await _firestoreAuthentication.isUsernameNull(uid);
       if (check) {
-        emit(AuthenticationSetUsername(isUnique: false));
+        emit(AuthenticationSetUsername());
       } else {
         emit(AuthenticationSuccess());
       }
     } else {
-      final String? token = await _messaging.getToken();
-      final ProfileModel user = ProfileModel(
+      await _create(
         uid: uid,
         email: event.email,
-        fullName: response.user?.displayName,
-        token: token,
+        name: response.user?.displayName,
       );
-      await _firestoreAuthentication.createWithId(
-        collection: CollectionEnum.USERS,
-        id: uid,
-        data: user,
-      );
-      emit(AuthenticationSetUsername(isUnique: true));
+      emit(AuthenticationSetUsername());
     }
   }
 
@@ -93,13 +85,13 @@ class AuthenticationBloc
     if (isUserExists) {
       final check = await _firestoreAuthentication.isUsernameNull(uid);
       if (check) {
-        emit(AuthenticationSetUsername(isUnique: false));
+        emit(AuthenticationSetUsername());
       } else {
         emit(AuthenticationSuccess());
       }
     } else {
       final String? token = await _messaging.getToken();
-      final ProfileModel user = ProfileModel(
+      final UserModel user = UserModel(
         uid: uid,
         fullName: response.user?.displayName,
         email: event.email,
@@ -129,22 +121,15 @@ class AuthenticationBloc
     if (isUserExists) {
       final check = await _firestoreAuthentication.isUsernameNull(uid);
       if (check) {
-        emit(AuthenticationSetUsername(isUnique: false));
+        emit(AuthenticationSetUsername());
       } else {
         emit(AuthenticationSuccess());
       }
     } else {
-      final String? token = await _messaging.getToken();
-      final ProfileModel user = ProfileModel(
+      await _create(
         uid: uid,
-        fullName: response.user?.displayName,
-        email: response.user?.email,
-        token: token,
-      );
-      await _firestoreAuthentication.createWithId(
-        collection: CollectionEnum.USERS,
-        id: uid,
-        data: user,
+        email: response.user?.email ?? "",
+        name: response.user?.displayName,
       );
     }
   }
@@ -165,22 +150,15 @@ class AuthenticationBloc
     if (isUserExists) {
       final check = await _firestoreAuthentication.isUsernameNull(uid);
       if (check) {
-        emit(AuthenticationSetUsername(isUnique: false));
+        emit(AuthenticationSetUsername());
       } else {
         emit(AuthenticationSuccess());
       }
     } else {
-      final String? token = await _messaging.getToken();
-      final ProfileModel user = ProfileModel(
+      await _create(
         uid: uid,
-        fullName: response.user?.displayName,
-        email: response.user?.email,
-        token: token,
-      );
-      await _firestoreAuthentication.createWithId(
-        collection: CollectionEnum.USERS,
-        id: uid,
-        data: user,
+        email: response.user?.email ?? "",
+        name: response.user?.displayName,
       );
     }
   }
@@ -193,34 +171,28 @@ class AuthenticationBloc
     await _authentication.sendPasswordResetEmail(event.email);
   }
 
-  Future<void> _onSetUsername(
-    AuthenticationSetUsernameEvent event,
-    Emitter<AuthenticationState> emit,
-  ) async {
-    final isUnique = await _firestoreAuthentication.isUsernameUnique(
-      event.username,
+  Future<void> _create({
+    required String uid,
+    required String email,
+    String? name,
+  }) async {
+    final String? token = await _messaging.getToken();
+    final UserModel user = UserModel(
+      uid: uid,
+      email: email,
+      fullName: name,
+      token: token,
     );
-    emit(AuthenticationSetUsername(isUnique: isUnique));
-  }
-
-  Future<void> _onSaveUsername(
-    AuthenticationSaveUsernameEvent event,
-    Emitter<AuthenticationState> emit,
-  ) async {
-    emit(AuthenticationLoading());
-    try {
-      final uid = _authentication.currentUser?.uid;
-      if (uid == null) {
-        emit(AuthenticationError("Kullanıcı bulunamadı"));
-        return;
-      }
-      await _firestoreAuthentication.saveUsername(
-        uid: uid,
-        username: event.username,
-      );
-      emit(AuthenticationSuccess());
-    } catch (e) {
-      emit(AuthenticationError("Username kaydedilemedi"));
-    }
+    await _firestoreAuthentication.createWithId(
+      collection: CollectionEnum.USERS,
+      id: uid,
+      data: user,
+    );
+    final ProfileModel profile = ProfileModel(uid: uid);
+    await _firestoreAuthentication.createWithId(
+      collection: CollectionEnum.PROFILES,
+      id: uid,
+      data: profile,
+    );
   }
 }

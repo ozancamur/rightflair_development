@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/extensions/context.dart';
-import '../../model/message.dart';
+import '../../model/comment.dart';
 import 'message_avatar.dart';
 import 'message_content.dart';
 import 'message_header.dart';
 
 class InboxMessageItem extends StatelessWidget {
-  final MessageModel message;
+  final CommentModel message;
 
   const InboxMessageItem({super.key, required this.message});
 
