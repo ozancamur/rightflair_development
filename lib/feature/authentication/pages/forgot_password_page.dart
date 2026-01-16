@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/constants/string.dart';
 
+import '../../../core/components/back_button.dart';
 import '../../../core/constants/dark_color.dart';
 import '../../../core/extensions/context.dart';
 import '../widgets/authentication_text.dart';
@@ -18,7 +19,10 @@ class ForgotPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppDarkColors.SECONDARY,
-      appBar: AppBarComponent(title: AppStrings.FORGOT_PASSWORD_APPBAR),
+      appBar: AppBarComponent(
+        leading: BackButtonComponent(),
+        title: AppStrings.FORGOT_PASSWORD_APPBAR,
+      ),
       body: SizedBox(
         height: context.height,
         width: context.width,

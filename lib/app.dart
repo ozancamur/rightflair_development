@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/constants/font_family.dart';
 import 'package:rightflair/core/utils/router.dart';
 import 'package:rightflair/feature/authentication/bloc/authentication_bloc.dart';
-import 'package:rightflair/feature/choose_username/bloc/choose_username_bloc.dart';
+import 'package:rightflair/feature/choose_username/bloc/choose_username_cubit.dart';
 import 'package:rightflair/feature/create_post/repository/create_post_repository.dart';
 import 'package:rightflair/feature/navigation/page/inbox/cubit/inbox_cubit.dart';
 import 'package:rightflair/feature/location/cubit/location_cubit.dart';
@@ -31,7 +31,7 @@ class RightFlair extends StatelessWidget {
       providers: [
         // AUTHENTICATION
         BlocProvider(create: (_) => AuthenticationBloc()),
-        BlocProvider(create: (_) => ChooseUsernameBloc()),
+        BlocProvider(create: (_) => ChooseUsernameCubit()),
 
         // NAVIGATION
         BlocProvider(create: (_) => NavigationCubit()),
@@ -44,8 +44,6 @@ class RightFlair extends StatelessWidget {
         BlocProvider(create: (_) => PostDetailCubit()),
         BlocProvider(create: (_) => ProfileEditCubit()),
         BlocProvider(create: (_) => SettingsCubit()),
-
-
 
         // CREATE
         BlocProvider(

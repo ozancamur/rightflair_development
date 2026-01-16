@@ -8,7 +8,7 @@ import 'package:rightflair/core/constants/font_size.dart';
 import '../../../core/components/text_field.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
-import '../bloc/choose_username_bloc.dart';
+import '../bloc/choose_username_cubit.dart';
 
 class ChooseUsernameTextField extends StatelessWidget {
   final bool? isValid;
@@ -17,10 +17,10 @@ class ChooseUsernameTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = context
-        .read<ChooseUsernameBloc>()
+        .read<ChooseUsernameCubit>()
         .controller;
 
-    final FocusNode focusNode = context.read<ChooseUsernameBloc>().focusNode;
+    final FocusNode focusNode = context.read<ChooseUsernameCubit>().focusNode;
     return controller.text == ""
         ? _field(controller, focusNode)
         : _valid(context, controller, focusNode, isValid ?? false);

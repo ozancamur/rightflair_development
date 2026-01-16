@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/appbar.dart';
+import 'package:rightflair/core/components/back_button.dart';
 import 'package:rightflair/core/constants/string.dart';
 
 import '../../../core/constants/dark_color.dart';
@@ -20,7 +21,10 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppDarkColors.SECONDARY,
-      appBar: AppBarComponent(title: AppStrings.LOGIN),
+      appBar: AppBarComponent(
+        leading: BackButtonComponent(),
+        title: AppStrings.LOGIN,
+      ),
       body: SizedBox(
         height: context.height,
         width: context.width,
