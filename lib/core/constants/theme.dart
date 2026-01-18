@@ -27,11 +27,11 @@ class AppTheme {
       tertiaryContainer: LightColors.GREY36,
       tertiaryFixed: LightColors.GREY24,
       tertiaryFixedDim: LightColors.GREY12,
-      
+
       scrim: LightColors.ORANGE,
 
       surface: LightColors.YELLOW,
-      surfaceContainerLow: LightColors.TRANSPARENT_YELLOW,
+      onSurface: LightColors.TRANSPARENT_YELLOW,
 
       inverseSurface: LightColors.GREEN,
       onInverseSurface: LightColors.TRANSPARENT_GREEN,
@@ -48,8 +48,7 @@ class AppTheme {
       shadow: LightColors.INACTIVE,
 
       onBackground: Colors.white,
-      onSecondary: LightColors.NOTIFICATION
-
+      onSecondary: LightColors.NOTIFICATION,
     ),
   );
 
@@ -76,7 +75,7 @@ class AppTheme {
       scrim: DarkColors.ORANGE,
 
       surface: DarkColors.YELLOW,
-      surfaceContainerLow: DarkColors.TRANSPARENT_YELLOW,
+      onSurface: DarkColors.TRANSPARENT_YELLOW,
 
       inverseSurface: DarkColors.GREEN,
       onInverseSurface: DarkColors.TRANSPARENT_GREEN,
@@ -94,7 +93,7 @@ class AppTheme {
       shadow: DarkColors.INACTIVE,
 
       onBackground: DarkColors.INACTIVE,
-      onSecondary: DarkColors.SECONDARY
+      onSecondary: Color(0xFFD9D9D9).withOpacity(.12),
     ),
   );
 }
