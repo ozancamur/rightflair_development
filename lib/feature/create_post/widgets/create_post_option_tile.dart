@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rightflair/core/components/text.dart';
 import 'package:rightflair/core/extensions/context.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 
 class CreatePostOptionTile extends StatelessWidget {
   final String title;
@@ -28,9 +27,9 @@ class CreatePostOptionTile extends StatelessWidget {
         margin: EdgeInsets.only(bottom: context.height * 0.02),
         padding: EdgeInsets.all(context.width * 0.04),
         decoration: BoxDecoration(
-          color: AppDarkColors.INACTIVE,
+          color: context.colors.shadow,
           borderRadius: BorderRadius.circular(context.width * 0.04),
-          border: Border.all(color: AppDarkColors.WHITE16),
+          border: Border.all(color: context.colors.primaryFixedDim),
         ),
         child: Row(
           children: [
@@ -38,7 +37,7 @@ class CreatePostOptionTile extends StatelessWidget {
               iconPath,
               width: context.width * 0.06,
               colorFilter:  ColorFilter.mode(
-                AppDarkColors.PRIMARY,
+                context.colors.primary,
                 BlendMode.srcIn,
               ),
             ),
@@ -57,7 +56,7 @@ class CreatePostOptionTile extends StatelessWidget {
                     TextComponent(
                       text: subtitle!,
                       size: const [12],
-                      color: AppDarkColors.WHITE60,
+                      color: context.colors.onPrimary,
                     ),
                   ],
                 ],

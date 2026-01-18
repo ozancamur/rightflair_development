@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/text.dart';
-import '../../../../../core/constants/dark_color.dart';
-import '../../../../../core/constants/font_size.dart';
+import '../../constants/font/font_size.dart';
 import '../../../../../core/extensions/context.dart';
 
 class ProfileTabItemWidget extends StatelessWidget {
@@ -22,13 +21,15 @@ class ProfileTabItemWidget extends StatelessWidget {
             text: text,
             size: FontSizeConstants.LARGE,
             weight: FontWeight.w600,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
           ),
           Container(
             height: context.height * 0.003,
             width: context.width * 0.1,
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: AppDarkColors.BUTTON),
+              gradient: LinearGradient(
+                colors: [context.colors.surface, context.colors.scrim],
+              ),
               borderRadius: BorderRadius.circular(context.width * 0.01),
             ),
           ),

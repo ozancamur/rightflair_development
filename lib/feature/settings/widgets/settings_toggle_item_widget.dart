@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/components/settings_toggle_component.dart';
 import '../../../../core/components/text.dart';
 import '../../../../core/extensions/context.dart';
-import '../../../core/constants/dark_color.dart';
-import '../../../core/constants/font_size.dart';
+import '../../../core/constants/font/font_size.dart';
 
 class SettingsToggleItemWidget extends StatelessWidget {
   final String title;
@@ -30,7 +29,7 @@ class SettingsToggleItemWidget extends StatelessWidget {
           TextComponent(
             text: title,
             size: FontSizeConstants.LARGE,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
             weight: FontWeight.w500,
           ),
           SettingsToggleComponent(value: value, onChanged: onChanged),

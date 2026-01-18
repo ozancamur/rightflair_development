@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/dark_color.dart';
-import '../../../../../../core/constants/font_size.dart';
+import '../../../constants/font/font_size.dart';
+import '../../../extensions/context.dart';
 
 class ProfileHeaderUsernameWidget extends StatelessWidget {
   final String name;
@@ -22,14 +22,14 @@ class ProfileHeaderUsernameWidget extends StatelessWidget {
           text: name,
           size: FontSizeConstants.XXXX_LARGE,
           weight: FontWeight.w700,
-          color: AppDarkColors.PRIMARY,
+          color: context.colors.primary,
           tr: false,
         ),
         TextComponent(
           text: username,
           size: FontSizeConstants.NORMAL,
           weight: FontWeight.w500,
-          color: AppDarkColors.WHITE60,
+          color: context.colors.onPrimary,
           tr: false,
         ),
       ],

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/extensions/context.dart';
-
 
 class GradientButtonComponent extends StatelessWidget {
   final Function()? onPressed;
@@ -34,7 +32,7 @@ class GradientButtonComponent extends StatelessWidget {
       width: width ?? context.width,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: colors ?? AppDarkColors.BUTTON  ,
+          colors: colors ?? [context.colors.surface, context.colors.scrim],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -47,7 +45,7 @@ class GradientButtonComponent extends StatelessWidget {
         boxShadow: elevation > 0
             ? [
                 BoxShadow(
-                  color: AppDarkColors.SECONDARY.withOpacity(0.2),
+                  color: context.colors.secondary.withOpacity(0.2),
                   spreadRadius: 1,
                   blurRadius: elevation,
                   offset: Offset(0, elevation / 2),

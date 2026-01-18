@@ -3,8 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
 import 'package:rightflair/core/constants/string.dart';
+import 'package:rightflair/core/extensions/context.dart';
 
-import '../../../constants/dark_color.dart';
 
 class ProfileHeaderBioWidget extends StatefulWidget {
   final String text;
@@ -29,12 +29,12 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
 
   Widget _buildContent(BuildContext context) {
     final textStyle = TextStyle(
-      color: AppDarkColors.WHITE75,
+      color: context.colors.primaryContainer,
       fontWeight: FontWeight.w500,
       fontSize: 14,
     );
     final actionStyle = TextStyle(
-      color: AppDarkColors.PRIMARY,
+      color: context.colors.primary,
       fontWeight: FontWeight.w500,
       fontSize: 15,
     );
@@ -75,7 +75,7 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
           return TextComponent(
             text: widget.text,
             tr: false,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
           );
         }
 

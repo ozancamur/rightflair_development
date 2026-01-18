@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/dark_color.dart';
+import '../../../../core/extensions/context.dart';
 
 class CommentTextWidget extends StatelessWidget {
   final String text;
@@ -11,7 +11,7 @@ class CommentTextWidget extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: AppDarkColors.PRIMARY.withOpacity(0.9),
+        color: context.colors.primary.withOpacity(0.9),
         fontSize: 14,
         height: 1.4,
       ),

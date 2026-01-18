@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
+
+import '../extensions/context.dart';
 
 List<InlineSpan> helperTextStyle(BuildContext context, String text) {
   final spans = <InlineSpan>[];
@@ -13,7 +14,7 @@ List<InlineSpan> helperTextStyle(BuildContext context, String text) {
           text: text.substring(start, match.start),
           style: TextStyle(
             fontSize: 32,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
             fontWeight: FontWeight.w600,
             height: 1.25,
           ),
@@ -25,7 +26,7 @@ List<InlineSpan> helperTextStyle(BuildContext context, String text) {
         text: match.group(1),
         style: TextStyle(
           fontSize: 32,
-          color: AppDarkColors.YELLOW,
+          color: context.colors.surface,
           fontWeight: FontWeight.w600,
           height: 1.25,
         ),
@@ -40,7 +41,7 @@ List<InlineSpan> helperTextStyle(BuildContext context, String text) {
         text: text.substring(start),
         style: TextStyle(
           fontSize: 32,
-          color: AppDarkColors.PRIMARY,
+          color: context.colors.primary,
           fontWeight: FontWeight.w600,
           height: 1.25,
         ),

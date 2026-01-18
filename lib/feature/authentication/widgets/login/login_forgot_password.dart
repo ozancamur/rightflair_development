@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/route.dart';
 
 import '../../../../core/components/text.dart';
-import '../../../../core/constants/dark_color.dart';
-import '../../../../core/constants/font_size.dart';
+import '../../../../core/constants/font/font_size.dart';
 import '../../../../core/constants/string.dart';
+import '../../../../core/extensions/context.dart';
 
 class LoginForgotPasswordWidget extends StatelessWidget {
   const LoginForgotPasswordWidget({super.key});
@@ -18,7 +18,7 @@ class LoginForgotPasswordWidget extends StatelessWidget {
         text: AppStrings.FORGOT_PASSWORD,
         size: FontSizeConstants.SMALL,
         weight: FontWeight.w500,
-        color: AppDarkColors.WHITE75,
+        color: context.colors.primaryContainer,
       ),
     );
   }

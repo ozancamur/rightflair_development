@@ -55,23 +55,3 @@ class CommentsDialogExample {
     );
   }
 }
-
-/// Example screen showing how to trigger the comments dialog
-class ExampleScreen extends StatelessWidget {
-  const ExampleScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Comments Example')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            CommentsDialogExample.showCommentsDialog(context);
-          },
-          child: const Text('Show Comments'),
-        ),
-      ),
-    );
-  }
-}

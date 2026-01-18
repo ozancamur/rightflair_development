@@ -12,52 +12,56 @@ class AnalyticsGridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: AnalyticsStatCardWidget(
-                title: AppStrings.ANALYTICS_SHARE,
-                icon: AppIcons.ANALYTIC_VIEW,
-                value: data.shareCount,
-                growth: data.shareGrowth,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.width * 0.015),
+      child: Column(
+        spacing: context.height * 0.02,
+        children: [
+          Row(
+            spacing: context.width * 0.04,
+            children: [
+              Expanded(
+                child: AnalyticsStatCardWidget(
+                  title: AppStrings.ANALYTICS_SHARE,
+                  icon: AppIcons.ANALYTIC_VIEW,
+                  value: data.shareCount,
+                  growth: data.shareGrowth,
+                ),
               ),
-            ),
-            SizedBox(width: context.width * 0.04),
-            Expanded(
-              child: AnalyticsStatCardWidget(
-                title: AppStrings.ANALYTICS_LIKES,
-                icon: AppIcons.ANALYTIC_LIKE,
-                value: data.likeCount,
-                growth: data.likeGrowth,
+              Expanded(
+                child: AnalyticsStatCardWidget(
+                  title: AppStrings.ANALYTICS_LIKES,
+                  icon: AppIcons.ANALYTIC_LIKE,
+                  value: data.likeCount,
+                  growth: data.likeGrowth,
+                ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(height: context.height * 0.02),
-        Row(
-          children: [
-            Expanded(
-              child: AnalyticsStatCardWidget(
-                title: AppStrings.ANALYTICS_FOLLOWERS,
-                icon: AppIcons.ANALYTIC_FOLLOWER,
-                value: data.followerCount,
-                growth: data.followerGrowth,
+            ],
+          ),
+
+          Row(
+            spacing: context.width * 0.04,
+            children: [
+              Expanded(
+                child: AnalyticsStatCardWidget(
+                  title: AppStrings.ANALYTICS_FOLLOWERS,
+                  icon: AppIcons.ANALYTIC_FOLLOWER,
+                  value: data.followerCount,
+                  growth: data.followerGrowth,
+                ),
               ),
-            ),
-            SizedBox(width: context.width * 0.04),
-            Expanded(
-              child: AnalyticsStatCardWidget(
-                title: AppStrings.ANALYTICS_SAVES,
-                icon: AppIcons.ANALYTIC_SAVES,
-                value: data.saveCount,
-                growth: data.saveGrowth,
+              Expanded(
+                child: AnalyticsStatCardWidget(
+                  title: AppStrings.ANALYTICS_SAVES,
+                  icon: AppIcons.ANALYTIC_SAVES,
+                  value: data.saveCount,
+                  growth: data.saveGrowth,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/feature/settings/cubit/settings_cubit.dart';
 
-import '../../../core/constants/dark_color.dart';
 import '../../../core/constants/string.dart';
+import '../../../core/extensions/context.dart';
 import 'settings_button_widget.dart';
 
 class SettingsButtonsWidget extends StatelessWidget {
@@ -25,7 +25,7 @@ class SettingsButtonsWidget extends StatelessWidget {
   SettingsButtonWidget _deactive(BuildContext context) {
     return SettingsButtonWidget(
       title: AppStrings.SETTINGS_DEACTIVE_ACCOUNT,
-      textColor: AppDarkColors.WHITE75,
+      textColor: context.colors.primaryContainer,
       onTap: () => context.read<SettingsCubit>().deactivateAccount(),
     );
   }

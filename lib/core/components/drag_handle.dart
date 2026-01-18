@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants/dark_color.dart';
 import '../extensions/context.dart';
 
 class DragHandleComponent extends StatelessWidget {
@@ -16,7 +15,7 @@ class DragHandleComponent extends StatelessWidget {
       width: context.width * 0.1,
       height: context.height * 0.005,
       decoration: BoxDecoration(
-        color: AppDarkColors.WHITE32,
+        color: context.colors.onPrimaryFixed,
         borderRadius: BorderRadius.circular(context.width * 0.005),
       ),
     );

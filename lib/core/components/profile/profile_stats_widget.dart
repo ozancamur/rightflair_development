@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
-import '../../../../../core/constants/dark_color.dart';
+import '../../extensions/context.dart';
 
 class ProfileStatsWidget extends StatelessWidget {
   final int count;
@@ -22,14 +22,14 @@ class ProfileStatsWidget extends StatelessWidget {
           text: count.toString(),
           size: FontSizeConstants.XXXX_LARGE,
           weight: FontWeight.w700,
-          color: AppDarkColors.PRIMARY,
+          color: context.colors.primary,
           tr: false,
         ),
         TextComponent(
           text: label,
           size: FontSizeConstants.XX_SMALL,
           weight: FontWeight.w500,
-          color: AppDarkColors.WHITE75,
+          color: context.colors.primaryContainer,
         ),
       ],
     );

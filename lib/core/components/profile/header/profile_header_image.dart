@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/constants/route.dart';
 
@@ -47,8 +46,8 @@ class ProfileHeaderImageWidget extends StatelessWidget {
           padding: EdgeInsets.all(context.height * .006),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: AppDarkColors.ORANGE,
-            border: Border.all(width: 2, color: AppDarkColors.SECONDARY),
+            color: context.colors.scrim,
+            border: Border.all(width: 2, color: context.colors.secondary),
           ),
           child: SvgPicture.asset(AppIcons.ADD),
         ),
@@ -68,14 +67,14 @@ class ProfileHeaderImageWidget extends StatelessWidget {
           width: context.width * .15,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
-            color: AppDarkColors.WHITE08,
-            border: Border.all(width: .5, color: AppDarkColors.WHITE16),
+            color: context.colors.onPrimaryContainer,
+            border: Border.all(width: .5, color: context.colors.primaryFixedDim),
           ),
           child: Center(
             child: TextComponent(
               text: "Edit",
               size: FontSizeConstants.X_SMALL,
-              color: AppDarkColors.PRIMARY,
+              color: context.colors.primary,
             ),
           ),
         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/back_button.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/search/cubit/search_cubit.dart';
@@ -93,7 +92,7 @@ class _SearchPageView extends StatelessWidget {
       child: Text(
         AppStrings.SEARCH_RECENT_SEARCHES,
         style: TextStyle(
-          color: AppDarkColors.WHITE75,
+          color: context.colors.primaryContainer,
           fontSize: 13,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,

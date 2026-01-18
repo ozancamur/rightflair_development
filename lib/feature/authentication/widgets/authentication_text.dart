@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/components/text.dart';
-import '../../../core/constants/dark_color.dart';
-import '../../../core/constants/font_size.dart';
+import '../../../core/constants/font/font_size.dart';
 import '../../../core/extensions/context.dart';
 
 class AuthenticationTextWidget extends StatelessWidget {
@@ -28,13 +27,13 @@ class AuthenticationTextWidget extends StatelessWidget {
             text: title,
             size: FontSizeConstants.HUGE,
             weight: FontWeight.w600,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
           ),
           TextComponent(
             text: subtitle,
             size: FontSizeConstants.SMALL,
             weight: FontWeight.w500,
-            color: AppDarkColors.WHITE75,
+            color: context.colors.primaryContainer,
           ),
         ],
       ),

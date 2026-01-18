@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../core/components/text.dart';
 import '../model/location_model.dart';

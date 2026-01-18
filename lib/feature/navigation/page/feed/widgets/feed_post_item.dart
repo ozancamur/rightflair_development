@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/components/text.dart';
-import '../../../../../core/constants/dark_color.dart';
-import '../../../../../core/constants/font_size.dart';
+import '../../../../../core/constants/font/font_size.dart';
 import '../../../../../core/constants/string.dart';
 import '../../../../../core/extensions/context.dart';
 import '../models/feed_post_model.dart';
@@ -176,7 +175,7 @@ class _FeedPostItemState extends State<FeedPostItem>
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: AppDarkColors.GREEN,
+                              color: context.colors.inverseSurface,
                               width: context.width * 0.01,
                             ),
                             borderRadius: BorderRadius.circular(
@@ -186,7 +185,7 @@ class _FeedPostItemState extends State<FeedPostItem>
                           child: TextComponent(
                             text: AppStrings.POST_LIKED,
                             size: FontSizeConstants.XXX_HUGE,
-                            color: AppDarkColors.GREEN,
+                            color: context.colors.inverseSurface,
                             weight: FontWeight.bold,
                           ),
                         ),
@@ -206,7 +205,7 @@ class _FeedPostItemState extends State<FeedPostItem>
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: AppDarkColors.RED,
+                              color: context.colors.error,
                               width: context.width * 0.01,
                             ),
                             borderRadius: BorderRadius.circular(
@@ -216,7 +215,7 @@ class _FeedPostItemState extends State<FeedPostItem>
                           child: TextComponent(
                             text: AppStrings.POST_DISLIKED,
                             size: FontSizeConstants.XXX_HUGE,
-                            color: AppDarkColors.RED,
+                            color: context.colors.error,
                             weight: FontWeight.bold,
                           ),
                         ),
@@ -236,7 +235,7 @@ class _FeedPostItemState extends State<FeedPostItem>
                   height: context.height,
                   width: context.width,
                   decoration: BoxDecoration(
-                    color: AppDarkColors.PRIMARY,
+                    color: context.colors.primary,
                     borderRadius: BorderRadius.circular(context.width * 0.06),
                     image: DecorationImage(
                       image: NetworkImage(widget.post.imageUrl),

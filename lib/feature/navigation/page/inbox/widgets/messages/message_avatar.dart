@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:rightflair/core/extensions/context.dart';
 
-import '../../../../../../core/constants/dark_color.dart';
 
 class MessageAvatarWidget extends StatelessWidget {
   final String url;
@@ -18,9 +18,9 @@ class MessageAvatarWidget extends StatelessWidget {
         imageUrl: url,
         fit: BoxFit.cover,
         placeholder: (context, url) =>
-            Container(color: AppDarkColors.DARK_GREY),
+            Container(color: context.colors.onTertiary),
         errorWidget: (context, url, error) =>
-            Container(color: AppDarkColors.GREY),
+            Container(color: context.colors.tertiary),
       ),
     );
   }

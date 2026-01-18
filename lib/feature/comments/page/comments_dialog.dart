@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/components/drag_handle.dart';
-import '../../../core/constants/dark_color.dart';
 import '../../../core/extensions/context.dart';
 import '../model/comment.dart';
 import '../widgets/add_comment.dart';
@@ -23,7 +22,7 @@ class CommentsDialog extends StatelessWidget {
     return Container(
       height: context.height * 0.85,
       decoration: BoxDecoration(
-        color: AppDarkColors.INACTIVE,
+        color: context.colors.secondary,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(context.width * 0.05),
           topRight: Radius.circular(context.width * 0.05),
@@ -40,7 +39,7 @@ class CommentsDialog extends StatelessWidget {
           // Divider
           Container(
             height: context.height * 0.001,
-            color: AppDarkColors.WHITE16,
+            color: context.colors.primaryFixedDim,
           ),
 
           // Comments List

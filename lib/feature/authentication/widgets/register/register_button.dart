@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/components/elevated_button.dart';
 import '../../../../core/components/text.dart';
-import '../../../../core/constants/dark_color.dart';
-import '../../../../core/constants/font_size.dart';
+import '../../../../core/constants/font/font_size.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
 
@@ -16,10 +15,10 @@ class RegisterButtonWidget extends StatelessWidget {
     return ElevatedButtonComponent(
       height: context.height * .07,
       radius: 100,
-      color: AppDarkColors.DARK_BUTTON,
+      color: context.colors.outline,
       onPressed: onRegister,
       child: TextComponent(
-        color: AppDarkColors.WHITE75,
+        color: context.colors.primaryContainer,
         text: AppStrings.REGISTER_CREATE_ACCOUNT,
         size: FontSizeConstants.LARGE,
         weight: FontWeight.w600,

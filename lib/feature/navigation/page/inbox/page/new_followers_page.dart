@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../../../core/base/base_scaffold.dart';
 import '../../../../../core/components/appbar.dart';
 import '../../../../../core/components/back_button.dart';
 import '../../../../../core/components/settings_button.dart';
-import '../../../../../core/constants/dark_color.dart';
 import '../../../../../core/constants/icons.dart';
 import '../widgets/follower/follower_item.dart';
 import '../widgets/suggested_account/suggested_account_item.dart';
@@ -79,12 +78,12 @@ class _NewFollowersPageState extends State<NewFollowersPage> {
                 TextComponent(
                   text: isViewMore ? 'hide' : 'view more',
                   size: FontSizeConstants.SMALL,
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   tr: false,
                 ),
                 SvgPicture.asset(
                   isViewMore ? AppIcons.ARROW_UP : AppIcons.ARROW_DOWN,
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   height: context.height * .02,
                 ),
               ],

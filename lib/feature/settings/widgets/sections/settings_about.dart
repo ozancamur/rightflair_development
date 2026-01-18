@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/feature/settings/widgets/settings_divider.dart';
 
-import '../../../../core/constants/dark_color.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
@@ -21,7 +20,7 @@ class SettingsAboutWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: context.width * 0.04),
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: Border.all(width: .5, color: AppDarkColors.WHITE50),
+            border: Border.all(width: .5, color: context.colors.primaryFixed),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
@@ -31,7 +30,7 @@ class SettingsAboutWidget extends StatelessWidget {
                 title: AppStrings.SETTINGS_TERMS_OF_SERVICE,
                 trailing: Icon(
                   Icons.chevron_right,
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   size: context.width * 0.06,
                 ),
                 onTap: () {},
@@ -42,7 +41,7 @@ class SettingsAboutWidget extends StatelessWidget {
                 title: AppStrings.SETTINGS_PRIVACY_POLICY,
                 trailing: Icon(
                   Icons.chevron_right,
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   size: context.width * 0.06,
                 ),
                 onTap: () {},

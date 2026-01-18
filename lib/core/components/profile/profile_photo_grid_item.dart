@@ -5,8 +5,7 @@ import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/constants/route.dart';
 
 import '../../../../../core/components/text.dart';
-import '../../../../../core/constants/dark_color.dart';
-import '../../../../../core/constants/font_size.dart';
+import '../../constants/font/font_size.dart';
 import '../../../../../core/extensions/context.dart';
 import '../../../feature/navigation/page/profile/model/photo.dart';
 
@@ -19,7 +18,9 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
     return InkWell(
       onTap: () => context.push(RouteConstants.POST_DETAIL),
       borderRadius: BorderRadius.circular(context.width * 0.03),
-      child: Stack(children: [_image(context), _shadow(), _view(context)]),
+      child: Stack(
+        children: [_image(context), _shadow(context), _view(context)],
+      ),
     );
   }
 
@@ -36,9 +37,11 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
     );
   }
 
-  Container _shadow() {
+  Container _shadow(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: AppDarkColors.SECONDARY.withOpacity(.4)),
+      decoration: BoxDecoration(
+        color: context.colors.secondary.withOpacity(.4),
+      ),
     );
   }
 
@@ -61,14 +64,14 @@ class ProfilePhotoGridItemWidget extends StatelessWidget {
           children: [
             SvgPicture.asset(
               AppIcons.POST_VIEWED,
-              color: AppDarkColors.PRIMARY,
+              color: context.colors.primary,
               height: context.width * 0.05,
             ),
             TextComponent(
               text: '${photo.viewed}',
               size: FontSizeConstants.XX_SMALL,
               weight: FontWeight.w600,
-              color: AppDarkColors.PRIMARY,
+              color: context.colors.primary,
               tr: false,
             ),
           ],

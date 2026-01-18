@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'profile_edit_style_tag_widget.dart';
@@ -39,7 +38,7 @@ class ProfileEditStylesWidget extends StatelessWidget {
             Text(
               AppStrings.PROFILE_EDIT_MY_STYLES.tr(),
               style: TextStyle(
-                color: AppDarkColors.PRIMARY,
+                color: context.colors.primary,
                 fontSize: FontSizeConstants.NORMAL.first,
                 fontWeight: FontWeight.w600,
               ),
@@ -47,7 +46,7 @@ class ProfileEditStylesWidget extends StatelessWidget {
             Text(
               '${selectedStyles.length}/3',
               style: TextStyle(
-                color: AppDarkColors.WHITE60,
+                color: context.colors.onPrimary,
                 fontSize: FontSizeConstants.NORMAL.first,
                 fontWeight: FontWeight.w500,
               ),
@@ -60,7 +59,7 @@ class ProfileEditStylesWidget extends StatelessWidget {
             child: Text(
               AppStrings.PROFILE_EDIT_ADD_NEW.tr(),
               style: TextStyle(
-                color: AppDarkColors.ORANGE,
+                color: context.colors.scrim,
                 fontSize: FontSizeConstants.SMALL.first,
                 fontWeight: FontWeight.w600,
               ),

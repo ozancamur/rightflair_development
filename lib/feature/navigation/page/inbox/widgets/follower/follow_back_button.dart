@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/font_size.dart';
+import '../../../../../../core/constants/font/font_size.dart';
 import '../../../../../../core/extensions/context.dart';
 
 class FollowBackButtonWidget extends StatelessWidget {
@@ -16,14 +15,16 @@ class FollowBackButtonWidget extends StatelessWidget {
         vertical: context.height * 0.01,
       ),
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: AppDarkColors.BUTTON),
+        gradient: LinearGradient(
+          colors: [context.colors.surface, context.colors.scrim],
+        ),
         borderRadius: BorderRadius.circular(100),
       ),
       child: TextComponent(
         text: 'Follow back',
         size: FontSizeConstants.XX_SMALL,
         weight: FontWeight.w600,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         tr: false,
       ),
     );

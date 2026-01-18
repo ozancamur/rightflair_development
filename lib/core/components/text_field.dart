@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 
 import '../extensions/context.dart';
 
@@ -40,9 +39,9 @@ class TextFieldComponent extends StatelessWidget {
       onTap: onTap,
       maxLength: maxLength,
       maxLines: maxLines,
-      style: _textStyle(),
+      style: _textStyle(context),
       keyboardType: keyboardType,
-      cursorColor: AppDarkColors.PRIMARY,
+      cursorColor: context.colors.primary,
       onFieldSubmitted: onFieldSubmitted,
       textCapitalization: textCapitalization ?? TextCapitalization.none,
       decoration: InputDecoration(
@@ -55,9 +54,9 @@ class TextFieldComponent extends StatelessWidget {
         errorMaxLines: 2,
         errorStyle: _errorStyle(),
         filled: true,
-        fillColor: AppDarkColors.INACTIVE,
+        fillColor: context.colors.shadow,
         hintText: hintText.tr(),
-        hintStyle: _hintStyle(),
+        hintStyle: _hintStyle(context),
         enabledBorder: _buildBorderField(),
         focusedBorder: _buildBorderField(),
         errorBorder: _buildBorderField(color: Colors.red),
@@ -75,9 +74,9 @@ class TextFieldComponent extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle() {
+  TextStyle _textStyle(BuildContext context) {
     return TextStyle(
-      color: AppDarkColors.PRIMARY,
+      color: context.colors.primary,
       fontSize: 17,
       fontWeight: FontWeight.w500,
     );
@@ -91,9 +90,9 @@ class TextFieldComponent extends StatelessWidget {
     );
   }
 
-  TextStyle _hintStyle() {
+  TextStyle _hintStyle(BuildContext context) {
     return TextStyle(
-      color: AppDarkColors.WHITE75,
+      color: context.colors.primaryContainer,
       fontSize: 13,
       fontWeight: FontWeight.w400,
     );

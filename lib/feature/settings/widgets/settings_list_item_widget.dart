@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import '../../../../core/components/text.dart';
 import '../../../../core/extensions/context.dart';
 
@@ -52,7 +51,7 @@ class SettingsListItemWidget extends StatelessWidget {
           TextComponent(
             text: title,
             size: FontSizeConstants.LARGE,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
             weight: FontWeight.w500,
           ),
           if (subtitle != null) ...[
@@ -60,7 +59,7 @@ class SettingsListItemWidget extends StatelessWidget {
             TextComponent(
               text: subtitle!,
               size: FontSizeConstants.X_SMALL,
-              color: AppDarkColors.WHITE60,
+              color: context.colors.primaryFixed,
               weight: FontWeight.w500,
             ),
           ],

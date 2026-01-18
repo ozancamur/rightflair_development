@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/constants/dark_color.dart';
 import '../../../core/constants/icons.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
@@ -41,7 +40,10 @@ class CreatePostOptionsWidget extends StatelessWidget {
       iconPath: AppIcons.LOCATION,
       trailing: SvgPicture.asset(
         AppIcons.ARROW_RIGHT,
-        colorFilter: ColorFilter.mode(AppDarkColors.WHITE60, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(
+          context.colors.onPrimary,
+          BlendMode.srcIn,
+        ),
         height: context.height * 0.015,
       ),
       onTap: () async {
@@ -63,7 +65,7 @@ class CreatePostOptionsWidget extends StatelessWidget {
       iconPath: AppIcons.ANONYMOUS,
       trailing: Switch.adaptive(
         value: isAnonymous,
-        activeColor: AppDarkColors.GREEN,
+        activeColor: context.colors.inverseSurface,
         onChanged: (value) =>
             context.read<CreatePostCubit>().toggleAnonymous(value),
       ),
@@ -77,7 +79,7 @@ class CreatePostOptionsWidget extends StatelessWidget {
       trailing: Switch.adaptive(
         padding: EdgeInsets.zero,
         value: allowComments,
-        activeColor: AppDarkColors.GREEN,
+        activeColor: context.colors.inverseSurface,
         onChanged: (value) =>
             context.read<CreatePostCubit>().toggleAllowComments(value),
       ),

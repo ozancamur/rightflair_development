@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
@@ -38,7 +37,7 @@ class ProfileEditImageWidget extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: AppDarkColors.WHITE16,
+                color: context.colors.primaryFixedDim,
                 width: context.width * 0.005,
               ),
               image: DecorationImage(
@@ -56,13 +55,13 @@ class ProfileEditImageWidget extends StatelessWidget {
             width: context.height * 0.13,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppDarkColors.SECONDARY.withOpacity(0.3),
+              color: context.colors.secondary.withOpacity(0.3),
             ),
             child: Center(
               child: SvgPicture.asset(
                 AppIcons.CAMERA,
                 height: context.height * 0.04,
-                color: AppDarkColors.PRIMARY,
+                color: context.colors.primary,
               ),
             ),
           ),
@@ -77,7 +76,7 @@ class ProfileEditImageWidget extends StatelessWidget {
       child: TextComponent(
         text: AppStrings.PROFILE_EDIT_CHANGE_PHOTO,
         size: FontSizeConstants.NORMAL,
-        color: AppDarkColors.ORANGE,
+        color: context.colors.scrim,
         weight: FontWeight.w600,
       ),
     );

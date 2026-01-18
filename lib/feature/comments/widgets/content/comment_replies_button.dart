@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/dark_color.dart';
+import '../../../../core/extensions/context.dart';
 
 class CommentRepliesButtonWidget extends StatelessWidget {
   final int replyCount;
@@ -18,14 +18,14 @@ class CommentRepliesButtonWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.keyboard_arrow_down,
-              color: AppDarkColors.PRIMARY.withOpacity(0.7),
+              color: context.colors.primary.withOpacity(0.7),
               size: 16,
             ),
             const SizedBox(width: 4),
             Text(
               'View $replyCount replies',
               style: TextStyle(
-                color: AppDarkColors.PRIMARY.withOpacity(0.7),
+                color: context.colors.primary.withOpacity(0.7),
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
               ),

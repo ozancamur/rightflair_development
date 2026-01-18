@@ -14,6 +14,7 @@ class AnalyticsTitleWidget extends StatelessWidget {
         text: AppStrings.ANALYTICS_TITLE,
         size: [context.width * 0.05],
         weight: FontWeight.w600,
+        color: context.colors.primary,
       ),
     );
   }

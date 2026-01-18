@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 class ProfileEditTextFieldWidget extends StatelessWidget {
@@ -27,15 +26,15 @@ class ProfileEditTextFieldWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: context.height * 0.01,
-      children: [_label(), _textField(context)],
+      children: [_label(context), _textField(context)],
     );
   }
 
-  Widget _label() {
+  Widget _label(BuildContext context) {
     return Text(
       label.tr(),
       style: TextStyle(
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         fontSize: FontSizeConstants.NORMAL.first,
         fontWeight: FontWeight.w600,
       ),
@@ -48,23 +47,23 @@ class ProfileEditTextFieldWidget extends StatelessWidget {
       maxLength: maxLength,
       maxLines: maxLines,
       style: TextStyle(
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         fontSize: FontSizeConstants.NORMAL.first,
         fontWeight: FontWeight.w400,
       ),
-      cursorColor: AppDarkColors.PRIMARY,
+      cursorColor: context.colors.primary,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          color: AppDarkColors.WHITE50,
+          color: context.colors.primaryFixed,
           fontSize: FontSizeConstants.NORMAL.first,
           fontWeight: FontWeight.w400,
         ),
         filled: true,
-        fillColor: AppDarkColors.INACTIVE,
+        fillColor: context.colors.shadow,
         counterText: maxLines > 1 ? null : "",
         counterStyle: TextStyle(
-          color: AppDarkColors.WHITE60,
+          color: context.colors.onPrimary,
           fontSize: FontSizeConstants.X_SMALL.first,
         ),
         suffix: suffix,
@@ -74,15 +73,15 @@ class ProfileEditTextFieldWidget extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(context.width * 0.03),
-          borderSide: BorderSide(color: AppDarkColors.WHITE16),
+          borderSide: BorderSide(color: context.colors.primaryFixedDim),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(context.width * 0.03),
-          borderSide: BorderSide(color: AppDarkColors.WHITE16),
+          borderSide: BorderSide(color: context.colors.primaryFixedDim),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(context.width * 0.03),
-          borderSide: BorderSide(color: AppDarkColors.WHITE32),
+          borderSide: BorderSide(color: context.colors.onPrimaryFixed),
         ),
       ),
     );

@@ -11,7 +11,7 @@ class NotificationItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final config = NotificationConfig.getConfig(type);
+    final config = NotificationConfig.getConfig(context, type);
     return Container(
       height: context.width * 0.12,
       width: context.width * 0.12,

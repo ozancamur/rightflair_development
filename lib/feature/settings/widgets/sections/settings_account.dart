@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/constants/icons.dart';
 
 import '../../../../core/constants/string.dart';
@@ -27,7 +26,7 @@ class SettingsAccountWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: context.width * 0.04),
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: Border.all(width: .5, color: AppDarkColors.WHITE50),
+            border: Border.all(width: .5, color: context.colors.primaryFixed),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
@@ -51,7 +50,7 @@ class SettingsAccountWidget extends StatelessWidget {
       subtitle: username,
       trailing: Icon(
         Icons.chevron_right,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         size: context.width * 0.06,
       ),
       onTap: () {},
@@ -65,7 +64,7 @@ class SettingsAccountWidget extends StatelessWidget {
       subtitle: email,
       trailing: Icon(
         Icons.chevron_right,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         size: context.width * 0.06,
       ),
       onTap: () {},
@@ -78,7 +77,7 @@ class SettingsAccountWidget extends StatelessWidget {
       title: AppStrings.SETTINGS_CHANGE_PASSWORD,
       trailing: Icon(
         Icons.chevron_right,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         size: context.width * 0.06,
       ),
       onTap: () {},

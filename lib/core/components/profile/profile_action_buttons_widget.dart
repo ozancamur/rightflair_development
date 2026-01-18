@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/elevated_button.dart';
 import 'package:rightflair/core/components/gradient_button.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
@@ -39,7 +38,7 @@ class ProfileActionButtonsWidget extends StatelessWidget {
         text: AppStrings.PROFILE_FOLLOW,
         size: FontSizeConstants.NORMAL,
         weight: FontWeight.w600,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
       ),
     );
   }
@@ -49,14 +48,14 @@ class ProfileActionButtonsWidget extends StatelessWidget {
       onPressed: onMessageTap,
       height: context.height * 0.04,
       radius: 14,
-      color: AppDarkColors.GREY24,
-      borderColor: AppDarkColors.GREY36,
+      color: context.colors.tertiaryFixed,
+      borderColor: context.colors.tertiaryFixedDim,
       borderWidth: .5,
       child: TextComponent(
         text: AppStrings.PROFILE_MESSAGE,
         size: FontSizeConstants.NORMAL,
         weight: FontWeight.w600,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
       ),
     );
   }

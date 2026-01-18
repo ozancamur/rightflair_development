@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/feature/navigation/page/inbox/model/notification_model.dart';
 
@@ -52,7 +51,7 @@ class InboxNotificationItem extends StatelessWidget {
                     TextComponent(
                       text: notification.subtitle!,
                       size: FontSizeConstants.XX_SMALL,
-                      color: AppDarkColors.GREY,
+                      color: context.colors.tertiary,
                       overflow: TextOverflow.ellipsis,
                       maxLine: 1,
                       tr: false,
@@ -69,13 +68,13 @@ class InboxNotificationItem extends StatelessWidget {
                   vertical: context.width * 0.01,
                 ),
                 decoration: BoxDecoration(
-                  color: AppDarkColors.SECONDARY,
+                  color: context.colors.secondary,
                   borderRadius: BorderRadius.circular(context.width * 0.02),
                 ),
                 child: TextComponent(
                   text: notification.timeAgo,
                   size: FontSizeConstants.XX_SMALL,
-                  color: AppDarkColors.GREY,
+                  color: context.colors.tertiary,
                   tr: false,
                 ),
               ),

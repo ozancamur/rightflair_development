@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/dark_color.dart';
-import '../../../../../../core/constants/font_size.dart';
+import '../../../../../../core/constants/font/font_size.dart';
 import '../../../../../../core/extensions/context.dart';
 
 class FollowerInformationWidget extends StatelessWidget {
@@ -35,14 +34,14 @@ class FollowerInformationWidget extends StatelessWidget {
                 child: TextComponent(
                   text: subtitle,
                   size: FontSizeConstants.XX_SMALL,
-                  color: AppDarkColors.GREY,
+                  color: context.colors.tertiary,
                   tr: false,
                 ),
               ),
               TextComponent(
                 text: ' • $timeAgo',
                 size: FontSizeConstants.XX_SMALL,
-                color: AppDarkColors.GREY,
+                color: context.colors.tertiary,
                 tr: false,
               ),
             ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
-import '../../../core/constants/dark_color.dart';
+import '../../../core/base/base_scaffold.dart';
 import '../widgets/welcome/welcome_buttons.dart';
 import '../widgets/authentication_have_account.dart';
 import '../widgets/welcome/welcome_logo.dart';
@@ -12,8 +12,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppDarkColors.SECONDARY,
+    return BaseScaffold(
       body: SafeArea(
         child: SizedBox(
           height: context.height,

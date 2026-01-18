@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/feature/navigation/page/inbox/widgets/notifications/inbox_notification_item.dart';
 
@@ -46,13 +45,13 @@ class InboxNotificationsList extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: context.height * 0.02),
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border.all(color: AppDarkColors.DARK_GREY.withOpacity(0.5)),
+        border: Border.all(color: context.colors.onTertiary.withOpacity(0.5)),
         borderRadius: BorderRadius.circular(context.width * 0.08),
       ),
       child: Center(
         child: TextComponent(
           text: AppStrings.INBOX_KEEP_POSTING,
-          color: AppDarkColors.GREY,
+          color: context.colors.tertiary,
           size: FontSizeConstants.SMALL,
         ),
       ),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/components/text.dart';
-import '../../../core/constants/dark_color.dart';
-import '../../../core/constants/font_size.dart';
+import '../../../core/constants/font/font_size.dart';
 import '../../../core/constants/icons.dart';
 import '../../../core/extensions/context.dart';
 
@@ -29,7 +28,9 @@ class ChooseUsernameValidationItem extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: isUnique ? AppDarkColors.GREEN : AppDarkColors.INACTIVE,
+            color: isUnique
+                ? context.colors.inverseSurface
+                : context.colors.shadow,
           ),
           duration: const Duration(milliseconds: 300),
           child: SvgPicture.asset(
@@ -39,7 +40,7 @@ class ChooseUsernameValidationItem extends StatelessWidget {
         ),
         TextComponent(
           text: label,
-          color: AppDarkColors.PRIMARY,
+          color: context.colors.primary,
           weight: FontWeight.w400,
           size: FontSizeConstants.X_SMALL,
         ),

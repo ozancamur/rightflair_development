@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
+
+import '../extensions/context.dart';
 
 class DialogUtils {
   DialogUtils._();
@@ -18,7 +19,7 @@ class DialogUtils {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: AppDarkColors.SECONDARY,
+          backgroundColor: context.colors.secondary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -27,7 +28,7 @@ class DialogUtils {
                   width: double.maxFinite,
                   child: TextComponent(
                     text: title,
-                    color: AppDarkColors.PRIMARY,
+                    color: context.colors.primary,
                     size: FontSizeConstants.X_LARGE,
                     weight: FontWeight.w600,
                   ),
@@ -37,7 +38,7 @@ class DialogUtils {
             width: double.maxFinite,
             child: TextComponent(
               text: message,
-              color: AppDarkColors.WHITE75,
+              color: context.colors.primaryContainer,
               size: FontSizeConstants.NORMAL,
               weight: FontWeight.w400,
             ),
@@ -69,7 +70,7 @@ class DialogUtils {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: AppDarkColors.SECONDARY,
+          backgroundColor: context.colors.secondary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -78,7 +79,7 @@ class DialogUtils {
                   width: double.maxFinite,
                   child: TextComponent(
                     text: title,
-                    color: AppDarkColors.PRIMARY,
+                    color: context.colors.primary,
                     size: FontSizeConstants.X_LARGE,
                     weight: FontWeight.w600,
                   ),
@@ -88,7 +89,7 @@ class DialogUtils {
             width: double.maxFinite,
             child: TextComponent(
               text: message,
-              color: AppDarkColors.WHITE75,
+              color: context.colors.primaryContainer,
               size: FontSizeConstants.NORMAL,
               weight: FontWeight.w400,
             ),
@@ -98,7 +99,7 @@ class DialogUtils {
               onPressed: () => Navigator.of(context).pop(),
               child: TextComponent(
                 text: AppStrings.DIALOG_OK,
-                color: AppDarkColors.GREEN,
+                color: context.colors.inverseSurface,
                 size: FontSizeConstants.LARGE,
                 weight: FontWeight.w600,
               ),
@@ -122,7 +123,7 @@ class DialogUtils {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: AppDarkColors.SECONDARY,
+          backgroundColor: context.colors.secondary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -131,7 +132,7 @@ class DialogUtils {
                   width: double.maxFinite,
                   child: TextComponent(
                     text: title,
-                    color: AppDarkColors.PRIMARY,
+                    color: context.colors.primary,
                     size: FontSizeConstants.X_LARGE,
                     weight: FontWeight.w600,
                   ),
@@ -141,7 +142,7 @@ class DialogUtils {
             width: double.maxFinite,
             child: TextComponent(
               text: message,
-              color: AppDarkColors.WHITE75,
+              color: context.colors.primaryContainer,
               size: FontSizeConstants.NORMAL,
               weight: FontWeight.w400,
             ),
@@ -151,7 +152,7 @@ class DialogUtils {
               onPressed: () => Navigator.of(context).pop(false),
               child: TextComponent(
                 text: cancelText ?? AppStrings.DIALOG_CANCEL,
-                color: AppDarkColors.WHITE75,
+                color: context.colors.primaryContainer,
                 size: FontSizeConstants.LARGE,
                 weight: FontWeight.w600,
               ),

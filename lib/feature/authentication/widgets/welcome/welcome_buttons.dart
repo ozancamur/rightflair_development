@@ -5,7 +5,6 @@ import 'package:rightflair/core/constants/route.dart';
 
 import '../../../../core/components/button_text_with_icon.dart';
 import '../../../../core/components/elevated_button.dart';
-import '../../../../core/constants/dark_color.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
@@ -24,37 +23,37 @@ class WelcomeButtonsWidget extends StatelessWidget {
         children: [
           ElevatedButtonComponent(
             width: context.width * .8,
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
             onPressed: () => context.push(RouteConstants.REGISTER),
             child: ButtonTextWithIconComponent(
               icon: AppIcons.MAIL_FILLED,
               text: AppStrings.WITH_MAIL,
-              foregroundColor: AppDarkColors.SECONDARY,
+              foregroundColor: context.colors.secondary,
             ),
           ),
           const WelcomeOrWidget(),
           ElevatedButtonComponent(
             width: context.width * .8,
-            color: AppDarkColors.DARK_BUTTON,
+            color: context.colors.outline,
             onPressed: () => context.read<AuthenticationBloc>().add(
               AuthtenticationGoogleEvent(),
             ),
             child: ButtonTextWithIconComponent(
               icon: AppIcons.GOOGLE,
               text: AppStrings.WITH_GOOGLE,
-              foregroundColor: AppDarkColors.PRIMARY,
+              foregroundColor: context.colors.primary,
             ),
           ),
           ElevatedButtonComponent(
             width: context.width * .8,
-            color: AppDarkColors.DARK_BUTTON,
+            color: context.colors.outline,
             onPressed: () => context.read<AuthenticationBloc>().add(
               AuthtenticationAppleEvent(),
             ),
             child: ButtonTextWithIconComponent(
               icon: AppIcons.APPLE,
               text: AppStrings.WITH_APPLE,
-              foregroundColor: AppDarkColors.PRIMARY,
+              foregroundColor: context.colors.primary,
             ),
           ),
         ],

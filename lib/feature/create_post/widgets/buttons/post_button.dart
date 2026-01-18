@@ -3,8 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/components/gradient_button.dart';
 import '../../../../core/components/text.dart';
-import '../../../../core/constants/dark_color.dart';
-import '../../../../core/constants/font_size.dart';
+import '../../../../core/constants/font/font_size.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
@@ -26,7 +25,7 @@ class CreatePostButtonWidget extends StatelessWidget {
           SvgPicture.asset(
             AppIcons.CHECK,
             colorFilter:  ColorFilter.mode(
-              AppDarkColors.PRIMARY,
+              context.colors.primary,
               BlendMode.srcIn,
             ),
             width: context.width * .05,

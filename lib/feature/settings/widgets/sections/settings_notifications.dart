@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/feature/settings/widgets/settings_divider.dart';
 
-import '../../../../core/constants/dark_color.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
 import '../../cubit/settings_cubit.dart';
@@ -36,7 +35,7 @@ class SettingsNotificationsWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: context.width * 0.04),
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: Border.all(width: .5, color: AppDarkColors.WHITE50),
+            border: Border.all(width: .5, color: context.colors.primaryFixed),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
+
+import '../extensions/context.dart';
 
 class LoadingComponent extends StatelessWidget {
   const LoadingComponent({super.key});
@@ -7,7 +8,7 @@ class LoadingComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(color: AppDarkColors.ORANGE),
+      child: CircularProgressIndicator(color: context.colors.scrim),
     );
   }
 }

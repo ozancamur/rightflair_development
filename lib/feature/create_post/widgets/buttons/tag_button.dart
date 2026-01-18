@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/dark_color.dart';
 import '../../../../core/extensions/context.dart';
 
 class CreateTagButtonWidget extends StatelessWidget {
@@ -20,14 +19,14 @@ class CreateTagButtonWidget extends StatelessWidget {
         width: context.width * 0.08,
         height: context.width * 0.08,
         decoration: BoxDecoration(
-          color: AppDarkColors.WHITE16,
+          color: context.colors.primaryFixedDim,
           borderRadius: BorderRadius.circular(context.width * 0.02),
         ),
         alignment: Alignment.center,
         child: Text(
           label,
-          style:  TextStyle(
-            color: AppDarkColors.PRIMARY,
+          style: TextStyle(
+            color: context.colors.primary,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/dark_color.dart';
 import '../../../../../core/constants/icons.dart';
+import '../../../../../core/extensions/context.dart';
 import 'notification_type.dart';
 
 class NotificationConfig {
@@ -15,49 +15,49 @@ class NotificationConfig {
     required this.bgColor,
   });
 
-  static NotificationConfig getConfig(NotificationType type) {
+  static NotificationConfig getConfig(BuildContext context,NotificationType type) {
     switch (type) {
       case NotificationType.trending:
         return NotificationConfig(
           icon: AppIcons.TREND,
-          iconColor: AppDarkColors.GREEN,
-          bgColor: AppDarkColors.TRANSPARENT_GREEN,
+          iconColor: context.colors.inverseSurface,
+          bgColor: context.colors.onInverseSurface,
         );
       case NotificationType.like:
         return NotificationConfig(
           icon: AppIcons.LIKED,
-          iconColor: AppDarkColors.RED,
-          bgColor: AppDarkColors.TRANSPARENT_RED,
+          iconColor: context.colors.error,
+          bgColor: context.colors.onError,
         );
       case NotificationType.view:
         return NotificationConfig(
           icon: AppIcons.VIEWED,
-          iconColor: AppDarkColors.PURPLE,
-          bgColor: AppDarkColors.TRANSPARENT_PURPLE,
+          iconColor: context.colors.secondaryContainer,
+          bgColor: context.colors.onSecondaryContainer,
         );
       case NotificationType.save:
         return NotificationConfig(
           icon: AppIcons.SAVED,
-          iconColor: AppDarkColors.BLUE,
-          bgColor: AppDarkColors.TRANSPARENT_BLUE,
+          iconColor: context.colors.surfaceVariant,
+          bgColor: context.colors.onSurfaceVariant,
         );
       case NotificationType.share:
         return NotificationConfig(
           icon: AppIcons.SHARED,
-          iconColor: AppDarkColors.YELLOW,
-          bgColor: AppDarkColors.TRANSPARENT_YELLOW,
+          iconColor: context.colors.surface,
+          bgColor: context.colors.onSurface,
         );
       case NotificationType.newFollower:
         return NotificationConfig(
           icon: AppIcons.NEW_FOLLOWERS,
-          iconColor: AppDarkColors.PRIMARY,
-          bgColor: AppDarkColors.BLUE,
+          iconColor: context.colors.primary,
+          bgColor: context.colors.surfaceVariant,
         );
       case NotificationType.system:
         return NotificationConfig(
           icon: AppIcons.SYSTEM,
-          iconColor: AppDarkColors.SECONDARY,
-          bgColor: AppDarkColors.PRIMARY,
+          iconColor: context.colors.secondary,
+          bgColor: context.colors.primary,
         );
     }
   }

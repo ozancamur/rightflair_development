@@ -3,26 +3,25 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rightflair/core/components/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 
-import '../extensions/context.dart';
+import '../../../../../../core/extensions/context.dart';
 
-class IconButtonComponent extends StatelessWidget {
+
+class PostIconButtonWidget extends StatelessWidget {
   final String icon;
   final Function() onTap;
   final int? value;
-  final double? size;
-  const IconButtonComponent({
+  const PostIconButtonWidget({
     super.key,
     required this.onTap,
     required this.icon,
     this.value,
-    this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    final double _size = size ?? context.height * .05;
+    final double _size =  context.height * .05;
 
-    return value == null ? _icon(_size, context) : _value(context, _size);
+    return _value(context, _size);
   }
 
   Column _value(BuildContext context, double size) {
@@ -50,10 +49,10 @@ class IconButtonComponent extends StatelessWidget {
         padding: EdgeInsets.all(context.width * .025),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: context.colors.primaryFixedDim,
-          border: Border.all(color: context.colors.onPrimaryFixed, width: 1),
+          color: Colors.white.withOpacity(.16),
+          border: Border.all(color: Colors.white.withOpacity(.32), width: 1),
         ),
-        child: SvgPicture.asset(icon, color: context.colors.primary),
+        child: SvgPicture.asset(icon, color: Colors.white),
       ),
     );
   }

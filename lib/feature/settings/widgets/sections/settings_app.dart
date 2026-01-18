@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rightflair/feature/settings/widgets/settings_divider.dart';
 
-import '../../../../core/constants/dark_color.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
@@ -32,7 +31,7 @@ class SettingsAppWidget extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: context.width * 0.04),
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: Border.all(width: .5, color: AppDarkColors.WHITE50),
+            border: Border.all(width: .5, color: context.colors.primaryFixed),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
@@ -73,7 +72,7 @@ class SettingsAppWidget extends StatelessWidget {
       subtitle: language,
       trailing: Icon(
         Icons.chevron_right,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         size: context.width * 0.06,
       ),
       onTap: () {},

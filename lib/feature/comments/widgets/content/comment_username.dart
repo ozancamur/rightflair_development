@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/dark_color.dart';
+import '../../../../core/extensions/context.dart';
 
 class CommentUsernameWidget extends StatelessWidget {
   final String username;
@@ -11,7 +11,7 @@ class CommentUsernameWidget extends StatelessWidget {
     return Text(
       username,
       style: TextStyle(
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         fontSize: 15,
         fontWeight: FontWeight.w600,
       ),

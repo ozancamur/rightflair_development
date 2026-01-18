@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/dark_color.dart';
-import '../../../core/constants/font_size.dart';
+import '../../../core/constants/font/font_size.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
 
@@ -14,12 +13,13 @@ class AddCommentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(context.width * 0.04),
+      height: context.height * .1,
+      padding: EdgeInsets.symmetric(horizontal: context.width * 0.04),
       decoration: BoxDecoration(
-        color: AppDarkColors.INACTIVE,
+        color: context.colors.secondary,
         border: Border(
           top: BorderSide(
-            color: AppDarkColors.WHITE16,
+            color: context.colors.primaryFixedDim,
             width: context.height * 0.001,
           ),
         ),
@@ -28,7 +28,7 @@ class AddCommentWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: context.width * 0.045,
-            backgroundColor: AppDarkColors.DARK_BUTTON,
+            backgroundColor: context.colors.outline,
           ),
           SizedBox(width: context.width * 0.03),
 
@@ -40,19 +40,19 @@ class AddCommentWidget extends StatelessWidget {
                 vertical: context.height * 0.012,
               ),
               decoration: BoxDecoration(
-                color: AppDarkColors.WHITE16,
+                color: context.colors.primaryFixedDim,
                 borderRadius: BorderRadius.circular(context.width * 0.05),
               ),
               child: TextField(
                 controller: _commentController,
                 style: TextStyle(
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   fontSize: FontSizeConstants.SMALL[1],
                 ),
                 decoration: InputDecoration(
                   hintText: AppStrings.COMMENTS_ADD_PLACEHOLDER.tr(),
                   hintStyle: TextStyle(
-                    color: AppDarkColors.WHITE50,
+                    color: context.colors.primaryFixed,
                     fontSize: FontSizeConstants.SMALL[1],
                   ),
                   border: InputBorder.none,
@@ -77,12 +77,12 @@ class AddCommentWidget extends StatelessWidget {
               width: context.width * 0.1,
               height: context.width * 0.1,
               decoration: BoxDecoration(
-                color: AppDarkColors.ORANGE,
+                color: context.colors.scrim,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.send,
-                color: AppDarkColors.PRIMARY,
+                color: context.colors.primary,
                 size: context.width * 0.05,
               ),
             ),

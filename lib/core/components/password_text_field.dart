@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/constants/icons.dart';
 
 import '../extensions/context.dart';
@@ -50,7 +49,7 @@ class _PasswordTextFieldComponentState
       maxLength: widget.maxLength,
       style: _textStyle(),
       keyboardType: widget.keyboardType,
-      cursorColor: AppDarkColors.PRIMARY,
+      cursorColor: context.colors.primary,
       onFieldSubmitted: widget.onFieldSubmitted,
       textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
       decoration: InputDecoration(
@@ -61,7 +60,7 @@ class _PasswordTextFieldComponentState
         errorMaxLines: 2,
         errorStyle: _errorStyle(),
         filled: true,
-        fillColor: AppDarkColors.INACTIVE,
+        fillColor: context.colors.shadow,
         hintText: widget.hintText.tr(),
         hintStyle: _hintStyle(),
         enabledBorder: _buildBorderField(),
@@ -85,7 +84,7 @@ class _PasswordTextFieldComponentState
             ),
             child: SvgPicture.asset(
               obscureText ? AppIcons.PASSWORD_HIDE : AppIcons.PASSWORD_SHOW,
-              color: AppDarkColors.WHITE75,
+              color: context.colors.primaryContainer,
               height: context.height * .01,
             ),
           ),
@@ -108,7 +107,7 @@ class _PasswordTextFieldComponentState
 
   TextStyle _textStyle() {
     return TextStyle(
-      color: AppDarkColors.PRIMARY,
+      color: context.colors.primary,
       fontSize: 17,
       fontWeight: FontWeight.w500,
     );
@@ -124,7 +123,7 @@ class _PasswordTextFieldComponentState
 
   TextStyle _hintStyle() {
     return TextStyle(
-      color: AppDarkColors.WHITE75,
+      color: context.colors.primaryContainer,
       fontSize: 13,
       fontWeight: FontWeight.w400,
     );

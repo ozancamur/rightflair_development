@@ -3,7 +3,7 @@ import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/components/back_button.dart';
 import 'package:rightflair/core/constants/string.dart';
 
-import '../../../core/constants/dark_color.dart';
+import '../../../core/base/base_scaffold.dart';
 import '../../../core/extensions/context.dart';
 import '../widgets/authentication_text.dart';
 import '../widgets/login/login_button.dart';
@@ -19,8 +19,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppDarkColors.SECONDARY,
+    return BaseScaffold(
       appBar: AppBarComponent(
         leading: BackButtonComponent(),
         title: AppStrings.LOGIN,

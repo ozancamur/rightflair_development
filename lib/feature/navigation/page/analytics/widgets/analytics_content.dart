@@ -23,13 +23,13 @@ class AnalyticsContentWidget extends StatelessWidget {
           } else if (state is AnalyticsLoaded) {
             return SingleChildScrollView(
               child: Column(
+                spacing: context.height * 0.03,
                 children: [
                   AnalyticsGridWidget(data: state.data),
-                  SizedBox(height: context.height * 0.03),
                   AnalyticsEngagementChartWidget(
                     data: state.data.engagementData,
                   ),
-                  SizedBox(height: context.height * 0.1), // Bottom padding
+                  SizedBox(height: context.height * 0.1),
                 ],
               ),
             );

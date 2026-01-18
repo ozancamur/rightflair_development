@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/dark_color.dart';
 
 class MessageContentWidget extends StatelessWidget {
   final String lastMessage;
@@ -20,7 +19,7 @@ class MessageContentWidget extends StatelessWidget {
           child: TextComponent(
             text: lastMessage,
             size: FontSizeConstants.SMALL,
-            color: AppDarkColors.GREY,
+            color: context.colors.tertiary,
             maxLine: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -29,7 +28,7 @@ class MessageContentWidget extends StatelessWidget {
             width: context.width * .02,
             height: context.width * .02,
             decoration: BoxDecoration(
-              color: AppDarkColors.ORANGE,
+              color: context.colors.scrim,
               shape: BoxShape.circle,
             ),
           ),

@@ -2,8 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/constants/app.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/feature/settings/widgets/settings_appbar.dart';
 import '../../../core/base/base_scaffold.dart';
 import '../../../core/components/loading.dart';
@@ -78,7 +77,7 @@ class SettingsPage extends StatelessWidget {
       child: TextComponent(
         text: AppStrings.SETTINGS_VERSION.tr(args: [AppConstants.VERSION]),
         size: FontSizeConstants.XX_SMALL,
-        color: AppDarkColors.WHITE75,
+        color: context.colors.primaryContainer,
         weight: FontWeight.w500,
         tr: false,
       ),

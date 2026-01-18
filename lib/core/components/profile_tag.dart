@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
-
-import '../constants/dark_color.dart';
 
 class ProfileTagComponent extends StatelessWidget {
   final String text;
@@ -17,14 +15,14 @@ class ProfileTagComponent extends StatelessWidget {
         vertical: context.height * 0.006,
       ),
       decoration: BoxDecoration(
-        color: AppDarkColors.GREY12,
+        color: context.colors.tertiaryFixedDim,
         borderRadius: BorderRadius.circular(context.width * 0.05),
       ),
       child: TextComponent(
         text: text,
         size: FontSizeConstants.X_SMALL,
         weight: FontWeight.w500,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
       ),
     );
   }

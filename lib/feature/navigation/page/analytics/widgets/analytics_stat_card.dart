@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
+import 'package:rightflair/core/constants/color/color.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
@@ -24,8 +24,15 @@ class AnalyticsStatCardWidget extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(context.width * 0.04),
       decoration: BoxDecoration(
-        color: AppDarkColors.INACTIVE,
+        color: context.colors.onBackground,
         borderRadius: BorderRadius.circular(context.width * 0.05),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.SHADOW,
+            blurRadius: 4,
+            offset: Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +44,7 @@ class AnalyticsStatCardWidget extends StatelessWidget {
                 icon,
                 height: context.width * 0.05,
                 colorFilter: ColorFilter.mode(
-                  AppDarkColors.WHITE75,
+                  context.colors.primaryContainer,
                   BlendMode.srcIn,
                 ),
               ),
@@ -45,7 +52,7 @@ class AnalyticsStatCardWidget extends StatelessWidget {
               TextComponent(
                 text: title,
                 size: [context.width * 0.035],
-                color: AppDarkColors.WHITE75,
+                color: context.colors.primaryContainer,
               ),
             ],
           ),
@@ -53,6 +60,7 @@ class AnalyticsStatCardWidget extends StatelessWidget {
             text: value,
             size: [context.width * 0.07],
             weight: FontWeight.w600,
+            color: context.colors.primaryContainer,
             tr: false,
           ),
           Row(
@@ -61,15 +69,19 @@ class AnalyticsStatCardWidget extends StatelessWidget {
                 growth >= 0 ? AppIcons.ANALYTIC_UP : AppIcons.ANALYTIC_DOWN,
                 height: context.width * 0.04,
                 colorFilter: ColorFilter.mode(
-                  growth >= 0 ? AppDarkColors.GREEN : AppDarkColors.RED,
+                  growth >= 0
+                      ? context.colors.inverseSurface
+                      : context.colors.error,
                   BlendMode.srcIn,
                 ),
               ),
               SizedBox(width: context.width * 0.01),
               TextComponent(
-                text: "${growth >= 0 ? '+' : ''}${growth}%",
+                text: "${growth >= 0 ? '+' : ''}$growth%",
                 size: [context.width * 0.035],
-                color: growth >= 0 ? AppDarkColors.GREEN : AppDarkColors.RED,
+                color: growth >= 0
+                    ? context.colors.inverseSurface
+                    : context.colors.error,
                 tr: false,
               ),
             ],

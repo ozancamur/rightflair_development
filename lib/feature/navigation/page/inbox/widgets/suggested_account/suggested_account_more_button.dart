@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/constants/dark_color.dart';
+import '../../../../../../core/extensions/context.dart';
 
 class SuggestedAccountMoreButtonWidget extends StatelessWidget {
   const SuggestedAccountMoreButtonWidget({super.key});
@@ -8,7 +8,7 @@ class SuggestedAccountMoreButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon:  Icon(Icons.more_horiz, color: AppDarkColors.PRIMARY),
+      icon:  Icon(Icons.more_horiz, color: context.colors.primary),
       onPressed: () {},
       padding: EdgeInsets.zero,
       constraints: const BoxConstraints(),

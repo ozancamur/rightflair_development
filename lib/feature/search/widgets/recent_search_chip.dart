@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 class RecentSearchChip extends StatelessWidget {
@@ -25,13 +24,13 @@ class RecentSearchChip extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: Colors.transparent,
-          border: Border.all(color: AppDarkColors.WHITE32, width: 1),
+          border: Border.all(color: context.colors.onPrimaryFixed, width: 1),
           borderRadius: BorderRadius.circular(context.width * 0.06),
         ),
         child: Text(
           label,
           style: TextStyle(
-            color: AppDarkColors.PRIMARY,
+            color: context.colors.primary,
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),

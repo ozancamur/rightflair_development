@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/dark_color.dart';
-import '../../../../../../core/constants/font_size.dart';
+import '../../../../../../core/constants/font/font_size.dart';
 import '../../../../../../core/extensions/context.dart';
 
 class SuggestedAccountUserWidget extends StatelessWidget {
@@ -30,7 +29,7 @@ class SuggestedAccountUserWidget extends StatelessWidget {
           TextComponent(
             text: handle,
             size: FontSizeConstants.XX_SMALL,
-            color: AppDarkColors.GREY,
+            color: context.colors.tertiary,
             tr: false,
           ),
         ],

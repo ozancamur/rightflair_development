@@ -11,7 +11,6 @@ class AnalyticsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Global cubit'e ilk girişte fetchAnalytics çağır
     context.read<AnalyticsCubit>().fetchAnalytics();
 
     return SafeArea(

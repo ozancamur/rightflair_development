@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rightflair/core/constants/collection.dart';
 
-import '../../base/base_modeld.dart';
+import '../../base/base_model.dart';
 
 abstract class FirestoreManager {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;

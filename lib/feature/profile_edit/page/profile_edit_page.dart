@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/components/back_button.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/navigation/widgets/navigation_bottom_bar.dart';
@@ -86,15 +85,15 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         margin: EdgeInsets.symmetric(vertical: context.height * 0.0125),
         padding: EdgeInsets.symmetric(horizontal: context.width * 0.04),
         decoration: BoxDecoration(
-          color: AppDarkColors.WHITE08,
-          border: Border.all(width: .5, color: AppDarkColors.WHITE16),
+          color: context.colors.onPrimaryContainer,
+          border: Border.all(width: .5, color: context.colors.primaryFixedDim),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Center(
           child: Text(
             AppStrings.PROFILE_EDIT_DONE.tr(),
             style: TextStyle(
-              color: AppDarkColors.PRIMARY,
+              color: context.colors.primary,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
@@ -194,7 +193,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppDarkColors.INACTIVE,
+      backgroundColor: context.colors.shadow,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(context.width * 0.05),
@@ -209,7 +208,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 (style) => ListTile(
                   title: Text(
                     style,
-                    style: TextStyle(color: AppDarkColors.PRIMARY),
+                    style: TextStyle(color: context.colors.primary),
                   ),
                   onTap: () {
                     this.context.read<ProfileEditCubit>().addStyle(style);

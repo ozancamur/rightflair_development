@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/dark_color.dart';
+import '../../../../core/extensions/context.dart';
 
 class CommentLikeButtonWidget extends StatelessWidget {
   final bool isLiked;
@@ -23,7 +23,7 @@ class CommentLikeButtonWidget extends StatelessWidget {
             isLiked ? Icons.favorite : Icons.favorite_border,
             color: isLiked
                 ? Colors.red
-                : AppDarkColors.PRIMARY.withOpacity(0.7),
+                : context.colors.primary.withOpacity(0.7),
             size: 18,
           ),
         ),
@@ -31,7 +31,7 @@ class CommentLikeButtonWidget extends StatelessWidget {
         Text(
           '$likeCount',
           style: TextStyle(
-            color: AppDarkColors.PRIMARY.withOpacity(0.7),
+            color: context.colors.primary.withOpacity(0.7),
             fontSize: 12,
           ),
         ),

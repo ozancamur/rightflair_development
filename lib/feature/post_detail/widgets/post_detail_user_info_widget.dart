@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 class PostDetailUserInfoWidget extends StatelessWidget {

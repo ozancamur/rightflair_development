@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rightflair/core/components/elevated_button.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../../core/components/text.dart';
-import '../../../../core/constants/dark_color.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
@@ -19,7 +18,7 @@ class CreateDraftButtonWidget extends StatelessWidget {
       onPressed: onDraft,
       height: context.height * 0.065,
       borderWidth: 1,
-      borderColor: AppDarkColors.WHITE16,
+      borderColor: context.colors.primaryFixedDim,
       color: Colors.transparent,
       radius: 100,
       child: Row(
@@ -29,7 +28,7 @@ class CreateDraftButtonWidget extends StatelessWidget {
           SvgPicture.asset(
             AppIcons.DRAFT,
             colorFilter:  ColorFilter.mode(
-              AppDarkColors.PRIMARY,
+              context.colors.primary,
               BlendMode.srcIn,
             ),
             width: context.width * .05,

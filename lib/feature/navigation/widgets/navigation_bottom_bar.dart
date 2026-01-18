@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/feature/create_post/cubit/create_post_cubit.dart';
 
-import '../../../core/constants/dark_color.dart';
 import '../../../core/constants/icons.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
@@ -27,7 +26,7 @@ class NavigationBottomBar extends StatelessWidget {
         height: context.height * .08,
         padding: EdgeInsets.symmetric(horizontal: context.width * .04),
         decoration: BoxDecoration(
-          color: AppDarkColors.DARK_BUTTON,
+          color: context.colors.outline,
           borderRadius: BorderRadius.circular(100),
         ),
         child: Row(
@@ -64,10 +63,12 @@ class NavigationBottomBar extends StatelessWidget {
         margin: EdgeInsets.only(bottom: context.height * .005),
         padding: EdgeInsets.all(context.width * .024),
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: AppDarkColors.BUTTON),
+          gradient: LinearGradient(
+            colors: [context.colors.surface, context.colors.scrim],
+          ),
           borderRadius: BorderRadius.circular(100),
         ),
-        child: SvgPicture.asset(AppIcons.ADD, color: AppDarkColors.PRIMARY),
+        child: SvgPicture.asset(AppIcons.ADD, color: Colors.white),
       ),
     );
   }
@@ -83,14 +84,14 @@ class NavigationBottomBar extends StatelessWidget {
           SvgPicture.asset(
             icon,
             height: context.height * (isSelected ? 0.0275 : 0.025),
-            color: isSelected ? AppDarkColors.PRIMARY : AppDarkColors.GREY,
+            color: isSelected ? Colors.white : context.colors.tertiary,
           ),
           SizedBox(height: context.height * 0.005),
           Text(
             label.tr(),
             style: TextStyle(
               fontSize: context.width * (isSelected ? 0.0275 : 0.025),
-              color: isSelected ? AppDarkColors.PRIMARY : AppDarkColors.GREY,
+              color: isSelected ? Colors.white : context.colors.tertiary,
             ),
           ),
         ],

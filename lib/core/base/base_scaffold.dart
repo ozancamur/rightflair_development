@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
+import 'package:rightflair/core/extensions/context.dart';
 
 class BaseScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;
@@ -17,7 +17,7 @@ class BaseScaffold extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        backgroundColor: AppDarkColors.SECONDARY,
+        backgroundColor: context.colors.secondary,
         appBar: appBar,
         body: body,
         bottomNavigationBar: navigation,

@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rightflair/core/constants/font_family.dart';
 import 'package:rightflair/core/utils/router.dart';
 import 'package:rightflair/feature/authentication/bloc/authentication_bloc.dart';
 import 'package:rightflair/feature/choose_username/bloc/choose_username_cubit.dart';
@@ -15,6 +14,7 @@ import 'package:rightflair/feature/profile_edit/cubit/profile_edit_cubit.dart';
 import 'package:rightflair/feature/settings/cubit/settings_cubit.dart';
 import 'package:rightflair/feature/user/cubit/user_cubit.dart';
 
+import 'core/constants/theme.dart';
 import 'feature/create_post/cubit/create_post_cubit.dart';
 import 'feature/navigation/page/inbox/repository/inbox_repository_impl.dart';
 import 'feature/location/repository/location_repository_impl.dart';
@@ -57,10 +57,7 @@ class RightFlair extends StatelessWidget {
         themeMode: ThemeMode.dark,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
-        theme: ThemeData(
-          fontFamily: FontFamilyConstants.POPPINS,
-          useMaterial3: false,
-        ),
+        theme: AppTheme.light,
         locale: context.locale,
         routerConfig: router,
       ),

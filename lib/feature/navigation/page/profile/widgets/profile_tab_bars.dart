@@ -2,8 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/string.dart';
 
-import '../../../../../core/constants/dark_color.dart';
-import '../../../../../core/constants/font_size.dart';
+import '../../../../../core/constants/font/font_size.dart';
 import '../../../../../core/extensions/context.dart';
 
 class ProfileTabBarsWidget extends StatelessWidget {
@@ -15,7 +14,7 @@ class ProfileTabBarsWidget extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: TabBar(
         isScrollable: true,
-        indicatorColor: AppDarkColors.PRIMARY,
+        indicatorColor: context.colors.primary,
         indicatorSize: TabBarIndicatorSize.label,
         indicatorWeight: 1.5,
         indicatorPadding: EdgeInsets.only(
@@ -28,12 +27,12 @@ class ProfileTabBarsWidget extends StatelessWidget {
         labelStyle: TextStyle(
           fontSize: FontSizeConstants.LARGE.first,
           fontWeight: FontWeight.w600,
-          color: AppDarkColors.PRIMARY,
+          color: context.colors.primary,
         ),
         unselectedLabelStyle: TextStyle(
           fontSize: FontSizeConstants.LARGE.first,
           fontWeight: FontWeight.w500,
-          color: AppDarkColors.WHITE75,
+          color: context.colors.primaryContainer,
         ),
         tabs: [
           _item(AppStrings.PROFILE_PHOTOS),

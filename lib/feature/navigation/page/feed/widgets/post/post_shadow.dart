@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rightflair/core/constants/color/color.dart';
 
-import '../../../../../../core/constants/dark_color.dart';
 import '../../../../../../core/extensions/context.dart';
 
 class PostShadowWidget extends StatelessWidget {
@@ -13,7 +13,7 @@ class PostShadowWidget extends StatelessWidget {
       width: context.width,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: AppDarkColors.SHADOW,
+          colors: AppColors.SHADOWS,
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
         ),

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/constants/dark_color.dart';
 import '../../../../../core/constants/string.dart';
+import '../../../../../core/extensions/context.dart';
 
 class InboxTabBarsWidget extends StatelessWidget {
   final TabController controller;
@@ -16,10 +16,10 @@ class InboxTabBarsWidget extends StatelessWidget {
       ),
       child: TabBar(
         controller: controller,
-        indicatorColor: AppDarkColors.PRIMARY,
+        indicatorColor: context.colors.primary,
         indicatorWeight: 2.0,
-        labelColor: AppDarkColors.PRIMARY,
-        unselectedLabelColor: AppDarkColors.GREY,
+        labelColor: context.colors.primary,
+        unselectedLabelColor: context.colors.tertiary,
         labelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
         unselectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w400,

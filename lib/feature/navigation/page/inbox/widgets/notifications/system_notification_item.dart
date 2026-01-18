@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/navigation/page/inbox/model/notification_type.dart';
 import 'notification_item.dart';
@@ -51,7 +50,7 @@ class SystemNotificationItem extends StatelessWidget {
                     TextComponent(
                       text: message,
                       size: FontSizeConstants.XX_SMALL,
-                      color: AppDarkColors.GREY,
+                      color: context.colors.tertiary,
                       tr: false,
                     ),
                   ],
@@ -60,7 +59,7 @@ class SystemNotificationItem extends StatelessWidget {
               IconButton(
                 icon: Icon(
                   Icons.more_horiz,
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   size: context.width * 0.06,
                 ),
                 padding: EdgeInsets.zero,
@@ -73,7 +72,7 @@ class SystemNotificationItem extends StatelessWidget {
           TextComponent(
             text: description,
             size: FontSizeConstants.XX_SMALL,
-            color: AppDarkColors.GREY,
+            color: context.colors.tertiary,
             tr: false,
             maxLine: 3,
           ),
@@ -83,7 +82,7 @@ class SystemNotificationItem extends StatelessWidget {
               TextComponent(
                 text: '• $timeAgo',
                 size: FontSizeConstants.XXX_SMALL,
-                color: AppDarkColors.GREY,
+                color: context.colors.tertiary,
                 tr: false,
               ),
             ],

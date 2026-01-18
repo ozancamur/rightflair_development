@@ -7,8 +7,8 @@ import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/utils/dialog.dart';
 import 'package:rightflair/feature/authentication/bloc/authentication_bloc.dart';
 
+import '../../../core/base/base_scaffold.dart';
 import '../../../core/components/loading.dart';
-import '../../../core/constants/dark_color.dart';
 import '../../../core/extensions/context.dart';
 import '../widgets/authentication_have_account.dart';
 import '../widgets/authentication_text.dart';
@@ -35,8 +35,7 @@ class RegisterPage extends StatelessWidget {
         }
       },
       builder: (BuildContext context, AuthenticationState state) {
-        return Scaffold(
-          backgroundColor: AppDarkColors.SECONDARY,
+        return BaseScaffold(
           appBar: AppBarComponent(title: AppStrings.REGISTER_APPBAR),
           body: SizedBox(
             height: context.height,

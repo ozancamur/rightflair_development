@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../extensions/context.dart';
 
@@ -21,8 +20,8 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppDarkColors.SECONDARY,
-      foregroundColor: AppDarkColors.PRIMARY,
+      backgroundColor: context.colors.secondary,
+      foregroundColor: context.colors.primary,
       elevation: 0,
       leading: Padding(
         padding: EdgeInsets.only(left: context.width * .035),
@@ -33,7 +32,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       title: TextComponent(
         text: title ?? "",
         size: FontSizeConstants.X_LARGE,
-        color: AppDarkColors.PRIMARY,
+        color: context.colors.primary,
         weight: FontWeight.w600,
       ),
     );

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_family.dart';
+import 'package:rightflair/core/constants/font/font_family.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/constants/route.dart';
 
@@ -59,7 +58,7 @@ class _FeedTabBarsState extends State<FeedTabBars>
             child: TabBar(
               controller: _tabController,
               isScrollable: true,
-              indicatorColor: AppDarkColors.PRIMARY,
+              indicatorColor: context.colors.primary,
               indicatorSize: TabBarIndicatorSize.label,
               indicatorWeight: 1,
               indicatorPadding: EdgeInsets.only(
@@ -71,13 +70,13 @@ class _FeedTabBarsState extends State<FeedTabBars>
                 horizontal: context.width * .025,
               ),
               labelStyle:  TextStyle(
-                color: AppDarkColors.PRIMARY,
+                color: context.colors.primary,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 fontFamily: FontFamilyConstants.POPPINS,
               ),
               unselectedLabelStyle: TextStyle(
-                color: AppDarkColors.WHITE75,
+                color: context.colors.primaryContainer,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 fontFamily: FontFamilyConstants.POPPINS,
@@ -94,7 +93,7 @@ class _FeedTabBarsState extends State<FeedTabBars>
               onTap: () => context.push(RouteConstants.SEARCH),
               child: SvgPicture.asset(
                 AppIcons.SEARCH_FILLED,
-                color: AppDarkColors.PRIMARY,
+                color: context.colors.primary,
                 height: context.height * .0225,
               ),
             ),

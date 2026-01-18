@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/dark_color.dart';
+import '../../../../../../core/extensions/context.dart';
 
 class MessageHeaderWidget extends StatelessWidget {
   final String senderName;
@@ -22,13 +22,13 @@ class MessageHeaderWidget extends StatelessWidget {
           text: senderName,
           size: FontSizeConstants.LARGE,
           weight: FontWeight.w600,
-          color: AppDarkColors.PRIMARY,
+          color: context.colors.primary,
           tr: false,
         ),
         TextComponent(
           text: _formatTime(timestamp),
           size: const [12],
-          color: AppDarkColors.ORANGE,
+          color: context.colors.scrim,
           tr: false,
         ),
       ],

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/dark_color.dart';
-import '../../../../../../core/constants/font_size.dart';
+import '../../../../../../core/constants/font/font_size.dart';
 import '../../../../../../core/extensions/context.dart';
 
 class PostUserInfoWidget extends StatelessWidget {
@@ -25,7 +24,7 @@ class PostUserInfoWidget extends StatelessWidget {
             width: context.height * .045,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: AppDarkColors.WHITE75, width: .5),
+              border: Border.all(color: context.colors.scrim, width: .5),
               image: DecorationImage(
                 image: NetworkImage(photo),
                 fit: BoxFit.cover,
@@ -35,7 +34,7 @@ class PostUserInfoWidget extends StatelessWidget {
           TextComponent(
             text: "Jennifer Coppen",
             size: FontSizeConstants.SMALL,
-            color: AppDarkColors.PRIMARY,
+            color: Colors.white,
             weight: FontWeight.w600,
           ),
         ],

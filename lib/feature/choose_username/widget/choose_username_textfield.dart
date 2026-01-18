@@ -2,8 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/text.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
-import 'package:rightflair/core/constants/font_size.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../core/components/text_field.dart';
 import '../../../core/constants/string.dart';
@@ -65,7 +64,7 @@ class ChooseUsernameTextField extends StatelessWidget {
                     ? AppStrings.CHOOSE_USERNAME_IS_AVAILABLE
                     : AppStrings.CHOOSE_USERNAME_IS_NOT_AVAILABLE)
                 .tr(args: [username]),
-        color: isValid ? AppDarkColors.GREEN : AppDarkColors.RED,
+        color: isValid ? context.colors.inverseSurface : context.colors.error,
         size: FontSizeConstants.XX_SMALL,
         weight: FontWeight.w400,
       ),

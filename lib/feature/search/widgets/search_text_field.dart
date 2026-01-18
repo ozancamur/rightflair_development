@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
@@ -24,18 +23,18 @@ class SearchTextField extends StatelessWidget {
     return Container(
       height: context.height * 0.06,
       decoration: BoxDecoration(
-        color: AppDarkColors.INACTIVE,
+        color: context.colors.shadow,
         borderRadius: BorderRadius.circular(context.width * 0.03),
       ),
       child: TextField(
         controller: controller,
         focusNode: focusNode,
-        style: _textStyle(),
-        cursorColor: AppDarkColors.PRIMARY,
+        style: _textStyle(context),
+        cursorColor: context.colors.primary,
         onSubmitted: onSubmitted,
         decoration: InputDecoration(
           hintText: hintText.tr(),
-          hintStyle: _hintStyle(),
+          hintStyle: _hintStyle(context),
           prefixIcon: _searchIcon(context),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
@@ -59,22 +58,25 @@ class SearchTextField extends StatelessWidget {
         AppIcons.SEARCH_FILLED,
         width: context.width * 0.055,
         height: context.width * 0.055,
-        colorFilter: ColorFilter.mode(AppDarkColors.WHITE75, BlendMode.srcIn),
+        colorFilter: ColorFilter.mode(
+          context.colors.primaryContainer,
+          BlendMode.srcIn,
+        ),
       ),
     );
   }
 
-  TextStyle _textStyle() {
-    return  TextStyle(
-      color: AppDarkColors.PRIMARY,
+  TextStyle _textStyle(BuildContext context) {
+    return TextStyle(
+      color: context.colors.primary,
       fontSize: 15,
       fontWeight: FontWeight.w400,
     );
   }
 
-  TextStyle _hintStyle() {
+  TextStyle _hintStyle(BuildContext context) {
     return TextStyle(
-      color: AppDarkColors.WHITE60,
+      color: context.colors.onPrimary,
       fontSize: 15,
       fontWeight: FontWeight.w400,
     );

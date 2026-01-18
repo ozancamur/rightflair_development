@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/extensions/context.dart';
-import 'package:rightflair/core/constants/dark_color.dart';
 import '../cubit/create_post_cubit.dart';
 
 class CreatePostImageWidget extends StatelessWidget {
@@ -18,7 +17,7 @@ class CreatePostImageWidget extends StatelessWidget {
             height: context.width * 0.35,
             margin: EdgeInsets.symmetric(vertical: context.height * 0.02),
             decoration: BoxDecoration(
-              color: AppDarkColors.INACTIVE,
+              color: context.colors.shadow,
               borderRadius: BorderRadius.circular(context.width * 0.08),
               image: state.imagePath != null
                   ? DecorationImage(
@@ -31,7 +30,7 @@ class CreatePostImageWidget extends StatelessWidget {
                 ? Icon(
                     Icons.add_photo_alternate,
                     size: context.width * 0.1,
-                    color: AppDarkColors.GREY,
+                    color: context.colors.tertiary,
                   )
                 : null,
           ),

@@ -1,4 +1,4 @@
-import '../../../core/base/base_modeld.dart';
+import '../../../core/base/base_model.dart';
 
 class ProfileModel extends BaseModel<ProfileModel> {
   String? uid;

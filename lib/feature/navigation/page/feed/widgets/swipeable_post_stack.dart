@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/loading.dart';
 
 import '../../../../../core/components/text.dart';
-import '../../../../../core/constants/dark_color.dart';
-import '../../../../../core/constants/font_size.dart';
+import '../../../../../core/constants/font/font_size.dart';
 import '../../../../../core/constants/string.dart';
 import '../../../../../core/extensions/context.dart';
 import '../bloc/feed_bloc.dart';
@@ -56,13 +55,13 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
                 Icon(
                   Icons.error_outline,
                   size: context.width * 0.12,
-                  color: AppDarkColors.RED,
+                  color: context.colors.error,
                 ),
                 SizedBox(height: context.height * 0.02),
                 TextComponent(
                   text: state.errorMessage ?? AppStrings.ERROR_OCCURRED,
                   size: FontSizeConstants.LARGE,
-                  color: AppDarkColors.PRIMARY,
+                  color: context.colors.primary,
                   align: TextAlign.center,
                 ),
                 SizedBox(height: context.height * 0.02),
@@ -75,7 +74,7 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
                   child: TextComponent(
                     text: AppStrings.ERROR_TRY_AGAIN,
                     size: FontSizeConstants.LARGE,
-                    color: AppDarkColors.SECONDARY,
+                    color: context.colors.secondary,
                   ),
                 ),
               ],
@@ -93,13 +92,13 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
                 Icon(
                   Icons.inbox_outlined,
                   size: context.width * 0.16,
-                  color: AppDarkColors.GREY,
+                  color: context.colors.tertiary,
                 ),
                 SizedBox(height: context.height * 0.02),
                 TextComponent(
                   text: AppStrings.ERROR_NO_POSTS,
                   size: FontSizeConstants.LARGE,
-                  color: AppDarkColors.GREY,
+                  color: context.colors.tertiary,
                 ),
                 SizedBox(height: context.height * 0.02),
                 ElevatedButton(
@@ -111,7 +110,7 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
                   child: TextComponent(
                     text: AppStrings.ERROR_REFRESH,
                     size: FontSizeConstants.LARGE,
-                    color: AppDarkColors.SECONDARY,
+                    color: context.colors.secondary,
                   ),
                 ),
               ],
