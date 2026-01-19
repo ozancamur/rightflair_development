@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rightflair/core/firebase/messaging.dart';
+import 'package:rightflair/core/database/firebase/messaging.dart';
 
-import '../model/profile.dart';
-import '../model/user.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

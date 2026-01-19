@@ -14,8 +14,8 @@ import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
 import 'package:rightflair/feature/profile_edit/cubit/profile_edit_cubit.dart';
 import 'package:rightflair/feature/settings/cubit/settings_cubit.dart';
 import 'package:rightflair/feature/user/cubit/user_cubit.dart';
-import 'package:rightflair/main.dart';
 
+import 'core/config/theme_notifier.dart';
 import 'core/constants/theme.dart';
 import 'feature/create_post/cubit/create_post_cubit.dart';
 import 'feature/navigation/page/inbox/repository/inbox_repository_impl.dart';

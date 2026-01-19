@@ -1,22 +1,26 @@
 import 'base.dart';
 
 class SupabaseModel extends BaseModel<SupabaseModel> {
-  
+  String? URL;
+  String? ANON_KEY;
+
+  SupabaseModel({this.URL, this.ANON_KEY});
+
   @override
-  SupabaseModel copyWith() {
-    // TODO: implement copyWith
-    throw UnimplementedError();
+  SupabaseModel copyWith({String? URL, String? ANON_KEY}) {
+    return SupabaseModel(
+      URL: URL ?? this.URL,
+      ANON_KEY: ANON_KEY ?? this.ANON_KEY,
+    );
   }
 
   @override
   SupabaseModel fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError();
+    return SupabaseModel(URL: json['URL'], ANON_KEY: json['ANON_KEY']);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    // TODO: implement toJson
-    throw UnimplementedError();
+    return {'URL': URL, 'ANON_KEY': ANON_KEY};
   }
 }

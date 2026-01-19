@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import '../../../core/config/theme_notifier.dart';
 import '../../../core/constants/route.dart';
-import '../../../main.dart';
 import '../model/settings_model.dart';
 import 'settings_state.dart';
 

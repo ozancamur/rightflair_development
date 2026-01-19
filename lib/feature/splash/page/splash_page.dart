@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/base/page/base_scaffold.dart';
 import 'package:rightflair/core/constants/image.dart';
+import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 class SplashPage extends StatefulWidget {
@@ -56,8 +58,8 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
     if (!mounted) return;
 
+    context.go(RouteConstants.WELCOME);
     // TODO AUTH CHECK
-    
   }
 
   @override
