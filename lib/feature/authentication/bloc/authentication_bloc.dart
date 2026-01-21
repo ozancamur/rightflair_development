@@ -1,7 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rightflair/core/cloud/firebase/messaging.dart';
-import 'package:rightflair/core/cloud/supabase/authentication.dart';
+import 'package:rightflair/core/services/messaging.dart';
+import 'package:rightflair/core/services/authentication.dart';
+
+import '../../../core/constants/string.dart';
+import '../model/user.dart';
+import '../repository/authentication_repository_impl.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -9,9 +14,10 @@ part 'authentication_state.dart';
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final FirebaseMessagingManager _messaging = FirebaseMessagingManager();
-  final SupabaseAuthentication _authentication = SupabaseAuthentication();
+  final AuthenticationService _authentication = AuthenticationService();
 
-  AuthenticationBloc() : super(AuthenticationInitial()) {
+  final AuthenticationRepositoryImpl _repo;
+  AuthenticationBloc(this._repo) : super(AuthenticationInitial()) {
     on<AuthenticationRegisterEvent>(_onRegister);
     on<AuthenticationLoginEvent>(_onLogin);
     on<AuthtenticationAppleEvent>(_onApple);
@@ -28,23 +34,17 @@ class AuthenticationBloc
       email: event.email,
       password: event.password,
     );
-    print(
-      "AUTHENTICATION BLOC : REGISTER RESPONSE SESSION: ${response.session?.toJson()}",
-    );
-    print(
-      "AUTHENTICATION BLOC : REGISTER RESPONSE USER: ${response.user?.toJson()}",
-    );
     final String? uid = response.user?.id;
     if (uid == null) {
-      emit(AuthenticationError(""));
+      emit(AuthenticationError(AppStrings.AUTHENTICATION_REGISTER_ERROR.tr()));
       return;
     }
-    /* await _create(
-      uid: uid,
-      email: event.email,
-      name: response.session.,
-    );*/
-    emit(AuthenticationSetUsername());
+    final UserModel? user = await _create(id: uid, email: event.email);
+    if (user == null) {
+      emit(AuthenticationError(AppStrings.AUTHENTICATION_REGISTER_ERROR.tr()));
+    } else {
+      emit(AuthenticationSetUsername(user: user));
+    }
   }
 
   Future<void> _onLogin(
@@ -82,7 +82,6 @@ class AuthenticationBloc
         data: user,
       );
     */
-    emit(AuthenticationSetUsername());
   }
 
   Future<void> _onApple(
@@ -107,7 +106,6 @@ class AuthenticationBloc
         name: response.user?.displayName,
       );
     */
-    emit(AuthenticationSetUsername());
   }
 
   Future<void> _onGoogle(
@@ -131,7 +129,6 @@ class AuthenticationBloc
         name: response.user?.displayName,
       );
     */
-    emit(AuthenticationSetUsername());
   }
 
   Future<void> _onReset(
@@ -141,30 +138,24 @@ class AuthenticationBloc
     emit(AuthenticationLoading());
   }
 
-  Future<void> _create({
-    required String uid,
+  Future<UserModel?> _create({
+    required String id,
     required String email,
-    String? name,
-    String? password,
+    String? fullName,
   }) async {
-    /*final String? token = await _messaging.getToken();
+    final String? fcm = await _messaging.getToken();
     final UserModel user = UserModel(
-      uid: uid,
+      id: id,
       email: email,
-      fullName: name,
-      token: token,
+      fullName: fullName,
+      followersCount: 0,
+      followingCount: 0,
+      createdAt: DateTime.now(),
+      lastActive: DateTime.now(),
+      fcm: fcm,
+    );
 
-    );
-    await _firestoreAuthentication.createWithId(
-      collection: CollectionEnum.USERS,
-      id: uid,
-      data: user,
-    );
-    final ProfileModel profile = ProfileModel(uid: uid);
-    await _firestoreAuthentication.createWithId(
-      collection: CollectionEnum.PROFILES,
-      id: uid,
-      data: profile,
-    );*/
+    final response = await _repo.createUser(user: user);
+    return response;
   }
 }

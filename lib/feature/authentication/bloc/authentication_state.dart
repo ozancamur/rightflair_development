@@ -11,7 +11,12 @@ final class AuthenticationInitial extends AuthenticationState {}
 
 final class AuthenticationLoading extends AuthenticationState {}
 
-final class AuthenticationSetUsername extends AuthenticationState {}
+final class AuthenticationSetUsername extends AuthenticationState {
+  final UserModel user;
+  const AuthenticationSetUsername({required this.user});
+  @override
+  List<Object> get props => [user];
+}
 
 final class AuthenticationSuccess extends AuthenticationState {}
 

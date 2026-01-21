@@ -24,6 +24,7 @@ class AppStrings {
   static const String CONFIRM_PASSWORD = 'authentication.confirmPassword';
   static const String FORGOT_PASSWORD = 'authentication.forgotPassword';
   static const String HAVE_ACCOUNT = 'authentication.haveAccount';
+  static const String CHECK = 'authentication.checkButton';
   static const String CONTINUE = 'authentication.continueButton';
   // AUTHENTICATION - WELCOME
   static const String WELCOME_TITLE = 'authentication.pageWelcome.title';

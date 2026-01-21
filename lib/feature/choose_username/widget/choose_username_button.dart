@@ -7,24 +7,34 @@ import '../../../core/components/text.dart';
 import '../../../core/constants/font/font_size.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
-import '../bloc/choose_username_cubit.dart';
+import '../cubit/choose_username_cubit.dart';
 
 class ChooseUsernameButtonWidget extends StatelessWidget {
+  final bool isUnique;
   final bool isLoading;
-  const ChooseUsernameButtonWidget({super.key, required this.isLoading});
+  const ChooseUsernameButtonWidget({
+    super.key,
+    required this.isLoading,
+    required this.isUnique,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final ChooseUsernameCubit cubit = context.read<ChooseUsernameCubit>();
     return ElevatedButtonComponent(
       height: context.height * .07,
       radius: 100,
       color: context.colors.outline.withOpacity(0.5),
-      onPressed: () => context.read<ChooseUsernameCubit>().onSave(context),
+      onPressed: () => isLoading
+          ? null
+          : isUnique
+          ? cubit.onSave(context)
+          : cubit.onCheck(context),
       child: isLoading
           ? LoadingComponent()
           : TextComponent(
               color: context.colors.primaryContainer,
-              text: AppStrings.CONTINUE,
+              text: isUnique ? AppStrings.CONTINUE : AppStrings.CHECK,
               size: FontSizeConstants.LARGE,
               weight: FontWeight.w600,
             ),

@@ -12,6 +12,7 @@ import 'package:rightflair/feature/navigation/page/inbox/page/system_notificatio
 import 'package:rightflair/feature/navigation/page/inbox/page/new_followers_page.dart';
 import 'package:rightflair/feature/settings/page/settings_page.dart';
 
+import '../../feature/authentication/model/user.dart';
 import '../../feature/authentication/pages/register_page.dart';
 import '../../feature/post_detail/page/post_detail_page.dart';
 import '../../feature/profile_edit/page/profile_edit_page.dart';
@@ -41,7 +42,8 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouteConstants.CHOOSE_USERNAME,
       name: RouteConstants.CHOOSE_USERNAME,
-      builder: (context, state) => ChooseUsernamePage(),
+      builder: (context, state) =>
+          ChooseUsernamePage(user: state.extra as UserModel),
     ),
     GoRoute(
       path: RouteConstants.LOGIN,

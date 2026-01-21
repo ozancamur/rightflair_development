@@ -13,6 +13,7 @@ class UserModel extends BaseModel<UserModel> {
   int? followingCount;
   DateTime? createdAt;
   DateTime? lastActive;
+  DateTime? updatedAt;
   String? fcm;
 
   UserModel({
@@ -28,6 +29,7 @@ class UserModel extends BaseModel<UserModel> {
     this.followingCount,
     this.createdAt,
     this.lastActive,
+    this.updatedAt,
     this.fcm,
   });
 
@@ -45,6 +47,7 @@ class UserModel extends BaseModel<UserModel> {
     int? followingCount,
     DateTime? createdAt,
     DateTime? lastActive,
+    DateTime? updatedAt,
     String? fcm,
   }) {
     return UserModel(
@@ -60,6 +63,7 @@ class UserModel extends BaseModel<UserModel> {
       followingCount: followingCount ?? this.followingCount,
       createdAt: createdAt ?? this.createdAt,
       lastActive: lastActive ?? this.lastActive,
+      updatedAt: updatedAt ?? this.updatedAt,
       fcm: fcm ?? this.fcm,
     );
   }
@@ -83,6 +87,9 @@ class UserModel extends BaseModel<UserModel> {
       lastActive: json['last_active'] != null
           ? DateTime.parse(json['last_active'] as String)
           : null,
+      updatedAt: json['updated_at'] != null
+          ? DateTime.parse(json['updated_at'] as String)
+          : null,
       fcm: json['fcm'] as String?,
     );
   }
@@ -102,6 +109,7 @@ class UserModel extends BaseModel<UserModel> {
       'following_count': followingCount,
       'created_at': createdAt?.toIso8601String(),
       'last_active': lastActive?.toIso8601String(),
+      'updated_at': updatedAt?.toIso8601String(),
       'fcm': fcm,
     };
   }

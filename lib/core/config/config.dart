@@ -3,22 +3,32 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../base/model/supabase.dart';
+import '../services/api.dart';
 
-class DatabaseInitialize {
-  static const String COLLETION = "ENVIRONMENT";
+class Config {
+  static const String COLLECTION = "ENVIRONMENT";
   static const String SUPABASE = "SUPABASE";
 
   Future<void> init() async {
     await Firebase.initializeApp();
     final SupabaseModel? client = await _fetchSupabaseEnv();
-    if (client != null && client.URL != null && client.ANON_KEY != null) {
-      await Supabase.initialize(url: client.URL!, anonKey: client.ANON_KEY!);
+    if (client != null &&
+        client.URL != null &&
+        client.ANON_KEY != null &&
+        client.BASE_URL != null) {
+      await Supabase.initialize(
+        url: client.URL!,
+        anonKey: client.ANON_KEY!,
+      ).then((_) => ApiService().init(BASE_URL: client.BASE_URL!));
     }
   }
 
   Future<SupabaseModel?> _fetchSupabaseEnv() async {
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-    final response = await _firestore.collection(COLLETION).doc(SUPABASE).get();
+    final response = await _firestore
+        .collection(COLLECTION)
+        .doc(SUPABASE)
+        .get();
     if (response.exists == false) return null;
     return SupabaseModel().fromJson(response.data() as Map<String, dynamic>);
   }

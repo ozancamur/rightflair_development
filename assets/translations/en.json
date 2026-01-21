@@ -20,6 +20,7 @@
         "confirmPassword": "Confirm Password",
         "forgotPassword": "Forgot Password?",
         "haveAccount": "Already have an account?",
+        "checkButton": "Check Username",
         "continueButton": "Continue",
         "pageWelcome": {
             "title": "Your *Moment Start* Here!",

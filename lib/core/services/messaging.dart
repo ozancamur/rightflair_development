@@ -86,7 +86,6 @@ class FirebaseMessagingManager {
 
       final token = await _messaging.getToken();
       if (token != null) {
-        debugPrint('FCM Token: $token');
         _tokenStreamController.add(token);
       }
       return token;
@@ -132,7 +131,6 @@ class FirebaseMessagingManager {
   Future<void> deleteToken() async {
     try {
       await _messaging.deleteToken();
-      debugPrint('FCM Token silindi');
     } catch (e) {
       throw Exception('Token silinirken hata: $e');
     }

@@ -7,11 +7,18 @@ import 'package:rightflair/core/constants/font/font_size.dart';
 import '../../../core/components/text_field.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
-import '../bloc/choose_username_cubit.dart';
+import '../cubit/choose_username_cubit.dart';
 
 class ChooseUsernameTextField extends StatelessWidget {
+  final bool isLoading;
   final bool? isValid;
-  const ChooseUsernameTextField({super.key, this.isValid});
+  final String hintText;
+  const ChooseUsernameTextField({
+    super.key,
+    this.isValid,
+    required this.hintText,
+    required this.isLoading,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +28,8 @@ class ChooseUsernameTextField extends StatelessWidget {
 
     final FocusNode focusNode = context.read<ChooseUsernameCubit>().focusNode;
     return controller.text == ""
+        ? _field(controller, focusNode)
+        : isLoading
         ? _field(controller, focusNode)
         : _valid(context, controller, focusNode, isValid ?? false);
   }
@@ -33,7 +42,7 @@ class ChooseUsernameTextField extends StatelessWidget {
       focusNode: focusNode,
       key: const ValueKey('username_textfield'),
       controller: controller,
-      hintText: AppStrings.CHOOSE_USERNAME_USERNAME,
+      hintText: hintText,
       regExp: RegExp(''),
       errorText: "",
     );

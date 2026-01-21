@@ -5,14 +5,16 @@ import 'package:rightflair/core/constants/string.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
 import '../../../core/extensions/context.dart';
-import '../bloc/choose_username_cubit.dart';
+import '../../authentication/model/user.dart';
+import '../cubit/choose_username_cubit.dart';
 import '../../authentication/widgets/authentication_text.dart';
 import '../widget/choose_username_button.dart';
 import '../widget/choose_username_textfield.dart';
 import '../widget/choose_username_validation.dart';
 
 class ChooseUsernamePage extends StatelessWidget {
-  const ChooseUsernamePage({super.key});
+  final UserModel user;
+  const ChooseUsernamePage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +44,17 @@ class ChooseUsernamePage extends StatelessWidget {
             title: AppStrings.CHOOSE_USERNAME_TITLE,
             subtitle: AppStrings.CHOOSE_USERNAME_SUBTITLE,
           ),
-          ChooseUsernameTextField(isValid: state.isUnique),
+          ChooseUsernameTextField(
+            isValid: state.isUnique,
+            hintText: user.username ?? AppStrings.CHOOSE_USERNAME_USERNAME,
+            isLoading: state.isLoading,
+          ),
           ChooseUsernameValidationWidget(isUnique: state.isUnique),
           SizedBox(height: context.height * .025),
-          ChooseUsernameButtonWidget(isLoading: state.isLoading),
+          ChooseUsernameButtonWidget(
+            isLoading: state.isLoading,
+            isUnique: state.isUnique,
+          ),
         ],
       ),
     );
