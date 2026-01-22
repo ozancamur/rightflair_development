@@ -57,6 +57,7 @@ class AppIcons {
   static const String MESSAGE_FILLED = '${_path}message_filled.svg';
 
   static const String NEW_FOLLOWERS = '${_path}new_followers.svg';
+  static const String NON_PROFILE_PHOTO = '${_path}non_profile_photo.svg';
 
   static const String PASSWORD_HIDE = '${_path}password_hide.svg';
   static const String PASSWORD_SHOW = '${_path}password_show.svg';

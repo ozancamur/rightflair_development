@@ -12,6 +12,7 @@ import 'package:rightflair/feature/navigation/page/inbox/cubit/inbox_cubit.dart'
 import 'package:rightflair/feature/location/cubit/location_cubit.dart';
 import 'package:rightflair/feature/navigation/page/feed/bloc/feed_bloc.dart';
 import 'package:rightflair/feature/navigation/page/profile/cubit/profile_cubit.dart';
+import 'package:rightflair/feature/navigation/page/profile/repository/profile_repository_impl.dart';
 import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
 import 'package:rightflair/feature/profile_edit/cubit/profile_edit_cubit.dart';
 import 'package:rightflair/feature/settings/cubit/settings_cubit.dart';
@@ -47,7 +48,7 @@ class RightFlair extends StatelessWidget {
         BlocProvider(create: (_) => FeedBloc()),
         BlocProvider(create: (_) => AnalyticsCubit(AnalyticsRepository())),
         BlocProvider(create: (_) => InboxCubit(InboxRepositoryImpl())),
-        BlocProvider(create: (_) => ProfileCubit()),
+        BlocProvider(create: (_) => ProfileCubit(ProfileRepositoryImpl())),
 
         BlocProvider(create: (_) => UserCubit()),
         BlocProvider(create: (_) => PostDetailCubit()),

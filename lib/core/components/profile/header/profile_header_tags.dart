@@ -11,24 +11,32 @@ class ProfileHeaderTagsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: context.height * 0.005,
-      children: [
-        TextComponent(
-          text: "My Styles",
-          color: context.colors.primary,
-          weight: FontWeight.w600,
-          size: FontSizeConstants.NORMAL,
-        ),
-        Wrap(
-          spacing: context.width * 0.025,
-          runSpacing: context.height * 0.01,
-          alignment: WrapAlignment.start,
-          children: tags.map((tag) => ProfileTagComponent(text: tag)).toList(),
-        ),
-      ],
+    return SizedBox(
+      width: context.width,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: context.height * 0.005,
+        children: [
+          TextComponent(
+            text: "My Styles",
+            color: context.colors.primary,
+            weight: FontWeight.w600,
+            size: FontSizeConstants.NORMAL,
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Wrap(
+              spacing: context.width * 0.025,
+              runSpacing: context.height * 0.01,
+              alignment: WrapAlignment.start,
+              children: tags
+                  .map((tag) => ProfileTagComponent(text: tag))
+                  .toList(),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

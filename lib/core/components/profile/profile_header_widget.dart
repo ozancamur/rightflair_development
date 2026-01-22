@@ -9,8 +9,8 @@ import 'header/profile_header_tags.dart';
 import 'header/profile_header_username.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
-  final String profileImage;
-  final String name;
+  final String? profileImage;
+  final String? name;
   final String username;
   final int followerCount;
   final int followingCount;

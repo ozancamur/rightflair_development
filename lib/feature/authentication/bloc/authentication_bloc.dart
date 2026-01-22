@@ -57,31 +57,13 @@ class AuthenticationBloc
       password: event.password,
     );
 
-    print(
-      "AUTHENTICATION BLOC : LOGIN RESPONSE SESSION: ${response.session?.toJson()}",
-    );
-    print(
-      "AUTHENTICATION BLOC : LOGIN RESPONSE USER: ${response.user?.toJson()}",
-    );
     final String? uid = response.user?.id;
     if (uid == null) {
       emit(AuthenticationError(""));
       return;
     }
 
-    /* final String? token = await _messaging.getToken();
-      final UserModel user = UserModel(
-        uid: uid,
-        fullName: response.user?.displayName,
-        email: event.email,
-        token: token,
-      );
-      await _firestoreAuthentication.createWithId(
-        collection: CollectionEnum.USERS,
-        id: uid,
-        data: user,
-      );
-    */
+    emit(AuthenticationSuccess());
   }
 
   Future<void> _onApple(

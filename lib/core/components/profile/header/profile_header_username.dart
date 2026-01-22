@@ -5,7 +5,7 @@ import '../../../constants/font/font_size.dart';
 import '../../../extensions/context.dart';
 
 class ProfileHeaderUsernameWidget extends StatelessWidget {
-  final String name;
+  final String? name;
   final String username;
   const ProfileHeaderUsernameWidget({
     super.key,
@@ -19,7 +19,7 @@ class ProfileHeaderUsernameWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         TextComponent(
-          text: name,
+          text: name ?? 'user',
           size: FontSizeConstants.XXXX_LARGE,
           weight: FontWeight.w700,
           color: context.colors.primary,

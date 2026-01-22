@@ -19,24 +19,34 @@ class _ProfileHeaderBioWidgetState extends State<ProfileHeaderBioWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: context.height * 0.005,
-      children: [
-        TextComponent(
-          text: "Bio",
-          color: context.colors.primary,
-          weight: FontWeight.w600,
-          size: FontSizeConstants.NORMAL,
-        ),
-        AnimatedSize(
-          duration: const Duration(milliseconds: 300),
-          alignment: Alignment.topLeft,
-          curve: Curves.easeInOut,
-          child: _buildContent(context),
-        ),
-      ],
+    return SizedBox(
+      width: context.width,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: context.height * 0.005,
+        children: [
+          TextComponent(
+            text: "Bio",
+            color: context.colors.primary,
+            weight: FontWeight.w600,
+            size: FontSizeConstants.NORMAL,
+          ),
+          widget.text == ""
+              ? TextComponent(
+                  text: "     Write something about you...",
+                  color: context.colors.tertiary,
+                  weight: FontWeight.w400,
+                  size: FontSizeConstants.X_SMALL,
+                )
+              : AnimatedSize(
+                  duration: const Duration(milliseconds: 300),
+                  alignment: Alignment.topLeft,
+                  curve: Curves.easeInOut,
+                  child: _buildContent(context),
+                ),
+        ],
+      ),
     );
   }
 

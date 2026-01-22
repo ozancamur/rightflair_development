@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rightflair/core/components/loading.dart';
 import 'package:rightflair/core/components/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/icons.dart';
@@ -9,7 +10,7 @@ import 'package:rightflair/core/constants/route.dart';
 import '../../../../../../core/extensions/context.dart';
 
 class ProfileHeaderImageWidget extends StatelessWidget {
-  final String url;
+  final String? url;
   final bool isCanEdit;
   const ProfileHeaderImageWidget({
     super.key,
@@ -29,6 +30,21 @@ class ProfileHeaderImageWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.topCenter,
         children: [_photo(context), _change(context), _edit(context)],
+      ),
+    );
+  }
+
+  CircleAvatar _photo(BuildContext context) {
+    return CircleAvatar(
+      backgroundColor: context.colors.primary,
+      radius: context.height * .06,
+      child: Image.network(
+        url ?? '',
+        loadingBuilder: (context, child, loadingProgress) => LoadingComponent(),
+        errorBuilder: (context, error, stackTrace) => Image.asset(
+          AppIcons.NON_PROFILE_PHOTO,
+          color: context.colors.secondary,
+        ),
       ),
     );
   }
@@ -68,7 +84,10 @@ class ProfileHeaderImageWidget extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
             color: context.colors.onPrimaryContainer,
-            border: Border.all(width: .5, color: context.colors.primaryFixedDim),
+            border: Border.all(
+              width: .5,
+              color: context.colors.primaryFixedDim,
+            ),
           ),
           child: Center(
             child: TextComponent(
@@ -78,17 +97,6 @@ class ProfileHeaderImageWidget extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Container _photo(BuildContext context) {
-    return Container(
-      height: context.height * 0.12,
-      width: context.height * 0.12,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
       ),
     );
   }

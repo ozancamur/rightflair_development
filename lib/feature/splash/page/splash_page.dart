@@ -4,6 +4,7 @@ import 'package:rightflair/core/base/page/base_scaffold.dart';
 import 'package:rightflair/core/constants/image.dart';
 import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/core/extensions/context.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -58,8 +59,13 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
 
     if (!mounted) return;
 
-    context.go(RouteConstants.WELCOME);
-    // TODO AUTH CHECK
+    final user = Supabase.instance.client.auth.currentUser;
+
+    if (user != null) {
+      context.go(RouteConstants.NAVIGATION);
+    } else {
+      context.go(RouteConstants.WELCOME);
+    }
   }
 
   @override

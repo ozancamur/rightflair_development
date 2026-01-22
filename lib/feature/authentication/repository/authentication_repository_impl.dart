@@ -15,9 +15,7 @@ class AuthenticationRepositoryImpl {
         Endpoint.CREATE_USER,
         data: user.toJson(),
       );
-      print("RESPONSE DATA: ${response.data}");
       final UserModel data = UserModel().fromJson(response.data['data']);
-      print("RESPONSE USER: ${data.toJson()}");
       return data;
     } catch (e) {
       debugPrint("❌ SupabaseDatabaseCreateService ERROR in createUser :> $e");

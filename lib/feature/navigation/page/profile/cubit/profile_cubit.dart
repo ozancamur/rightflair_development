@@ -1,14 +1,19 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rightflair/feature/navigation/page/profile/repository/profile_repository_impl.dart';
 
+import '../../../../authentication/model/user.dart';
 import '../model/photo.dart';
 
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit()
+  final ProfileRepositoryImpl _repo;
+  ProfileCubit(this._repo)
     : super(
         ProfileState(
+          user: UserModel(),
+          isLoading: false,
           photos: [
             PhotoModel(
               url:
@@ -32,6 +37,7 @@ class ProfileCubit extends Cubit<ProfileState> {
               viewed: 1,
             ),
           ],
+          isPhotosLoading: false,
           saves: [
             PhotoModel(
               url:
@@ -55,6 +61,7 @@ class ProfileCubit extends Cubit<ProfileState> {
               viewed: 126,
             ),
           ],
+          isSavesLoading: false,
           drafts: [
             PhotoModel(
               url:
@@ -78,6 +85,15 @@ class ProfileCubit extends Cubit<ProfileState> {
               viewed: 2,
             ),
           ],
+          isDraftsLoading: false
         ),
-      );
+      ) {
+    _getUser();
+  }
+
+  Future<void> _getUser() async {
+    emit(state.copyWith(isLoading: true));
+    final UserModel? user = await _repo.getUser();
+    emit(state.copyWith(isLoading: false, user: user ?? UserModel()));
+  }
 }
