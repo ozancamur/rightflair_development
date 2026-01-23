@@ -81,7 +81,7 @@ class ProfileHeaderImageWidget extends StatelessWidget {
             extra: {'user': user, 'tags': tags},
           );
           if (result == "refresh") {
-            onRefresh?.call();
+            onRefresh.call();
           }
         },
         borderRadius: BorderRadius.circular(100),
