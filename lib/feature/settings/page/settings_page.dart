@@ -18,23 +18,31 @@ import '../widgets/sections/settings_notifications.dart';
 import '../widgets/sections/settings_support.dart';
 import '../widgets/settings_buttons.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<SettingsCubit>().init(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => context.read<SettingsCubit>()..init(context),
-      child: BlocBuilder<SettingsCubit, SettingsState>(
-        builder: (context, state) {
-          return BaseScaffold(
-            appBar: SettingsAppbarWidget(),
-            body: (state.isLoading)
-                ? const LoadingComponent()
-                : _body(context, state),
-          );
-        },
-      ),
+    return BlocBuilder<SettingsCubit, SettingsState>(
+      builder: (context, state) {
+        return BaseScaffold(
+          appBar: const SettingsAppbarWidget(),
+          body: (state.isLoading)
+              ? const LoadingComponent()
+              : _body(context, state),
+        );
+      },
     );
   }
 
