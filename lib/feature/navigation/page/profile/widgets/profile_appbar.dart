@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/route.dart';
+import 'package:rightflair/feature/navigation/page/profile/cubit/profile_cubit.dart';
 
 import '../../../../../../../core/components/appbar.dart';
 import '../../../../../../../core/components/icon_button.dart';
@@ -22,7 +24,14 @@ class ProfileAppbarWidget extends StatelessWidget
       actions: [
         IconButtonComponent(onTap: () {}, icon: AppIcons.SHARE),
         SizedBox(width: context.width * 0.03),
-        SettingsButtonComponent(),
+        SettingsButtonComponent(
+          onSettings: () async {
+            final rsult = await context.push(RouteConstants.SETTINGS);
+            if (rsult != null && context.mounted) {
+              context.read<ProfileCubit>().refresh();
+            }
+          },
+        ),
         SizedBox(width: context.width * .04),
       ],
     );

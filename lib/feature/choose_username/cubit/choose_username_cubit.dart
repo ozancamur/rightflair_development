@@ -32,7 +32,7 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
     }
   }
 
-  Future<void> onSave(BuildContext context) async {
+  Future<void> onSave(BuildContext context, bool canPop) async {
     try {
       if (controller.text.trim().isEmpty) return;
       emit(state.copyWith(isLoading: true));
@@ -41,10 +41,14 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
         emit(state.copyWith(isLoading: false));
         return;
       } else {
-        if (response.success == true) {
-          if (context.mounted) {
+        if (response.success == true && context.mounted) {
+          if (canPop) {
+            context.pop(controller.text);
+          } else {
             context.go(RouteConstants.NAVIGATION);
           }
+          emit(state.copyWith(isLoading: false, isUnique: false));
+          controller.clear();
         }
       }
     } catch (e) {

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/constants/string.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
+import '../../../core/components/back_button.dart';
 import '../../../core/extensions/context.dart';
 import '../cubit/choose_username_cubit.dart';
 import '../../authentication/widgets/authentication_text.dart';
@@ -13,15 +15,24 @@ import '../widget/choose_username_validation.dart';
 
 class ChooseUsernamePage extends StatelessWidget {
   final String? username;
-  const ChooseUsernamePage({super.key, required this.username});
+  final bool canPop;
+  const ChooseUsernamePage({
+    super.key,
+    required this.username,
+    required this.canPop,
+  });
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocBuilder<ChooseUsernameCubit, ChooseUsernameState>(
       builder: (context, state) {
         return BaseScaffold(
-          appBar: AppBarComponent(title: AppStrings.CHOOSE_USERNAME_APPBAR),
+          appBar: AppBarComponent(
+            leading: canPop
+                ? BackButtonComponent(onBack: () => context.pop())
+                : null,
+            title: AppStrings.CHOOSE_USERNAME_APPBAR,
+          ),
           body: SizedBox(
             height: context.height,
             width: context.width,
@@ -54,6 +65,7 @@ class ChooseUsernamePage extends StatelessWidget {
           ChooseUsernameButtonWidget(
             isLoading: state.isLoading,
             isUnique: state.isUnique,
+            canPop: canPop,
           ),
         ],
       ),

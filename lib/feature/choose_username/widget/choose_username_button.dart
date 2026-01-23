@@ -12,10 +12,12 @@ import '../cubit/choose_username_cubit.dart';
 class ChooseUsernameButtonWidget extends StatelessWidget {
   final bool isUnique;
   final bool isLoading;
+  final bool canPop;
   const ChooseUsernameButtonWidget({
     super.key,
     required this.isLoading,
     required this.isUnique,
+    required this.canPop,
   });
 
   @override
@@ -28,7 +30,7 @@ class ChooseUsernameButtonWidget extends StatelessWidget {
       onPressed: () => isLoading
           ? null
           : isUnique
-          ? cubit.onSave(context)
+          ? cubit.onSave(context, canPop)
           : cubit.onCheck(context),
       child: isLoading
           ? LoadingComponent()

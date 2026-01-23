@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/feature/choose_username/page/choose_username_page.dart';
@@ -8,12 +6,10 @@ import 'package:rightflair/feature/authentication/pages/login_page.dart';
 import 'package:rightflair/feature/authentication/pages/welcome_page.dart';
 import 'package:rightflair/feature/create_post/page/create_post_page.dart';
 import 'package:rightflair/feature/navigation/page/navigation_page.dart';
-import 'package:rightflair/feature/profile_edit/repository/profile_edit_repository_impl.dart';
 import 'package:rightflair/feature/search/page/search_page.dart';
 import 'package:rightflair/feature/navigation/page/inbox/page/system_notifications_page.dart';
 import 'package:rightflair/feature/navigation/page/inbox/page/new_followers_page.dart';
 import 'package:rightflair/feature/settings/page/settings_page.dart';
-import 'package:rightflair/feature/profile_edit/cubit/profile_edit_cubit.dart';
 
 import '../../feature/authentication/pages/register_page.dart';
 import '../../feature/post_detail/page/post_detail_page.dart';
@@ -44,8 +40,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: RouteConstants.CHOOSE_USERNAME,
       name: RouteConstants.CHOOSE_USERNAME,
-      builder: (context, state) =>
-          ChooseUsernamePage(username: state.extra as String?),
+      builder: (context, state) {
+        final Map<String, dynamic> args =
+            state.extra as Map<String, dynamic>? ?? {};
+        return ChooseUsernamePage(
+          username: args['username'],
+          canPop: args['canPop'] ?? false,
+        );
+      },
     ),
     GoRoute(
       path: RouteConstants.LOGIN,
@@ -84,10 +86,7 @@ final GoRouter router = GoRouter(
       name: RouteConstants.EDIT_PROFILE,
       builder: (context, state) {
         final data = state.extra as Map<String, dynamic>;
-        return BlocProvider(
-          create: (_) => ProfileEditCubit(ProfileEditRepositoryImpl()),
-          child: ProfileEditPage(user: data['user'], tags: data['tags']),
-        );
+        return ProfileEditPage(user: data['user'], tags: data['tags']);
       },
     ),
     GoRoute(
@@ -107,7 +106,5 @@ final GoRouter router = GoRouter(
     ),
   ],
 
-  errorBuilder: (context, state) => Scaffold(
-    body: Center(child: Text('Sayfa bulunamadı: ${state.matchedLocation}')),
-  ),
+  errorBuilder: (context, state) => const SplashPage(),
 );

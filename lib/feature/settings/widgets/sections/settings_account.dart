@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/constants/route.dart';
+import 'package:rightflair/feature/settings/cubit/settings_cubit.dart';
 
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
@@ -61,7 +63,15 @@ class SettingsAccountWidget extends StatelessWidget {
         color: context.colors.primary,
         height: context.width * 0.03,
       ),
-      onTap: () => context.push(RouteConstants.CHOOSE_USERNAME, extra: _username),
+      onTap: () async {
+        final result = await context.push(
+          RouteConstants.CHOOSE_USERNAME,
+          extra: {'username': _username, 'canPop': true},
+        );
+        if (result != null && context.mounted) {
+          context.read<SettingsCubit>().updateUsername(result as String);
+        }
+      },
     );
   }
 

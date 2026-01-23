@@ -28,13 +28,13 @@ class RegisterPage extends StatelessWidget {
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state is AuthenticationSetUsername) {
-          context.push(RouteConstants.CHOOSE_USERNAME, extra: state.user.username);
+          context.push(
+            RouteConstants.CHOOSE_USERNAME,
+            extra: {'username': state.user.username, 'canPop': false},
+          );
         }
         if (state is AuthenticationError) {
-          DialogUtils.showErrorDialog(
-            context,
-            message: state.message,
-          );
+          DialogUtils.showErrorDialog(context, message: state.message);
         }
       },
       builder: (BuildContext context, AuthenticationState state) {
@@ -81,18 +81,18 @@ class RegisterPage extends StatelessWidget {
 
   RegisterButtonWidget _button(bool isLoading, BuildContext context) {
     return RegisterButtonWidget(
-          isLoading: isLoading,
-          onRegister: () {
-            if (isLoading) return;
-            if (keyRegister.currentState?.validate() ?? false) {
-              context.read<AuthenticationBloc>().add(
-                AuthenticationRegisterEvent(
-                  email: ctrlEmail.text.trim(),
-                  password: ctrlPassword.text.trim(),
-                ),
-              );
-            }
-          },
-        );
+      isLoading: isLoading,
+      onRegister: () {
+        if (isLoading) return;
+        if (keyRegister.currentState?.validate() ?? false) {
+          context.read<AuthenticationBloc>().add(
+            AuthenticationRegisterEvent(
+              email: ctrlEmail.text.trim(),
+              password: ctrlPassword.text.trim(),
+            ),
+          );
+        }
+      },
+    );
   }
 }

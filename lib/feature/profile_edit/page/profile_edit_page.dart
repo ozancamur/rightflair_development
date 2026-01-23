@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/components/back_button.dart';
+import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/navigation/widgets/navigation_bottom_bar.dart';
@@ -114,7 +115,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             children: [
               _profileImage(state),
               _nameField(),
-              _usernameField(),
+              _usernameField(context),
               _bioField(state),
               _styles(state),
             ],
@@ -146,12 +147,24 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
-  Widget _usernameField() {
+  Widget _usernameField(BuildContext context) {
     return ProfileEditTextFieldWidget(
       label: AppStrings.PROFILE_EDIT_USERNAME,
       hintText: widget.user.username ?? "rightflair_user",
       controller: _usernameController,
       prefixText: '@',
+      readOnly: true,
+      onTap: () async {
+        final result = await context.pushNamed(
+          RouteConstants.CHOOSE_USERNAME,
+          extra: {'username': _usernameController.text, 'canPop': true},
+        );
+        if (result != null && context.mounted) {
+          _usernameController.text = result as String;
+          context.read<ProfileEditCubit>().updateUsername(result);
+        }
+        print("Result from ChooseUsernamePage: $result");
+      },
     );
   }
 

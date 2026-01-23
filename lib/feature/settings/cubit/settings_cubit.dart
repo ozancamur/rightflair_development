@@ -33,6 +33,10 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
+  void updateUsername(String username) {
+    emit(state.copyWith(username: username));
+  }
+
   Future<void> toggleLikes(bool value) async {
     emit(
       state.copyWith(

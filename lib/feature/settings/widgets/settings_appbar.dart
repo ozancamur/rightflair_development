@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/components/back_button.dart';
 
@@ -11,7 +12,7 @@ class SettingsAppbarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBarComponent(
-      leading: BackButtonComponent(),
+      leading: BackButtonComponent(onBack: () => context.pop('refresh')),
       title: AppStrings.SETTINGS_TITLE,
     );
   }

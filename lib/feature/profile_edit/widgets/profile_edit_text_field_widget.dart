@@ -11,6 +11,8 @@ class ProfileEditTextFieldWidget extends StatelessWidget {
   final int maxLines;
   final Widget? suffix;
   final String? prefixText;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   const ProfileEditTextFieldWidget({
     super.key,
@@ -21,6 +23,8 @@ class ProfileEditTextFieldWidget extends StatelessWidget {
     this.maxLines = 1,
     this.suffix,
     this.prefixText,
+    this.readOnly = false,
+    this.onTap,
   });
 
   @override
@@ -46,6 +50,8 @@ class ProfileEditTextFieldWidget extends StatelessWidget {
   Widget _textField(BuildContext context) {
     return TextField(
       controller: controller,
+      readOnly: readOnly,
+      onTap: onTap,
       maxLength: maxLength,
       maxLines: maxLines,
       style: TextStyle(

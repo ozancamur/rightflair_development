@@ -6,13 +6,14 @@ import '../constants/icons.dart';
 import 'icon_button.dart';
 
 class SettingsButtonComponent extends StatelessWidget {
-  const SettingsButtonComponent({super.key});
+  final VoidCallback? onSettings;
+  const SettingsButtonComponent({super.key, this.onSettings});
 
   @override
   Widget build(BuildContext context) {
     return IconButtonComponent(
       icon: AppIcons.SETTINGS,
-      onTap: () => context.push(RouteConstants.SETTINGS),
+      onTap: onSettings ?? () => context.push(RouteConstants.SETTINGS),
     );
   }
 }
