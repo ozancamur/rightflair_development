@@ -41,4 +41,13 @@ class SettingsRepositoryImpl extends SettingsRepository {
       debugPrint("SettingsRepositoryImpl ERROR in updateSettings :> $e");
     }
   }
+
+  @override
+  Future<void> deleteUser() async {
+    try {
+      await _api.post(Endpoint.DELETE_USER);
+    } catch (e) {
+      debugPrint("SettingsRepositoryImpl ERROR in deleteUser :> $e");
+    }
+  }
 }

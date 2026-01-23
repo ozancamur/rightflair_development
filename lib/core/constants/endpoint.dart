@@ -14,6 +14,7 @@ enum Endpoint {
 
   GET_USER_SETTINGS("get-user-settings"),
   UPDATE_USER_SETTINGS("update-user-settings"),
+  DELETE_USER("delete-user"),
 
   ;
 

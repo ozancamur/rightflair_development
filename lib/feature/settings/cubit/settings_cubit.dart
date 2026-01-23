@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:rightflair/core/constants/app.dart';
 import 'package:rightflair/feature/settings/repository/settings_repository_impl.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../../core/config/theme_notifier.dart';
 import '../../../core/constants/route.dart';
 import '../../../core/constants/string.dart';
@@ -96,9 +97,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  void deactivateAccount() {
-    // Implement account deactivation logic
-  }
+  Future<void> deactivateAccount() async => await _repo.deleteUser();
 
   Future<void> openTermsOfUse() async {
     final uri = Uri.parse(AppConstants.TERMS);
