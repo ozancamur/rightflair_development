@@ -42,6 +42,8 @@ class _ProfilePageState extends State<ProfilePage>
         _scrollController.position.maxScrollExtent - 200) {
       if (_tabController.index == 0) {
         context.read<ProfileCubit>().loadMorePosts();
+      } else if (_tabController.index == 1) {
+        context.read<ProfileCubit>().loadMoreSaves();
       } else if (_tabController.index == 2) {
         context.read<ProfileCubit>().loadMoreDrafts();
       }
@@ -107,6 +109,7 @@ class _ProfilePageState extends State<ProfilePage>
           isDraftsLoading: state.isDraftsLoading,
         ),
         if ((_tabController.index == 0 && state.isLoadingMorePosts) ||
+            (_tabController.index == 1 && state.isLoadingMoreSaves) ||
             (_tabController.index == 2 && state.isLoadingMoreDrafts))
           Padding(
             padding: EdgeInsets.symmetric(vertical: context.height * 0.02),

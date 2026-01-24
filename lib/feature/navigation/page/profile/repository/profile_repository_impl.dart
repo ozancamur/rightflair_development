@@ -120,6 +120,25 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
+  Future<UserPostsModel?> getUserSavedPosts({
+    required RequestUserPostsModel parameters,
+  }) async {
+    try {
+      final request = await _api.post(
+        Endpoint.GET_USER_SAVED_POSTS,
+        parameters: parameters.toJson(),
+      );
+      final UserPostsModel data = UserPostsModel().fromJson(
+        request.data as Map<String, dynamic>,
+      );
+      return data;
+    } catch (e) {
+      debugPrint("ProfileRepositoryImpl ERROR in getUserSavedPosts :> $e");
+      return null;
+    }
+  }
+
+  @override
   Future<UserPostsModel?> getUserDrafts({
     required RequestUserPostsModel parameters,
   }) async {

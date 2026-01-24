@@ -35,6 +35,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     _getUser();
     _getUserStyleTags();
     _getUserPosts();
+    _getUserSavedPosts();
     _getUserDrafts();
   }
 
@@ -160,6 +161,50 @@ class ProfileCubit extends Cubit<ProfileState> {
       );
     } else {
       emit(state.copyWith(isLoadingMorePosts: false));
+    }
+  }
+
+  // SAVES
+  Future<void> _getUserSavedPosts() async {
+    emit(state.copyWith(isSavesLoading: true));
+    final response = await _repo.getUserSavedPosts(
+      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
+    );
+    emit(
+      state.copyWith(
+        isSavesLoading: false,
+        saves: response?.posts ?? [],
+        savesPagination: response?.pagination,
+      ),
+    );
+  }
+
+  Future<void> loadMoreSaves() async {
+    if (state.isSavesLoading || state.isLoadingMoreSaves) return;
+    if (state.savesPagination?.hasNext != true) return;
+
+    emit(state.copyWith(isLoadingMoreSaves: true));
+
+    final nextPage = (state.savesPagination?.page ?? 1) + 1;
+    final response = await _repo.getUserSavedPosts(
+      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
+        page: nextPage,
+      ),
+    );
+
+    if (response?.posts != null) {
+      final currentSaves = List<PostModel>.from(state.saves ?? []);
+      currentSaves.addAll(response!.posts!);
+
+      emit(
+        state.copyWith(
+          saves: currentSaves,
+          savesPagination: response.pagination,
+          isLoadingMoreSaves: false,
+        ),
+      );
+    } else {
+      emit(state.copyWith(isLoadingMoreSaves: false));
     }
   }
 

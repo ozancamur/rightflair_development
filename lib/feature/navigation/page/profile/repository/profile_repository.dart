@@ -11,6 +11,9 @@ abstract class ProfileRepository {
   Future<UserPostsModel?> getUserPosts({
     required RequestUserPostsModel parameters,
   });
+  Future<UserPostsModel?> getUserSavedPosts({
+    required RequestUserPostsModel parameters,
+  });
   Future<UserPostsModel?> getUserDrafts({
     required RequestUserPostsModel parameters,
   });
