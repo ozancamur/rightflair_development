@@ -7,17 +7,51 @@ abstract class FeedEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-/// Feed verilerini yükle
-class LoadFeedEvent extends FeedEvent {
+class LoadDiscoverFeedEvent extends FeedEvent {
   final int tabIndex;
 
-  const LoadFeedEvent(this.tabIndex);
+  const LoadDiscoverFeedEvent(this.tabIndex);
 
   @override
   List<Object?> get props => [tabIndex];
 }
 
-/// Bir post'u sağa kaydır (beğen)
+class LoadFollowingFeedEvent extends FeedEvent {
+  final int tabIndex;
+
+  const LoadFollowingFeedEvent(this.tabIndex);
+
+  @override
+  List<Object?> get props => [tabIndex];
+}
+
+class LoadFriendsFeedEvent extends FeedEvent {
+  final int tabIndex;
+
+  const LoadFriendsFeedEvent(this.tabIndex);
+
+  @override
+  List<Object?> get props => [tabIndex];
+}
+
+class LoadMorePostsEvent extends FeedEvent {
+  final int tabIndex;
+
+  const LoadMorePostsEvent(this.tabIndex);
+
+  @override
+  List<Object?> get props => [tabIndex];
+}
+
+class ChangeTabEvent extends FeedEvent {
+  final int tabIndex;
+
+  const ChangeTabEvent(this.tabIndex);
+
+  @override
+  List<Object?> get props => [tabIndex];
+}
+
 class SwipeRightEvent extends FeedEvent {
   final int tabIndex;
   final String postId;
@@ -28,7 +62,6 @@ class SwipeRightEvent extends FeedEvent {
   List<Object?> get props => [tabIndex, postId];
 }
 
-/// Bir post'u sola kaydır (beğenme)
 class SwipeLeftEvent extends FeedEvent {
   final int tabIndex;
   final String postId;
@@ -37,24 +70,4 @@ class SwipeLeftEvent extends FeedEvent {
 
   @override
   List<Object?> get props => [tabIndex, postId];
-}
-
-/// Daha fazla post yükle
-class LoadMorePostsEvent extends FeedEvent {
-  final int tabIndex;
-
-  const LoadMorePostsEvent(this.tabIndex);
-
-  @override
-  List<Object?> get props => [tabIndex];
-}
-
-/// Tab değiştirildiğinde
-class ChangeTabEvent extends FeedEvent {
-  final int tabIndex;
-
-  const ChangeTabEvent(this.tabIndex);
-
-  @override
-  List<Object?> get props => [tabIndex];
 }
