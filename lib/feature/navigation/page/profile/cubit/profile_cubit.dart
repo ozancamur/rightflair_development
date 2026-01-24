@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rightflair/feature/navigation/page/profile/model/request_user_posts.dart';
+import 'package:rightflair/feature/navigation/page/profile/model/request_post.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/style_tags.dart';
 import 'package:rightflair/feature/navigation/page/profile/repository/profile_repository_impl.dart';
 
@@ -124,7 +124,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> _getUserPosts() async {
     emit(state.copyWith(isPostsLoading: true));
     final response = await _repo.getUserPosts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
+      parameters: RequestPostModel().requestSortByDateOrderDesc(page: 1),
     );
     emit(
       state.copyWith(
@@ -143,9 +143,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     final nextPage = (state.postsPagination?.page ?? 1) + 1;
     final response = await _repo.getUserPosts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
-        page: nextPage,
-      ),
+      parameters: RequestPostModel().requestSortByDateOrderDesc(page: nextPage),
     );
 
     if (response?.posts != null) {
@@ -168,7 +166,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> _getUserSavedPosts() async {
     emit(state.copyWith(isSavesLoading: true));
     final response = await _repo.getUserSavedPosts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
+      parameters: RequestPostModel().requestSortByDateOrderDesc(page: 1),
     );
     emit(
       state.copyWith(
@@ -187,9 +185,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     final nextPage = (state.savesPagination?.page ?? 1) + 1;
     final response = await _repo.getUserSavedPosts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
-        page: nextPage,
-      ),
+      parameters: RequestPostModel().requestSortByDateOrderDesc(page: nextPage),
     );
 
     if (response?.posts != null) {
@@ -212,7 +208,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> _getUserDrafts() async {
     emit(state.copyWith(isDraftsLoading: true));
     final response = await _repo.getUserDrafts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
+      parameters: RequestPostModel().requestSortByDateOrderDesc(page: 1),
     );
     emit(
       state.copyWith(
@@ -230,9 +226,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     final nextPage = (state.draftsPagination?.page ?? 1) + 1;
     final response = await _repo.getUserDrafts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
-        page: nextPage,
-      ),
+      parameters: RequestPostModel().requestSortByDateOrderDesc(page: nextPage),
     );
 
     if (response?.posts != null) {
