@@ -35,6 +35,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     _getUser();
     _getUserStyleTags();
     _getUserPosts();
+    _getUserDrafts();
   }
 
   Future<void> refresh() async {
@@ -51,49 +52,6 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> _getUserStyleTags() async {
     final response = await _repo.getUserStyleTags();
     emit(state.copyWith(tags: response));
-  }
-
-  Future<void> _getUserPosts() async {
-    emit(state.copyWith(isPostsLoading: true));
-    final response = await _repo.getUserPosts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
-    );
-    emit(
-      state.copyWith(
-        isPostsLoading: false,
-        posts: response?.posts ?? [],
-        postsPagination: response?.pagination,
-      ),
-    );
-  }
-
-  Future<void> loadMorePosts() async {
-    if (state.isPostsLoading || state.isLoadingMorePosts) return;
-    if (state.postsPagination?.hasNext != true) return;
-
-    emit(state.copyWith(isLoadingMorePosts: true));
-
-    final nextPage = (state.postsPagination?.page ?? 1) + 1;
-    final response = await _repo.getUserPosts(
-      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
-        page: nextPage,
-      ),
-    );
-
-    if (response?.posts != null) {
-      final currentPosts = List<PostModel>.from(state.posts ?? []);
-      currentPosts.addAll(response!.posts!);
-
-      emit(
-        state.copyWith(
-          posts: currentPosts,
-          postsPagination: response.pagination,
-          isLoadingMorePosts: false,
-        ),
-      );
-    } else {
-      emit(state.copyWith(isLoadingMorePosts: false));
-    }
   }
 
   Future<void> changePhotoDialog(BuildContext context, {String? userId}) async {
@@ -158,6 +116,93 @@ class ProfileCubit extends Cubit<ProfileState> {
     } catch (e) {
       debugPrint("Error uploading photo: $e");
       emit(state.copyWith(isLoading: false));
+    }
+  }
+
+  // POSTS
+  Future<void> _getUserPosts() async {
+    emit(state.copyWith(isPostsLoading: true));
+    final response = await _repo.getUserPosts(
+      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
+    );
+    emit(
+      state.copyWith(
+        isPostsLoading: false,
+        posts: response?.posts ?? [],
+        postsPagination: response?.pagination,
+      ),
+    );
+  }
+
+  Future<void> loadMorePosts() async {
+    if (state.isPostsLoading || state.isLoadingMorePosts) return;
+    if (state.postsPagination?.hasNext != true) return;
+
+    emit(state.copyWith(isLoadingMorePosts: true));
+
+    final nextPage = (state.postsPagination?.page ?? 1) + 1;
+    final response = await _repo.getUserPosts(
+      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
+        page: nextPage,
+      ),
+    );
+
+    if (response?.posts != null) {
+      final currentPosts = List<PostModel>.from(state.posts ?? []);
+      currentPosts.addAll(response!.posts!);
+
+      emit(
+        state.copyWith(
+          posts: currentPosts,
+          postsPagination: response.pagination,
+          isLoadingMorePosts: false,
+        ),
+      );
+    } else {
+      emit(state.copyWith(isLoadingMorePosts: false));
+    }
+  }
+
+  // DRAFTS
+  Future<void> _getUserDrafts() async {
+    emit(state.copyWith(isDraftsLoading: true));
+    final response = await _repo.getUserDrafts(
+      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(page: 1),
+    );
+    emit(
+      state.copyWith(
+        isDraftsLoading: false,
+        drafts: response?.posts ?? [],
+        draftsPagination: response?.pagination,
+      ),
+    );
+  }
+
+  Future<void> loadMoreDrafts() async {
+    if (state.isDraftsLoading || state.isLoadingMoreDrafts) return;
+    if (state.draftsPagination?.hasNext != true) return;
+    emit(state.copyWith(isLoadingMoreDrafts: true));
+
+    final nextPage = (state.draftsPagination?.page ?? 1) + 1;
+    final response = await _repo.getUserDrafts(
+      parameters: RequestUserPostsModel().requestSortByDateOrderDesc(
+        page: nextPage,
+      ),
+    );
+
+    if (response?.posts != null) {
+      final currentPosts = List<PostModel>.from(state.drafts ?? []);
+      currentPosts.addAll(response!.posts!);
+
+      emit(
+        state.copyWith(
+          drafts: currentPosts,
+          draftsPagination: response.pagination,
+          isLoadingMoreDrafts: false,
+        ),
+      );
+    } else {
+      emit(state.copyWith(isLoadingMoreDrafts: false));
     }
   }
 }

@@ -26,8 +26,15 @@ class _ProfilePageState extends State<ProfilePage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _tabController.addListener(_handleTabSelection);
     _scrollController = ScrollController();
     _scrollController.addListener(_onScroll);
+  }
+
+  void _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
   }
 
   void _onScroll() {
@@ -35,12 +42,15 @@ class _ProfilePageState extends State<ProfilePage>
         _scrollController.position.maxScrollExtent - 200) {
       if (_tabController.index == 0) {
         context.read<ProfileCubit>().loadMorePosts();
+      } else if (_tabController.index == 2) {
+        context.read<ProfileCubit>().loadMoreDrafts();
       }
     }
   }
 
   @override
   void dispose() {
+    _tabController.removeListener(_handleTabSelection);
     _tabController.dispose();
     _scrollController.dispose();
     super.dispose();
@@ -96,7 +106,8 @@ class _ProfilePageState extends State<ProfilePage>
           isSavesLoading: state.isSavesLoading,
           isDraftsLoading: state.isDraftsLoading,
         ),
-        if (state.isLoadingMorePosts)
+        if ((_tabController.index == 0 && state.isLoadingMorePosts) ||
+            (_tabController.index == 2 && state.isLoadingMoreDrafts))
           Padding(
             padding: EdgeInsets.symmetric(vertical: context.height * 0.02),
             child: const LoadingComponent(),

@@ -11,6 +11,9 @@ abstract class ProfileRepository {
   Future<UserPostsModel?> getUserPosts({
     required RequestUserPostsModel parameters,
   });
+  Future<UserPostsModel?> getUserDrafts({
+    required RequestUserPostsModel parameters,
+  });
   Future<StyleTagsModel?> getUserStyleTags();
   Future<void> updateUser({String? profilePhotoUrl});
   Future<String?> uploadProfilePhoto({

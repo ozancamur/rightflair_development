@@ -11,10 +11,14 @@ class ProfileState extends Equatable {
   final bool isLoadingMorePosts;
 
   final List<PostModel>? saves;
+  final PaginationModel? savesPagination;
   final bool isSavesLoading;
+  final bool isLoadingMoreSaves;
 
   final List<PostModel>? drafts;
+  final PaginationModel? draftsPagination;
   final bool isDraftsLoading;
+  final bool isLoadingMoreDrafts;
 
   const ProfileState({
     this.isLoading = false,
@@ -28,9 +32,13 @@ class ProfileState extends Equatable {
 
     this.saves = const [],
     this.isSavesLoading = false,
+    this.savesPagination,
+    this.isLoadingMoreSaves = false,
 
     this.drafts = const [],
     this.isDraftsLoading = false,
+    this.draftsPagination,
+    this.isLoadingMoreDrafts = false,
   });
 
   ProfileState copyWith({
@@ -45,9 +53,13 @@ class ProfileState extends Equatable {
 
     List<PostModel>? saves,
     bool? isSavesLoading,
+    PaginationModel? savesPagination,
+    bool? isLoadingMoreSaves,
 
     List<PostModel>? drafts,
     bool? isDraftsLoading,
+    PaginationModel? draftsPagination,
+    bool? isLoadingMoreDrafts,
   }) {
     return ProfileState(
       isLoading: isLoading ?? this.isLoading,
@@ -61,9 +73,13 @@ class ProfileState extends Equatable {
 
       saves: saves ?? this.saves,
       isSavesLoading: isSavesLoading ?? this.isSavesLoading,
+      savesPagination: savesPagination ?? this.savesPagination,
+      isLoadingMoreSaves: isLoadingMoreSaves ?? this.isLoadingMoreSaves,
 
       drafts: drafts ?? this.drafts,
       isDraftsLoading: isDraftsLoading ?? this.isDraftsLoading,
+      draftsPagination: draftsPagination ?? this.draftsPagination,
+      isLoadingMoreDrafts: isLoadingMoreDrafts ?? this.isLoadingMoreDrafts
     );
   }
 
@@ -73,12 +89,19 @@ class ProfileState extends Equatable {
     user,
     tags ?? StyleTagsModel(),
     posts ?? [],
+
     isPostsLoading,
     postsPagination ?? PaginationModel(),
     isLoadingMorePosts,
+    
     saves ?? [],
     isSavesLoading,
+    savesPagination ?? PaginationModel(),
+    isLoadingMoreSaves,
+
     drafts ?? [],
     isDraftsLoading,
+    draftsPagination ?? PaginationModel(),
+    isLoadingMoreDrafts,
   ];
 }
