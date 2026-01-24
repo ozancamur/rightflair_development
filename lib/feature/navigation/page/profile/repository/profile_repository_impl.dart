@@ -8,8 +8,8 @@ import 'package:rightflair/feature/navigation/page/profile/model/style_tags.dart
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../../core/base/model/response.dart';
-import '../model/request_user_posts.dart';
-import '../model/user_posts.dart';
+import '../model/request_post.dart';
+import '../model/response_post.dart';
 import 'profile_repository.dart';
 
 class ProfileRepositoryImpl extends ProfileRepository {
@@ -100,8 +100,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<UserPostsModel?> getUserPosts({
-    required RequestUserPostsModel parameters,
+  Future<ResponsePostModel?> getUserPosts({
+    required RequestPostModel parameters,
   }) async {
     try {
       final request = await _api.get(
@@ -109,7 +109,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
         parameters: parameters.toJson(),
       );
       // ResponseModel wrapper'ı kaldırdık çünkü API direkt olarak posts ve pagination dönüyor
-      final UserPostsModel data = UserPostsModel().fromJson(
+      final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
       );
       return data;
@@ -120,15 +120,15 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<UserPostsModel?> getUserSavedPosts({
-    required RequestUserPostsModel parameters,
+  Future<ResponsePostModel?> getUserSavedPosts({
+    required RequestPostModel parameters,
   }) async {
     try {
       final request = await _api.post(
         Endpoint.GET_USER_SAVED_POSTS,
         parameters: parameters.toJson(),
       );
-      final UserPostsModel data = UserPostsModel().fromJson(
+      final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
       );
       return data;
@@ -139,8 +139,8 @@ class ProfileRepositoryImpl extends ProfileRepository {
   }
 
   @override
-  Future<UserPostsModel?> getUserDrafts({
-    required RequestUserPostsModel parameters,
+  Future<ResponsePostModel?> getUserDrafts({
+    required RequestPostModel parameters,
   }) async {
     try {
       final request = await _api.get(
@@ -148,7 +148,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
         parameters: parameters.toJson(),
       );
       // ResponseModel wrapper'ı kaldırdık çünkü API direkt olarak posts ve pagination dönüyor
-      final UserPostsModel data = UserPostsModel().fromJson(
+      final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
       );
       return data;

@@ -2,26 +2,26 @@ import '../../../../../core/base/model/base.dart';
 import '../../../../create_post/model/post.dart';
 import 'pagination.dart';
 
-class UserPostsModel extends BaseModel<UserPostsModel> {
+class ResponsePostModel extends BaseModel<ResponsePostModel> {
   List<PostModel>? posts;
   PaginationModel? pagination;
 
-  UserPostsModel({this.posts, this.pagination});
+  ResponsePostModel({this.posts, this.pagination});
 
   @override
-  UserPostsModel copyWith({
+  ResponsePostModel copyWith({
     List<PostModel>? posts,
     PaginationModel? pagination,
   }) {
-    return UserPostsModel(
+    return ResponsePostModel(
       posts: posts ?? this.posts,
       pagination: pagination ?? this.pagination,
     );
   }
 
   @override
-  UserPostsModel fromJson(Map<String, dynamic> json) {
-    return UserPostsModel(
+  ResponsePostModel fromJson(Map<String, dynamic> json) {
+    return ResponsePostModel(
       posts: json['posts'] != null
           ? (json['posts'] as List)
                 .map((e) => PostModel().fromJson(e as Map<String, dynamic>))

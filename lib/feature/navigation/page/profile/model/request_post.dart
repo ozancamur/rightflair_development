@@ -1,21 +1,21 @@
 import '../../../../../core/base/model/base.dart';
 
-class RequestUserPostsModel extends BaseModel<RequestUserPostsModel> {
+class RequestPostModel extends BaseModel<RequestPostModel> {
   int? page;
   int? limit;
   String? sortBy;
   String? sortOrder;
 
-  RequestUserPostsModel({this.page, this.limit, this.sortBy, this.sortOrder});
+  RequestPostModel({this.page, this.limit, this.sortBy, this.sortOrder});
 
   @override
-  RequestUserPostsModel copyWith({
+  RequestPostModel copyWith({
     int? page,
     int? limit,
     String? sortBy,
     String? sortOrder,
   }) {
-    return RequestUserPostsModel(
+    return RequestPostModel(
       page: page ?? this.page,
       limit: limit ?? this.limit,
       sortBy: sortBy ?? this.sortBy,
@@ -24,8 +24,8 @@ class RequestUserPostsModel extends BaseModel<RequestUserPostsModel> {
   }
 
   @override
-  RequestUserPostsModel fromJson(Map<String, dynamic> json) {
-    return RequestUserPostsModel(
+  RequestPostModel fromJson(Map<String, dynamic> json) {
+    return RequestPostModel(
       page: json['page'] as int?,
       limit: json['limit'] as int?,
       sortBy: json['sort_by'] as String?,
@@ -43,8 +43,8 @@ class RequestUserPostsModel extends BaseModel<RequestUserPostsModel> {
     };
   }
 
-  RequestUserPostsModel requestSortByDateOrderDesc({required int page}) {
-    return RequestUserPostsModel(
+  RequestPostModel requestSortByDateOrderDesc({required int page}) {
+    return RequestPostModel(
       page: page,
       limit: 6,
       sortBy: 'created_at',
