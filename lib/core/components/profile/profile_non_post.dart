@@ -12,7 +12,7 @@ class ProfileNonPostComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.height * .1,
+      height: context.height * .2,
       width: context.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
