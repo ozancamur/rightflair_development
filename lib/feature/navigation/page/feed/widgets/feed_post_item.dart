@@ -4,6 +4,7 @@ import '../../../../../core/extensions/context.dart';
 import '../../../../create_post/model/post.dart';
 import '../models/swipe_direction.dart';
 import 'post/post_actions.dart';
+import 'post/post_image.dart';
 import 'post/post_shadow.dart';
 import 'post/post_user_info.dart';
 
@@ -62,7 +63,6 @@ class _FeedPostItemState extends State<FeedPostItem>
 
   void _swipeRight() {
     final screenWidth = MediaQuery.of(context).size.width;
-
     _animationController.reset();
     _animation =
         Tween<Offset>(
@@ -157,49 +157,13 @@ class _FeedPostItemState extends State<FeedPostItem>
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                Positioned.fill(
-                  child: Image.network(
-                    widget.post.postImageUrl ?? "",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                if (currentOffset.dx > 0)
-                  Positioned.fill(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                            context.colors.scrim.withOpacity(.35),
-                            context.colors.scrim.withOpacity(0),
-                          ],
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          context.width * 0.06,
-                        ),
-                      ),
-                    ),
-                  ),
-                if (currentOffset.dx < 0)
-                  Positioned.fill(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                            context.colors.error.withOpacity(.35),
-                            context.colors.error.withOpacity(0),
-                          ],
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          context.width * 0.06,
-                        ),
-                      ),
-                    ),
-                  ),
+                PostImageWidget(url: widget.post.postImageUrl ?? ""),
+                if (currentOffset.dx > 0) _right(context),
+
+                if (currentOffset.dx < 0) _left(context),
+
                 const PostShadowWidget(),
+
                 const PostUserInfoWidget(),
                 PostActionsWidget(
                   comment: widget.post.commentsCount ?? 0,
@@ -209,6 +173,42 @@ class _FeedPostItemState extends State<FeedPostItem>
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Positioned _right(BuildContext context) {
+    return Positioned.fill(
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              context.colors.scrim.withOpacity(.35),
+              context.colors.scrim.withOpacity(0),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(context.width * 0.06),
+        ),
+      ),
+    );
+  }
+
+  Positioned _left(BuildContext context) {
+    return Positioned.fill(
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              context.colors.error.withOpacity(.35),
+              context.colors.error.withOpacity(0),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(context.width * 0.06),
         ),
       ),
     );

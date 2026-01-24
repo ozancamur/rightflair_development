@@ -17,6 +17,8 @@ enum Endpoint {
   DELETE_USER("delete-user"),
 
   GET_DISCOVER_FEED("get-discover-feed"),
+  GET_FOLLOWING_FEED("get-following-feed"),
+  GET_FRIENDS_FEED("get-friends-feed"),
 
   ;
 

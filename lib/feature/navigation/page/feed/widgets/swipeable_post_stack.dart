@@ -20,16 +20,19 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
   @override
   void initState() {
     super.initState();
-    //context.read<FeedBloc>().add(LoadFeedEvent(widget.tabIndex));
+
+    context.read<FeedBloc>().add(
+      LoadPostInitializeEvent(currentTabIndex: widget.tabIndex),
+    );
   }
 
   void _onSwipeComplete(String postId, SwipeDirection direction) {
     final bloc = context.read<FeedBloc>();
 
     if (direction == SwipeDirection.right) {
-      bloc.add(SwipeRightEvent(tabIndex: widget.tabIndex, postId: postId));
+      bloc.add(SwipeRightEvent(postId: postId));
     } else if (direction == SwipeDirection.left) {
-      bloc.add(SwipeLeftEvent(tabIndex: widget.tabIndex, postId: postId));
+      bloc.add(SwipeLeftEvent(postId: postId));
     }
   }
 
@@ -37,20 +40,18 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
   Widget build(BuildContext context) {
     return BlocBuilder<FeedBloc, FeedState>(
       builder: (context, state) {
-        if (state.isLoading) const LoadingComponent();
-        if (state.posts?.length == 0) SizedBox.shrink();
-
-        final displayPosts = state.posts!.take(3).toList();
+        if (state.isLoading) return const LoadingComponent();
+        if (state.posts?.length == 0) return SizedBox.shrink();
 
         return Stack(
-          children: List.generate(displayPosts.length, (index) {
-            final post = displayPosts[displayPosts.length - 1 - index];
-            final isTop = index == displayPosts.length - 1;
+          children: List.generate(state.posts?.length ?? 0, (index) {
+            final post = state.posts![state.posts!.length - 1 - index];
+            final isTop = index == state.posts!.length - 1;
 
-            return _buildCard(
+            return _post(
               post: post,
               index: index,
-              totalCards: displayPosts.length,
+              totalCards: state.posts!.length,
               isTop: isTop,
             );
           }),
@@ -59,13 +60,12 @@ class _SwipeablePostStackState extends State<SwipeablePostStack> {
     );
   }
 
-  Widget _buildCard({
+  Widget _post({
     required PostModel post,
     required int index,
     required int totalCards,
     required bool isTop,
   }) {
-    // Tüm kartlar aynı boyutta
     return Positioned.fill(
       child: IgnorePointer(
         ignoring: !isTop,

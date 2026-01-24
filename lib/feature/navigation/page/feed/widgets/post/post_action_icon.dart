@@ -5,7 +5,6 @@ import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../../../../core/extensions/context.dart';
 
-
 class PostIconButtonWidget extends StatelessWidget {
   final String icon;
   final Function() onTap;
@@ -19,7 +18,7 @@ class PostIconButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _size =  context.height * .05;
+    final double _size = context.height * .05;
 
     return _value(context, _size);
   }
@@ -34,6 +33,7 @@ class PostIconButtonWidget extends StatelessWidget {
           text: value.toString(),
           size: FontSizeConstants.XXX_SMALL,
           weight: FontWeight.w500,
+          tr: false,
         ),
       ],
     );

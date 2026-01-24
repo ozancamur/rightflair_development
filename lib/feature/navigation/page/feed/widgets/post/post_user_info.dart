@@ -36,6 +36,7 @@ class PostUserInfoWidget extends StatelessWidget {
             size: FontSizeConstants.SMALL,
             color: Colors.white,
             weight: FontWeight.w600,
+            tr: false,
           ),
         ],
       ),

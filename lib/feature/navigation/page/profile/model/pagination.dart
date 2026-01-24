@@ -59,4 +59,15 @@ class PaginationModel extends BaseModel<PaginationModel> {
       'has_prev': hasPrev,
     };
   }
+
+  PaginationModel reset() {
+    return PaginationModel(
+      page: 1,
+      limit: 6,
+      totalCount: totalCount,
+      totalPages: totalPages,
+      hasNext: hasNext,
+      hasPrev: hasPrev,
+    );
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/extensions/context.dart';
+import 'package:rightflair/feature/navigation/page/feed/repository/feed_repository_impl.dart';
 
 import '../bloc/feed_bloc.dart';
 import '../widgets/feed_tab_views.dart';
@@ -12,7 +13,7 @@ class FeedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FeedBloc()..add(LoadDiscoverFeedEvent()),
+      create: (context) => FeedBloc(FeedRepositoryImpl())..add(LoadPostInitializeEvent()),
       child: DefaultTabController(
         length: 3,
         child: SafeArea(

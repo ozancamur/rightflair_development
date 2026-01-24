@@ -39,7 +39,7 @@ class FeedRepositoryImpl extends FeedRepository {
   }) async {
     try {
       final request = await _api.post(
-        Endpoint.GET_DISCOVER_FEED,
+        Endpoint.GET_FOLLOWING_FEED,
         data: body.toJson(),
       );
       final ResponseModel response = ResponseModel().fromJson(
@@ -61,7 +61,7 @@ class FeedRepositoryImpl extends FeedRepository {
   }) async {
     try {
       final request = await _api.post(
-        Endpoint.GET_DISCOVER_FEED,
+        Endpoint.GET_FRIENDS_FEED,
         data: body.toJson(),
       );
       final ResponseModel response = ResponseModel().fromJson(

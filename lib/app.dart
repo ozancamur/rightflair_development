@@ -23,6 +23,7 @@ import 'package:rightflair/feature/user/repository/user_repository_impl.dart';
 import 'core/config/theme_notifier.dart';
 import 'core/constants/theme.dart';
 import 'feature/create_post/cubit/create_post_cubit.dart';
+import 'feature/navigation/page/feed/repository/feed_repository_impl.dart';
 import 'feature/navigation/page/inbox/repository/inbox_repository_impl.dart';
 import 'feature/location/repository/location_repository_impl.dart';
 import 'feature/navigation/cubit/navigation_cubit.dart';
@@ -44,7 +45,7 @@ class RightFlair extends StatelessWidget {
 
         // NAVIGATION
         BlocProvider(create: (_) => NavigationCubit()),
-        BlocProvider(create: (_) => FeedBloc()),
+        BlocProvider(create: (_) => FeedBloc(FeedRepositoryImpl())),
         BlocProvider(create: (_) => AnalyticsCubit(AnalyticsRepository())),
         BlocProvider(create: (_) => InboxCubit(InboxRepositoryImpl())),
         BlocProvider(create: (_) => ProfileCubit(ProfileRepositoryImpl())),
