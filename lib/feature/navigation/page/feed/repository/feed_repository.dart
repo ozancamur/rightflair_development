@@ -5,13 +5,17 @@ import '../../profile/model/response_post.dart';
 import '../models/comment.dart';
 
 abstract class FeedRepository {
-  Future<ResponsePostModel?> fetchDiscoverFeed({required RequestPostModel body});
-  Future<ResponsePostModel?> fetchFollowingFeed({required RequestPostModel body});
+  Future<ResponsePostModel?> fetchDiscoverFeed({
+    required RequestPostModel body,
+  });
+  Future<ResponsePostModel?> fetchFollowingFeed({
+    required RequestPostModel body,
+  });
   Future<ResponsePostModel?> fetchFriendFeed({required RequestPostModel body});
 
   Future<void> likePost({required String pId});
   Future<void> dislikePost({required String pId});
 
   Future<List<CommentModel>?> fetchPostComments({required String pId});
-  Future<void> sendCommentToPost({required RequestCommentModel body});
+  Future<CommentModel?> sendCommentToPost({required RequestCommentModel body});
 }

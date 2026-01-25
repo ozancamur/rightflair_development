@@ -134,11 +134,24 @@ class FeedRepositoryImpl extends FeedRepository {
   }
 
   @override
-  Future<void> sendCommentToPost({required RequestCommentModel body}) async {
+  Future<CommentModel?> sendCommentToPost({
+    required RequestCommentModel body,
+  }) async {
     try {
-      await _api.post(Endpoint.CREATE_COMMENT, data: body.toJson());
+      final request = await _api.post(
+        Endpoint.CREATE_COMMENT,
+        data: body.toJson(),
+      );
+      final ResponseModel response = ResponseModel().fromJson(
+        request.data as Map<String, dynamic>,
+      );
+      final CommentModel data = CommentModel().fromJson(
+        response.data as Map<String, dynamic>,
+      );
+      return data;
     } catch (e) {
       debugPrint("FeedRepositoryImpl ERROR in sendCommentToPost :> $e");
+      return null;
     }
   }
 }

@@ -166,7 +166,21 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
       postId: event.postId,
       content: event.content,
     );
-    await _repo.sendCommentToPost(body: request);
-    add(LoadPostCommentsEvent(postId: event.postId));
+
+    final response = await _repo.sendCommentToPost(body: request);
+
+    if (response != null) {
+      final updatedComments = List<CommentModel>.from(state.comments ?? [])
+        ..insert(0, response);
+
+      final updatedPosts = state.posts?.map((post) {
+        if (post.id == event.postId) {
+          return post.copyWith(commentsCount: (post.commentsCount ?? 0) + 1);
+        }
+        return post;
+      }).toList();
+
+      emit(state.copyWith(comments: updatedComments, posts: updatedPosts));
+    }
   }
 }
