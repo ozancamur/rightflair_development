@@ -16,7 +16,7 @@ class ProfilePostGridItemComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push(RouteConstants.POST_DETAIL),
+      onTap: () => context.push(RouteConstants.POST_DETAIL, extra: post),
       borderRadius: BorderRadius.circular(context.width * 0.03),
       child: Stack(
         children: [_image(context), _shadow(context), _view(context)],
