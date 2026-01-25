@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rightflair/feature/navigation/page/feed/models/request_comment.dart';
 import 'package:rightflair/feature/navigation/page/feed/repository/feed_repository_impl.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/request_post.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/response_post.dart';
@@ -23,6 +24,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     on<LoadMorePostsEvent>(_onLoadMorePosts);
     on<ChangeTabEvent>(_onChangeTab);
     on<LoadPostCommentsEvent>(_onLoadComments);
+    on<SendCommentToPostEvent>(_onSendComment);
   }
 
   Future<void> _onLoadPostInitializeEvent(
@@ -153,5 +155,18 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     emit(state.copyWith(isLoadingComments: true));
     final response = await _repo.fetchPostComments(pId: event.postId);
     emit(state.copyWith(isLoadingComments: false, comments: response));
+  }
+
+  Future<void> _onSendComment(
+    SendCommentToPostEvent event,
+    Emitter<FeedState> emit,
+  ) async {
+    final RequestCommentModel request = RequestCommentModel(
+      parentId: event.parentId,
+      postId: event.postId,
+      content: event.content,
+    );
+    await _repo.sendCommentToPost(body: request);
+    add(LoadPostCommentsEvent(postId: event.postId));
   }
 }

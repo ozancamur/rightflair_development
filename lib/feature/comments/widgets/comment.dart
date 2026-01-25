@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/extensions/context.dart';
 import '../../navigation/page/feed/models/comment.dart';
 import 'comment_avatar.dart';
 import 'comment_content.dart';
@@ -7,7 +8,14 @@ import 'content/comment_like_button.dart';
 
 class CommentWidget extends StatelessWidget {
   final CommentModel comment;
-  const CommentWidget({super.key, required this.comment});
+  final Function(String commentId) onReply;
+  final bool canReply;
+  const CommentWidget({
+    super.key,
+    required this.comment,
+    required this.onReply,
+    this.canReply = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +27,16 @@ class CommentWidget extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Avatar
               CommentAvatarWidget(
                 avatar: comment.user?.profilePhotoUrl,
                 username: comment.user?.username ?? "rightflair_user",
               ),
-              const SizedBox(width: 12),
-
-              // Comment Content
-              CommentContentWidget(comment: comment),
-
-              // Like Button
+              SizedBox(width: context.width * 0.03),
+              CommentContentWidget(
+                comment: comment,
+                onReply: onReply,
+                canReply: canReply,
+              ),
               CommentLikeButtonWidget(
                 isLiked: comment.isLiked ?? false,
                 likeCount: comment.likesCount ?? 0,

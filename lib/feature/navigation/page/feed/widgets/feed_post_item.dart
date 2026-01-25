@@ -171,11 +171,8 @@ class _FeedPostItemState extends State<FeedPostItem>
                   saved: widget.post.likesCount ?? 0,
                   shared: widget.post.sharesCount ?? 0,
                   postId: widget.post.id ?? "",
-                  onComment: () => dialogComments(
-                    context,
-                    postId: widget.post.id ?? "",
-                    onAddComment: (String c) {},
-                  ),
+                  onComment: () =>
+                      dialogComments(context, postId: widget.post.id ?? ""),
                   onSave: () {},
                   onShare: () {},
                 ),

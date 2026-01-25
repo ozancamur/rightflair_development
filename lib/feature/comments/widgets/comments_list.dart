@@ -5,7 +5,12 @@ import 'comment.dart';
 
 class CommentsListWidget extends StatelessWidget {
   final List<CommentModel> comments;
-  CommentsListWidget({super.key, required this.comments});
+  final Function(String commentId) onReply;
+  CommentsListWidget({
+    super.key,
+    required this.comments,
+    required this.onReply,
+  });
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -17,7 +22,7 @@ class CommentsListWidget extends StatelessWidget {
         itemCount: comments.length,
         itemBuilder: (context, index) {
           final CommentModel comment = comments[index];
-          return CommentWidget(comment: comment);
+          return CommentWidget(comment: comment, onReply: onReply);
         },
       ),
     );

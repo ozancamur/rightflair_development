@@ -5,15 +5,12 @@ import '../../../feature/comments/page/comments_dialog_page.dart';
 void dialogComments(
   BuildContext context, {
   required String postId,
-  required Function(String) onAddComment,
 }) {
-  // Sample comments data
-
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
     isScrollControlled: true,
     builder: (context) =>
-        CommentsDialogPage(postId: postId, onAddComment: onAddComment),
+        CommentsDialogPage(postId: postId),
   );
 }

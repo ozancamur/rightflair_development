@@ -11,19 +11,16 @@ import '../widgets/comments_list.dart';
 
 class CommentsDialogPage extends StatefulWidget {
   final String postId;
-  final Function(String) onAddComment;
 
-  const CommentsDialogPage({
-    super.key,
-    required this.postId,
-    required this.onAddComment,
-  });
+  const CommentsDialogPage({super.key, required this.postId});
 
   @override
   State<CommentsDialogPage> createState() => _CommentsDialogPageState();
 }
 
 class _CommentsDialogPageState extends State<CommentsDialogPage> {
+  bool _isReply = false;
+  String? _commentId;
   @override
   void initState() {
     super.initState();
@@ -55,8 +52,29 @@ class _CommentsDialogPageState extends State<CommentsDialogPage> {
                       height: context.height * 0.001,
                       color: context.colors.primaryFixedDim,
                     ),
-                    CommentsListWidget(comments: state.comments ?? []),
-                    AddCommentWidget(onAddComment: widget.onAddComment),
+                    CommentsListWidget(
+                      comments: state.comments ?? [],
+                      onReply: (String commentId) {
+                        setState(() {
+                          if (_commentId == commentId) {
+                            _isReply = !_isReply;
+                          } else {
+                            _commentId = commentId;
+                            _isReply = true;
+                          }
+                        });
+                      },
+                    ),
+                    AddCommentWidget(
+                      isReply: _isReply,
+                      onAddComment: (text) => context.read<FeedBloc>().add(
+                        SendCommentToPostEvent(
+                          postId: widget.postId,
+                          content: text,
+                          parentId: _isReply ? _commentId : null,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
         );

@@ -7,7 +7,14 @@ import '../../../../core/extensions/context.dart';
 
 class CommentTimeAndReplyWidget extends StatelessWidget {
   final DateTime createdAt;
-  const CommentTimeAndReplyWidget({super.key, required this.createdAt});
+  final VoidCallback onReply;
+  final bool canReply;
+  const CommentTimeAndReplyWidget({
+    super.key,
+    required this.createdAt,
+    required this.onReply,
+    required this.canReply,
+  });
 
   String get timeAgo {
     final now = DateTime.now();
@@ -31,26 +38,32 @@ class CommentTimeAndReplyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      spacing: context.width * 0.03,
       children: [
-        TextComponent(
-          text: timeAgo,
-          color: context.colors.primary.withOpacity(0.5),
-          size: FontSizeConstants.XX_SMALL,
-          tr: false,
-        ),
-        const SizedBox(width: 16),
-        GestureDetector(
-          onTap: () {
-            // Handle reply
-          },
-          child: TextComponent(
-            text: AppStrings.COMMENTS_REPLY,
-            color: context.colors.primary.withOpacity(0.5),
-            size: FontSizeConstants.XX_SMALL,
-            weight: FontWeight.w600,
-          ),
-        ),
+        _timeAgo(context),
+        if (canReply) _reply(context),
       ],
     );
+  }
+
+  GestureDetector _reply(BuildContext context) {
+    return GestureDetector(
+        onTap: onReply,
+        child: TextComponent(
+          text: AppStrings.COMMENTS_REPLY,
+          color: context.colors.primary.withOpacity(0.5),
+          size: FontSizeConstants.XX_SMALL,
+          weight: FontWeight.w600,
+        ),
+      );
+  }
+
+  TextComponent _timeAgo(BuildContext context) {
+    return TextComponent(
+        text: timeAgo,
+        color: context.colors.primary.withOpacity(0.5),
+        size: FontSizeConstants.XX_SMALL,
+        tr: false,
+      );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/base/model/response.dart';
 import 'package:rightflair/core/constants/endpoint.dart';
+import 'package:rightflair/feature/navigation/page/feed/models/request_comment.dart';
 
 import 'package:rightflair/feature/navigation/page/profile/model/request_post.dart';
 
@@ -129,6 +130,15 @@ class FeedRepositoryImpl extends FeedRepository {
     } catch (e) {
       debugPrint("FeedRepositoryImpl ERROR in getPostComments :> $e");
       return null;
+    }
+  }
+
+  @override
+  Future<void> sendCommentToPost({required RequestCommentModel body}) async {
+    try {
+      await _api.post(Endpoint.CREATE_COMMENT, data: body.toJson());
+    } catch (e) {
+      debugPrint("FeedRepositoryImpl ERROR in sendCommentToPost :> $e");
     }
   }
 }

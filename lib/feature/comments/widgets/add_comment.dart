@@ -6,8 +6,13 @@ import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
 
 class AddCommentWidget extends StatelessWidget {
-  final Function(String) onAddComment;
-  AddCommentWidget({super.key, required this.onAddComment});
+  final bool isReply;
+  final Function(String text) onAddComment;
+  AddCommentWidget({
+    super.key,
+    required this.isReply,
+    required this.onAddComment,
+  });
 
   final TextEditingController _commentController = TextEditingController();
   @override
@@ -26,13 +31,16 @@ class AddCommentWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: context.width * 0.045,
-            backgroundColor: context.colors.outline,
-          ),
-          SizedBox(width: context.width * 0.03),
-
-          // Text Input
+          isReply
+              ? Padding(
+                  padding: EdgeInsets.only(right: context.width * 0.01),
+                  child: Icon(
+                    Icons.subdirectory_arrow_right_rounded,
+                    color: context.colors.primaryFixed,
+                    size: context.width * 0.06,
+                  ),
+                )
+              : SizedBox.shrink(),
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(
