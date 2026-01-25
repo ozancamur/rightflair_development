@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/context.dart';
+import '../../../../comments/page/dialog_comments.dart';
 import '../../../../create_post/model/post.dart';
 import '../models/swipe_direction.dart';
 import 'post/post_actions.dart';
@@ -169,6 +170,14 @@ class _FeedPostItemState extends State<FeedPostItem>
                   comment: widget.post.commentsCount ?? 0,
                   saved: widget.post.likesCount ?? 0,
                   shared: widget.post.sharesCount ?? 0,
+                  postId: widget.post.id ?? "",
+                  onComment: () => dialogComments(
+                    context,
+                    postId: widget.post.id ?? "",
+                    onAddComment: (String c) {},
+                  ),
+                  onSave: () {},
+                  onShare: () {},
                 ),
               ],
             ),

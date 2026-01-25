@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../model/comment.dart';
+import '../../navigation/page/feed/models/comment.dart';
 import 'comment.dart';
 
 class CommentsListWidget extends StatelessWidget {
-  final List<CommentModel> list;
-  CommentsListWidget({super.key, required this.list});
+  final List<CommentModel> comments;
+  CommentsListWidget({super.key, required this.comments});
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -14,9 +14,9 @@ class CommentsListWidget extends StatelessWidget {
       child: ListView.builder(
         controller: _scrollController,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        itemCount: list.length,
+        itemCount: comments.length,
         itemBuilder: (context, index) {
-          final comment = list[index];
+          final CommentModel comment = comments[index];
           return CommentWidget(comment: comment);
         },
       ),

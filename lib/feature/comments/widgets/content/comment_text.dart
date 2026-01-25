@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../../core/extensions/context.dart';
 
@@ -8,13 +10,12 @@ class CommentTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: context.colors.primary.withOpacity(0.9),
-        fontSize: 14,
-        height: 1.4,
-      ),
+    return TextComponent(
+      text: text,
+      color: context.colors.primary.withOpacity(0.9),
+      size: FontSizeConstants.SMALL,
+      height: 1.4,
+      tr: false,
     );
   }
 }

@@ -8,6 +8,9 @@ class FeedState extends Equatable {
   final PaginationModel? pagination;
   final bool isLoadingMore;
 
+  final List<CommentModel>? comments;
+  final bool isLoadingComments;
+
   const FeedState({
     this.currentTabIndex = 0,
     this.error,
@@ -15,6 +18,8 @@ class FeedState extends Equatable {
     this.posts,
     this.pagination,
     this.isLoadingMore = false,
+    this.comments,
+    this.isLoadingComments = false,
   });
 
   FeedState copyWith({
@@ -24,6 +29,8 @@ class FeedState extends Equatable {
     List<PostModel>? posts,
     PaginationModel? pagination,
     bool? isLoadingMore,
+    List<CommentModel>? comments,
+    bool? isLoadingComments,
   }) {
     return FeedState(
       currentTabIndex: currentTabIndex ?? this.currentTabIndex,
@@ -32,6 +39,8 @@ class FeedState extends Equatable {
       posts: posts ?? this.posts,
       pagination: pagination ?? this.pagination,
       isLoadingMore: isLoadingMore ?? this.isLoadingMore,
+      comments: comments ?? this.comments,
+      isLoadingComments: isLoadingComments ?? this.isLoadingComments,
     );
   }
 
@@ -43,5 +52,7 @@ class FeedState extends Equatable {
     posts,
     pagination,
     isLoadingMore,
+    comments,
+    isLoadingComments,
   ];
 }

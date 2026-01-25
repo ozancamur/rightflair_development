@@ -1,5 +1,6 @@
 import '../../profile/model/request_post.dart';
 import '../../profile/model/response_post.dart';
+import '../models/comment.dart';
 
 abstract class FeedRepository {
   Future<ResponsePostModel?> fetchDiscoverFeed({required RequestPostModel body});
@@ -8,4 +9,6 @@ abstract class FeedRepository {
 
   Future<void> likePost({required String pId});
   Future<void> dislikePost({required String pId});
+
+  Future<List<CommentModel>?> fetchPostComments({required String pId});
 }

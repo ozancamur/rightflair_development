@@ -23,6 +23,8 @@ enum Endpoint {
   POST_LIKE("post-like"),
   POST_DISLIKE("post-dislike"),
 
+  GET_POST_COMMENTS("get-post-comments"),
+
   ;
 
   final String value;

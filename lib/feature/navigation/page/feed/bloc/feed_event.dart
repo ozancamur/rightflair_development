@@ -14,6 +14,14 @@ class LoadPostInitializeEvent extends FeedEvent {
   List<Object?> get props => [currentTabIndex];
 }
 
+class LoadPostCommentsEvent extends FeedEvent {
+  final String postId;
+  const LoadPostCommentsEvent({required this.postId});
+
+  @override
+  List<Object?> get props => [postId];
+}
+
 class LoadMorePostsEvent extends FeedEvent {
   final int tabIndex;
   const LoadMorePostsEvent(this.tabIndex);

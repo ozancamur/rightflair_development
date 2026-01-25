@@ -1,4 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
+import 'package:rightflair/core/constants/string.dart';
 
 import '../../../../core/extensions/context.dart';
 
@@ -15,20 +19,20 @@ class CommentRepliesButtonWidget extends StatelessWidget {
           // Handle view replies
         },
         child: Row(
+          spacing: context.width * 0.01,
           children: [
             Icon(
               Icons.keyboard_arrow_down,
               color: context.colors.primary.withOpacity(0.7),
-              size: 16,
+              size: context.width * 0.04,
             ),
-            const SizedBox(width: 4),
-            Text(
-              'View $replyCount replies',
-              style: TextStyle(
-                color: context.colors.primary.withOpacity(0.7),
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
+            TextComponent(
+              text: AppStrings.COMMENTS_VIEW_REPLIES.tr(
+                args: [replyCount.toString()],
               ),
+              color: context.colors.primary.withOpacity(0.7),
+              size: FontSizeConstants.X_SMALL,
+              weight: FontWeight.w600,
             ),
           ],
         ),

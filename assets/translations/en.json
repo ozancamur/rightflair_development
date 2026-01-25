@@ -104,6 +104,7 @@
         "discover": "Discover",
         "following": "Following",
         "friends": "Friends",
+        "viewReplies": "View {} replies",
         "error": {
             "loadingPosts": "An error occurred while loading posts",
             "loadingMore": "An error occurred while loading more posts"
@@ -160,8 +161,8 @@
         "title": "Comments",
         "reply": "Reply",
         "addPlaceholder": "Add comment..",
-        "viewReplies": "View replies",
-        "likes": "likes"
+        "likes": "likes",
+        "viewReplies": "View {} replies"
     },
     "post": {
         "liked": "LIKED",

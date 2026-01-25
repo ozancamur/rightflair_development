@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/comment.dart';
+import '../../navigation/page/feed/models/comment.dart';
 import 'comment_avatar.dart';
 import 'comment_content.dart';
 import 'content/comment_like_button.dart';
@@ -21,8 +21,8 @@ class CommentWidget extends StatelessWidget {
             children: [
               // Avatar
               CommentAvatarWidget(
-                avatar: comment.userAvatar,
-                username: comment.userName,
+                avatar: comment.user?.profilePhotoUrl,
+                username: comment.user?.username ?? "rightflair_user",
               ),
               const SizedBox(width: 12),
 
@@ -31,8 +31,8 @@ class CommentWidget extends StatelessWidget {
 
               // Like Button
               CommentLikeButtonWidget(
-                isLiked: comment.isLiked,
-                likeCount: comment.likeCount,
+                isLiked: comment.isLiked ?? false,
+                likeCount: comment.likesCount ?? 0,
               ),
             ],
           ),

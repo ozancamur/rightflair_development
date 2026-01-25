@@ -6,6 +6,7 @@ import 'package:rightflair/feature/navigation/page/profile/model/request_post.da
 
 import '../../../../../core/services/api.dart';
 import '../../profile/model/response_post.dart';
+import '../models/comment.dart';
 import 'feed_repository.dart';
 
 class FeedRepositoryImpl extends FeedRepository {
@@ -107,6 +108,27 @@ class FeedRepositoryImpl extends FeedRepository {
       print("Like Post Response :> ${response.toJson()}");
     } catch (e) {
       debugPrint("FeedRepositoryImpl ERROR in dislikePost :> $e");
+    }
+  }
+
+  @override
+  Future<List<CommentModel>?> fetchPostComments({required String pId}) async {
+    try {
+      final request = await _api.post(
+        Endpoint.GET_POST_COMMENTS,
+        data: {"post_id": pId},
+      );
+      final ResponseModel response = ResponseModel().fromJson(
+        request.data as Map<String, dynamic>,
+      );
+      final List<CommentModel> data =
+          ((response.data as Map<String, dynamic>)['comments'] as List<dynamic>)
+              .map((e) => CommentModel().fromJson(e as Map<String, dynamic>))
+              .toList();
+      return data;
+    } catch (e) {
+      debugPrint("FeedRepositoryImpl ERROR in getPostComments :> $e");
+      return null;
     }
   }
 }

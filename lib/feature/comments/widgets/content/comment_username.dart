@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/constants/font/font_size.dart';
 
 import '../../../../core/extensions/context.dart';
 
@@ -8,13 +10,12 @@ class CommentUsernameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      username,
-      style: TextStyle(
-        color: context.colors.primary,
-        fontSize: 15,
-        fontWeight: FontWeight.w600,
-      ),
+    return TextComponent(
+      text: username,
+      color: context.colors.primary,
+      size: FontSizeConstants.NORMAL,
+      weight: FontWeight.w600,
+      tr: false,
     );
   }
 }

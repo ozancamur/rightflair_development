@@ -9,6 +9,7 @@ import 'package:rightflair/feature/navigation/page/profile/model/response_post.d
 
 import '../../../../create_post/model/post.dart';
 import '../../profile/model/pagination.dart';
+import '../models/comment.dart';
 
 part 'feed_event.dart';
 part 'feed_state.dart';
@@ -21,6 +22,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     on<SwipeLeftEvent>(_onSwipeLeft);
     on<LoadMorePostsEvent>(_onLoadMorePosts);
     on<ChangeTabEvent>(_onChangeTab);
+    on<LoadPostCommentsEvent>(_onLoadComments);
   }
 
   Future<void> _onLoadPostInitializeEvent(
@@ -116,7 +118,7 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     SwipeRightEvent event,
     Emitter<FeedState> emit,
   ) async {
-    updateListAfterSwipe(emit, event.postId);
+    _updateListAfterSwipe(emit, event.postId);
     await _repo.likePost(pId: event.postId);
   }
 
@@ -124,11 +126,11 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     SwipeLeftEvent event,
     Emitter<FeedState> emit,
   ) async {
-    updateListAfterSwipe(emit, event.postId);
+    _updateListAfterSwipe(emit, event.postId);
     await _repo.dislikePost(pId: event.postId);
   }
 
-  void updateListAfterSwipe(Emitter<FeedState> emit, String postId) {
+  void _updateListAfterSwipe(Emitter<FeedState> emit, String postId) {
     final updatedPosts = List<PostModel>.from(state.posts ?? [])
       ..removeWhere((post) => post.id == postId);
     emit(state.copyWith(posts: updatedPosts));
@@ -142,5 +144,14 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     Emitter<FeedState> emit,
   ) async {
     emit(state.copyWith(currentTabIndex: event.tabIndex));
+  }
+
+  Future<void> _onLoadComments(
+    LoadPostCommentsEvent event,
+    Emitter<FeedState> emit,
+  ) async {
+    emit(state.copyWith(isLoadingComments: true));
+    final response = await _repo.fetchPostComments(pId: event.postId);
+    emit(state.copyWith(isLoadingComments: false, comments: response));
   }
 }
