@@ -23,9 +23,11 @@ class FeedRepositoryImpl extends FeedRepository {
         Endpoint.GET_DISCOVER_FEED,
         data: body.toJson(),
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final ResponsePostModel data = ResponsePostModel().fromJson(
         response.data as Map<String, dynamic>,
       );
@@ -45,9 +47,11 @@ class FeedRepositoryImpl extends FeedRepository {
         Endpoint.GET_FOLLOWING_FEED,
         data: body.toJson(),
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final ResponsePostModel data = ResponsePostModel().fromJson(
         response.data as Map<String, dynamic>,
       );
@@ -67,9 +71,11 @@ class FeedRepositoryImpl extends FeedRepository {
         Endpoint.GET_FRIENDS_FEED,
         data: body.toJson(),
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final ResponsePostModel data = ResponsePostModel().fromJson(
         response.data as Map<String, dynamic>,
       );
@@ -81,34 +87,40 @@ class FeedRepositoryImpl extends FeedRepository {
   }
 
   @override
-  Future<void> likePost({required String pId}) async {
+  Future<bool> likePost({required String pId}) async {
     try {
       final request = await _api.post(
         Endpoint.POST_LIKE,
         data: {'post_id': pId},
       );
+      if (request == null) return false;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
-      print("Like Post Response :> ${response.toJson()}");
+      if (request.data == null) return false;
+      return response.success ?? false;
     } catch (e) {
       debugPrint("FeedRepositoryImpl ERROR in dislikePost :> $e");
+      return false;
     }
   }
 
   @override
-  Future<void> dislikePost({required String pId}) async {
+  Future<bool> dislikePost({required String pId}) async {
     try {
       final request = await _api.post(
         Endpoint.POST_DISLIKE,
         data: {'post_id': pId},
       );
+      if (request == null) return false;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
-      print("Like Post Response :> ${response.toJson()}");
+      if (request.data == null) return false;
+      return response.success ?? false;
     } catch (e) {
       debugPrint("FeedRepositoryImpl ERROR in dislikePost :> $e");
+      return false;
     }
   }
 
@@ -119,9 +131,11 @@ class FeedRepositoryImpl extends FeedRepository {
         Endpoint.GET_POST_COMMENTS,
         data: {"post_id": pId},
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final List<CommentModel> data =
           ((response.data as Map<String, dynamic>)['comments'] as List<dynamic>)
               .map((e) => CommentModel().fromJson(e as Map<String, dynamic>))
@@ -142,9 +156,11 @@ class FeedRepositoryImpl extends FeedRepository {
         Endpoint.CREATE_COMMENT,
         data: body.toJson(),
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final CommentModel data = CommentModel().fromJson(
         response.data as Map<String, dynamic>,
       );

@@ -10,7 +10,7 @@ import 'comment_repository.dart';
 class CommentsRepositoryImpl extends CommentsRepository {
   final ApiService _api;
   CommentsRepositoryImpl({ApiService? api}) : _api = api ?? ApiService();
-  
+
   @override
   Future<List<CommentModel>?> fetchPostComments({required String pId}) async {
     try {
@@ -18,9 +18,11 @@ class CommentsRepositoryImpl extends CommentsRepository {
         Endpoint.GET_POST_COMMENTS,
         data: {"post_id": pId},
       );
+      if(request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if(request.data == null) return null;
       final List<CommentModel> data =
           ((response.data as Map<String, dynamic>)['comments'] as List<dynamic>)
               .map((e) => CommentModel().fromJson(e as Map<String, dynamic>))
@@ -41,9 +43,11 @@ class CommentsRepositoryImpl extends CommentsRepository {
         Endpoint.CREATE_COMMENT,
         data: body.toJson(),
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final CommentModel data = CommentModel().fromJson(
         response.data as Map<String, dynamic>,
       );

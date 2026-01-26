@@ -25,9 +25,11 @@ class PostDetailRepositoryImpl extends PostDetailRepository {
         Endpoint.DELETE_POST,
         data: {'post_id': pId},
       );
+      if(request == null) return false;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if(request.data == null) return false;
       return response.success ?? false;
     } catch (e) {
       debugPrint("PostDetailRepositoryImpl ERROR in deletePost :> $e");

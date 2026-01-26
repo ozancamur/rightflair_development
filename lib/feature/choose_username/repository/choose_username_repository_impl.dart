@@ -12,13 +12,15 @@ class ChooseUsernameRepositoryImpl extends ChooseUsernameRepository {
   @override
   Future<bool> checkUsername({required String username}) async {
     try {
-      final response = await _api.post(
+      final request = await _api.post(
         Endpoint.CHECK_USERNAME,
         data: {'username': username},
       );
+      if (request == null) return false;
       final data = ResponseModel().fromJson(
-        response.data as Map<String, dynamic>,
+        request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return false;
       final bool isUnique =
           (data.data as Map<String, dynamic>)['isUnique'] as bool;
       return isUnique;
@@ -31,12 +33,13 @@ class ChooseUsernameRepositoryImpl extends ChooseUsernameRepository {
   @override
   Future<ResponseModel?> updatedUser({required String username}) async {
     try {
-      final response = await _api.post(
+      final request = await _api.post(
         Endpoint.UPDATE_USER,
         data: {'username': username},
       );
-      print("REQUEST ${response.requestOptions.headers}");
-      final ResponseModel data = ResponseModel().fromJson(response.data);
+      if (request == null) return null;
+      final ResponseModel data = ResponseModel().fromJson(request.data);
+      if (request.data == null) return null;
       return data;
     } catch (e) {
       debugPrint("❌ ChooseUsernameRepository ERROR in updatedUser :> $e");

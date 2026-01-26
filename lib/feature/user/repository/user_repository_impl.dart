@@ -5,6 +5,8 @@ import 'package:rightflair/feature/authentication/model/user.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/style_tags.dart';
 
 import '../../../../../core/base/model/response.dart';
+import '../../navigation/page/profile/model/request_post.dart';
+import '../../navigation/page/profile/model/response_post.dart';
 import 'user_repository.dart';
 
 class UserRepositoryImpl extends UserRepository {
@@ -18,6 +20,7 @@ class UserRepositoryImpl extends UserRepository {
         Endpoint.GET_USER,
         data: {'user_id': userId},
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
@@ -33,17 +36,23 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<void> getUserPosts({required String userId}) async {
+  Future<ResponsePostModel?> getUserPosts({
+    required RequestPostModel parameters,
+  }) async {
     try {
       final request = await _api.get(
         Endpoint.GET_USER_POSTS,
-        data: {'user_id': userId},
+        parameters: parameters.toJson(),
       );
-      final ResponseModel response = ResponseModel().fromJson(
+      if (request == null) return null;
+      final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
+      return data;
     } catch (e) {
       debugPrint("UserRepositoryImpl ERROR in getUserPosts :> $e");
+      return null;
     }
   }
 
@@ -54,9 +63,11 @@ class UserRepositoryImpl extends UserRepository {
         Endpoint.GET_USER_STYLE_TAGS,
         data: {'user_id': userId},
       );
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       final StyleTagsModel data = StyleTagsModel().fromJson(
         response.data as Map<String, dynamic>,
       );

@@ -5,8 +5,9 @@ class RequestPostModel extends BaseModel<RequestPostModel> {
   int? limit;
   String? sortBy;
   String? sortOrder;
+  String? userId;
 
-  RequestPostModel({this.page, this.limit, this.sortBy, this.sortOrder});
+  RequestPostModel({this.page, this.limit, this.sortBy, this.sortOrder, this.userId});
 
   @override
   RequestPostModel copyWith({
@@ -14,12 +15,14 @@ class RequestPostModel extends BaseModel<RequestPostModel> {
     int? limit,
     String? sortBy,
     String? sortOrder,
+    String? userId,
   }) {
     return RequestPostModel(
       page: page ?? this.page,
       limit: limit ?? this.limit,
       sortBy: sortBy ?? this.sortBy,
       sortOrder: sortOrder ?? this.sortOrder,
+      userId: userId ?? this.userId,
     );
   }
 
@@ -30,6 +33,7 @@ class RequestPostModel extends BaseModel<RequestPostModel> {
       limit: json['limit'] as int?,
       sortBy: json['sort_by'] as String?,
       sortOrder: json['sort_order'] as String?,
+      userId: json['user_id'] as String?,
     );
   }
 
@@ -40,6 +44,7 @@ class RequestPostModel extends BaseModel<RequestPostModel> {
       'limit': limit,
       'sort_by': sortBy,
       'sort_order': sortOrder,
+      'user_id': userId,
     };
   }
 
@@ -52,6 +57,20 @@ class RequestPostModel extends BaseModel<RequestPostModel> {
       limit: limit,
       sortBy: 'created_at',
       sortOrder: 'desc',
+    );
+  }
+
+    RequestPostModel requestWithUserId({
+    required int page,
+    int limit = 6,
+    required String userId,
+  }) {
+    return RequestPostModel(
+      page: page,
+      limit: limit,
+      sortBy: 'created_at',
+      sortOrder: 'desc',
+      userId: userId,
     );
   }
 }

@@ -24,6 +24,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
   Future<UserModel?> getUser() async {
     try {
       final request = await _api.get(Endpoint.GET_USER);
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
@@ -42,6 +43,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
   Future<StyleTagsModel?> getUserStyleTags() async {
     try {
       final request = await _api.get(Endpoint.GET_USER_STYLE_TAGS);
+      if (request == null) return null;
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
@@ -108,6 +110,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
         Endpoint.GET_USER_POSTS,
         parameters: parameters.toJson(),
       );
+      if (request == null) return null;
       // ResponseModel wrapper'ı kaldırdık çünkü API direkt olarak posts ve pagination dönüyor
       final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
@@ -128,10 +131,12 @@ class ProfileRepositoryImpl extends ProfileRepository {
         Endpoint.GET_USER_SAVED_POSTS,
         parameters: parameters.toJson(),
       );
+      if (request == null) return null;
 
       final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       return data;
     } catch (e) {
       debugPrint("ProfileRepositoryImpl ERROR in getUserSavedPosts :> $e");
@@ -148,10 +153,12 @@ class ProfileRepositoryImpl extends ProfileRepository {
         Endpoint.GET_USER_DRAFTS,
         parameters: parameters.toJson(),
       );
+      if (request == null) return null;
 
       final ResponsePostModel data = ResponsePostModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if (request.data == null) return null;
       return data;
     } catch (e) {
       debugPrint("ProfileRepositoryImpl ERROR in getUserDrafts :> $e");

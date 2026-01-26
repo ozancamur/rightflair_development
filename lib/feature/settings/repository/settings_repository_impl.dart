@@ -15,9 +15,11 @@ class SettingsRepositoryImpl extends SettingsRepository {
   Future<SettingsModel> getSettings() async {
     try {
       final request = await _api.get(Endpoint.GET_USER_SETTINGS);
+      if(request == null) return SettingsModel().error();
       final ResponseModel response = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
+      if(request.data == null) return SettingsModel().error();
       final SettingsModel settings = SettingsModel().fromJson(
         response.data as Map<String, dynamic>,
       );
