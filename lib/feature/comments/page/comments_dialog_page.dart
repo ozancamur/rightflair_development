@@ -35,53 +35,59 @@ class _CommentsDialogPageState extends State<CommentsDialogPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<CommentsCubit, CommentsState>(
       builder: (context, state) {
-        return Container(
-          height: context.height * 0.85,
-          decoration: BoxDecoration(
-            color: context.colors.secondary,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(context.width * 0.05),
-              topRight: Radius.circular(context.width * 0.05),
-            ),
+        return Padding(
+          padding: EdgeInsets.only(
+            top: context.height * 0.1,
+            bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: state.isLoading
-              ? LoadingComponent()
-              : Column(
-                  children: [
-                    const DragHandleComponent(),
-                    CommentsHeaderWidget(
-                      commentCount: state.comments?.length ?? 0,
-                    ),
-                    Container(
-                      height: context.height * 0.001,
-                      color: context.colors.primaryFixedDim,
-                    ),
-                    CommentsListWidget(
-                      comments: state.comments ?? [],
-                      onReply: (String commentId) {
-                        setState(() {
-                          if (_commentId == commentId) {
-                            _isReply = !_isReply;
-                          } else {
-                            _commentId = commentId;
-                            _isReply = true;
-                          }
-                        });
-                      },
-                    ),
-                    AddCommentWidget(
-                      isReply: _isReply,
-                      onAddComment: (text) {
-                        widget.onAddComment();
-                        context.read<CommentsCubit>().addComment(
-                          postId: widget.postId,
-                          content: text,
-                          parentId: _isReply ? _commentId : null,
-                        );
-                      },
-                    ),
-                  ],
-                ),
+          child: Container(
+            height: context.height * 0.85,
+            decoration: BoxDecoration(
+              color: context.colors.secondary,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(context.width * 0.05),
+                topRight: Radius.circular(context.width * 0.05),
+              ),
+            ),
+            child: state.isLoading
+                ? LoadingComponent()
+                : Column(
+                    children: [
+                      const DragHandleComponent(),
+                      CommentsHeaderWidget(
+                        commentCount: state.comments?.length ?? 0,
+                      ),
+                      Container(
+                        height: context.height * 0.001,
+                        color: context.colors.primaryFixedDim,
+                      ),
+                      CommentsListWidget(
+                        comments: state.comments ?? [],
+                        onReply: (String commentId) {
+                          setState(() {
+                            if (_commentId == commentId) {
+                              _isReply = !_isReply;
+                            } else {
+                              _commentId = commentId;
+                              _isReply = true;
+                            }
+                          });
+                        },
+                      ),
+                      AddCommentWidget(
+                        isReply: _isReply,
+                        onAddComment: (text) {
+                          widget.onAddComment();
+                          context.read<CommentsCubit>().addComment(
+                            postId: widget.postId,
+                            content: text,
+                            parentId: _isReply ? _commentId : null,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+          ),
         );
       },
     );
