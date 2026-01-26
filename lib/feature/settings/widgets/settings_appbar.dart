@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/appbar.dart';
-import 'package:rightflair/core/components/back_button.dart';
+import 'package:rightflair/core/components/button/back_button.dart';
 
 import '../../../core/constants/string.dart';
 

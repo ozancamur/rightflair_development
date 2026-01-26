@@ -5,10 +5,10 @@ import 'package:rightflair/core/constants/route.dart';
 import 'package:rightflair/feature/navigation/page/profile/cubit/profile_cubit.dart';
 
 import '../../../../../../../core/components/appbar.dart';
-import '../../../../../../../core/components/icon_button.dart';
+import '../../../../../core/components/button/icon_button.dart';
 import '../../../../../../../core/constants/icons.dart';
 import '../../../../../../../core/extensions/context.dart';
-import '../../../../../core/components/settings_button.dart';
+import '../../../../../core/components/button/settings_button.dart';
 
 class ProfileAppbarWidget extends StatelessWidget
     implements PreferredSizeWidget {

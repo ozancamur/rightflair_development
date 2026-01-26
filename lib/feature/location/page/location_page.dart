@@ -3,7 +3,7 @@ import 'package:rightflair/core/constants/string.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/appbar.dart';
-import 'package:rightflair/core/components/back_button.dart';
+import 'package:rightflair/core/components/button/back_button.dart';
 import 'package:rightflair/core/components/loading.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/location/widgets/location_list.dart';
@@ -12,7 +12,7 @@ import '../../../core/base/page/base_scaffold.dart';
 import '../cubit/location_cubit.dart';
 import '../cubit/location_state.dart';
 import '../widgets/location_empty.dart';
-import '../../../core/components/error_message.dart';
+import '../../../core/components/text/error_message.dart';
 import '../widgets/location_input.dart';
 
 class LocationPage extends StatefulWidget {

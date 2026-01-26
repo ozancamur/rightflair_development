@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/color/color.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';

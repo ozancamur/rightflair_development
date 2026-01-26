@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/components/text_field.dart';
+import '../../../core/components/text/text_field.dart';
 import '../../../core/constants/string.dart';
 
 class LocationInputWidget extends StatelessWidget {

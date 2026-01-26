@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/components/gradient_button.dart';
-import '../../../../core/components/text.dart';
+import '../../../../core/components/button/gradient_button.dart';
+import '../../../../core/components/text/text.dart';
 import '../../../../core/constants/font/font_size.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';

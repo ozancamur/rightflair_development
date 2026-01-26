@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/appbar.dart';
-import 'package:rightflair/core/components/back_button.dart';
-import 'package:rightflair/core/components/icon_button.dart';
+import 'package:rightflair/core/components/button/back_button.dart';
+import 'package:rightflair/core/components/button/icon_button.dart';
+import 'package:rightflair/core/components/post/post.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
 import '../../create_post/model/post.dart';
-import '../../navigation/page/feed/widgets/feed_post_item.dart';
+import '../../navigation/page/feed/widgets/feed_post_swipe.dart';
 
 class PostDetailPage extends StatelessWidget {
   final PostModel post;
@@ -40,7 +41,12 @@ class PostDetailPage extends StatelessWidget {
                     top: context.height * .025,
                     bottom: context.height * .075,
                   ),
-                  child: FeedPostItem(post: state.post),
+                  child: PostComponent(
+                    post: state.post,
+                    onComment: () {},
+                    onSave: () {},
+                    onShare: () {},
+                  ),
                 );
               },
             ),

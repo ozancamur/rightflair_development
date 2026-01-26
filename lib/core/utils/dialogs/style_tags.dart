@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../feature/profile_edit/cubit/profile_edit_cubit.dart';
-import '../../components/text.dart';
+import '../../components/text/text.dart';
 import '../../constants/font/font_size.dart';
 import '../../constants/string.dart';
 import '../../extensions/context.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/loading.dart';
 
-import '../../../../../core/components/text.dart';
+import '../../../../../core/components/text/text.dart';
 import '../../../../../core/extensions/context.dart';
 import '../cubit/analytics_cubit.dart';
 import 'analytics_engagement_chart.dart';

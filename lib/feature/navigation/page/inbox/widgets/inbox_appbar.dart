@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../../../core/components/appbar.dart';
-import '../../../../../core/components/icon_button.dart';
+import '../../../../../core/components/button/icon_button.dart';
 import '../../../../../core/constants/icons.dart';
 
 class InboxAppBarWidget extends StatelessWidget implements PreferredSizeWidget {

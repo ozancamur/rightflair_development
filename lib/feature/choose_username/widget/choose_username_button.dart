@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/loading.dart';
 
-import '../../../core/components/elevated_button.dart';
-import '../../../core/components/text.dart';
+import '../../../core/components/button/elevated_button.dart';
+import '../../../core/components/text/text.dart';
 import '../../../core/constants/font/font_size.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';

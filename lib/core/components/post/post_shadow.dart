@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/color/color.dart';
 
-import '../../../../../../core/extensions/context.dart';
+import '../../extensions/context.dart';
 
-class PostShadowWidget extends StatelessWidget {
-  const PostShadowWidget({super.key});
+class PostShadowComponent extends StatelessWidget {
+  const PostShadowComponent({super.key});
 
   @override
   Widget build(BuildContext context) {

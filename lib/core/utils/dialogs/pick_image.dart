@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../components/text.dart';
+import '../../components/text/text.dart';
 import '../../constants/font/font_size.dart';
 import '../../constants/icons.dart';
 import '../../constants/string.dart';

@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 

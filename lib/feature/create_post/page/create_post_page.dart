@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
 import '../../../core/components/appbar.dart';
-import '../../../core/components/back_button.dart';
+import '../../../core/components/button/back_button.dart';
 import '../cubit/create_post_cubit.dart';
 import '../widgets/create_post_options.dart';
 import '../widgets/create_post_bottom_buttons.dart';

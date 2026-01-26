@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rightflair/core/components/text.dart';
+import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 
-import '../../../core/components/text_field.dart';
+import '../../../core/components/text/text_field.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
 import '../cubit/choose_username_cubit.dart';

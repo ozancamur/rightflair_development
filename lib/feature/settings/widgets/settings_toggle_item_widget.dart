@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/components/settings_toggle_component.dart';
-import '../../../../core/components/text.dart';
+import '../../../core/components/button/settings_toggle_button.dart';
+import '../../../core/components/text/text.dart';
 import '../../../../core/extensions/context.dart';
 import '../../../core/constants/font/font_size.dart';
 

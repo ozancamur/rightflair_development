@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/components/text.dart';
+import '../../../core/components/text/text.dart';
 import '../../../core/constants/font/font_size.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';

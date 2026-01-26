@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../extensions/context.dart';
+import '../../extensions/context.dart';
 
 class ElevatedButtonComponent extends StatelessWidget {
   final Function()? onPressed;

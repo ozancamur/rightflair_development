@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/regexp.dart';
 
-import '../../../../core/components/password_text_field.dart';
-import '../../../../core/components/text_field.dart';
+import '../../../../core/components/text/password_text_field.dart';
+import '../../../../core/components/text/text_field.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';
 

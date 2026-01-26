@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/constants/icons.dart';
-import '../../../../../../core/extensions/context.dart';
+import '../../constants/icons.dart';
+import '../../extensions/context.dart';
 import 'post_action_icon.dart';
 
-class PostActionsWidget extends StatelessWidget {
+class PostActionsComponent extends StatelessWidget {
   final int comment;
   final int saved;
   final int shared;
@@ -12,7 +12,7 @@ class PostActionsWidget extends StatelessWidget {
   final VoidCallback onSave;
   final VoidCallback onShare;
   final String postId;
-  const PostActionsWidget({
+  const PostActionsComponent({
     super.key,
     required this.comment,
     required this.saved,

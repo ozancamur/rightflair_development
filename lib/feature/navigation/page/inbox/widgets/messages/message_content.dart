@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
-import '../../../../../../core/components/text.dart';
+import '../../../../../../core/components/text/text.dart';
 
 class MessageContentWidget extends StatelessWidget {
   final String lastMessage;

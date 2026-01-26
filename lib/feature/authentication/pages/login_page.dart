@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/components/appbar.dart';
-import 'package:rightflair/core/components/back_button.dart';
+import 'package:rightflair/core/components/button/back_button.dart';
 import 'package:rightflair/core/constants/string.dart';
 
 import '../../../core/base/page/base_scaffold.dart';

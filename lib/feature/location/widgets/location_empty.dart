@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/string.dart';
 import 'package:rightflair/core/extensions/context.dart';
 
-import '../../../core/components/text.dart';
+import '../../../core/components/text/text.dart';
 
 class LocationEmptyWidget extends StatelessWidget {
   const LocationEmptyWidget({super.key});

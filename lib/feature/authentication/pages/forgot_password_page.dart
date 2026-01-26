@@ -3,7 +3,7 @@ import 'package:rightflair/core/components/appbar.dart';
 import 'package:rightflair/core/constants/string.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
-import '../../../core/components/back_button.dart';
+import '../../../core/components/button/back_button.dart';
 import '../../../core/extensions/context.dart';
 import '../widgets/authentication_text.dart';
 import '../widgets/forgot_password/forgot_password_button.dart';

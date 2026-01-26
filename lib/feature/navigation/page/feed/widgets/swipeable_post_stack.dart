@@ -6,7 +6,7 @@ import '../../../../../core/components/profile/profile_non_post.dart';
 import '../../../../create_post/model/post.dart';
 import '../bloc/feed_bloc.dart';
 import '../models/swipe_direction.dart';
-import 'feed_post_item.dart';
+import 'feed_post_swipe.dart';
 
 class SwipeablePostStack extends StatefulWidget {
   final int tabIndex;

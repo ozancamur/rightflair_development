@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/components/text_field.dart';
+import '../../../../core/components/text/text_field.dart';
 import '../../../../core/constants/regexp.dart';
 import '../../../../core/constants/string.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/string.dart';
 
-import '../../../../../../core/components/profile_tag.dart';
+import '../../text/profile_tag.dart';
 import '../../../../../../core/extensions/context.dart';
 import '../../../constants/font/font_size.dart';
-import '../../text.dart';
+import '../../text/text.dart';
 
 class ProfileHeaderTagsComponent extends StatelessWidget {
   final List<String> tags;

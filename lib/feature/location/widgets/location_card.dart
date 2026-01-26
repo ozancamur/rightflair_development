@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 
-import '../../../core/components/text.dart';
+import '../../../core/components/text/text.dart';
 import '../model/location_model.dart';
 
 class LocationCardWidget extends StatelessWidget {

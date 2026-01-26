@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/components/text.dart';
-import '../../../../../../core/constants/font/font_size.dart';
-import '../../../../../../core/extensions/context.dart';
+import '../text/text.dart';
+import '../../constants/font/font_size.dart';
+import '../../extensions/context.dart';
 
-class PostUserInfoWidget extends StatelessWidget {
-  const PostUserInfoWidget({super.key});
+class PostUserInfoComponent extends StatelessWidget {
+  const PostUserInfoComponent({super.key});
 
   @override
   Widget build(BuildContext context) {

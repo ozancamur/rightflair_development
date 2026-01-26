@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rightflair/core/components/icon_button.dart';
+import 'package:rightflair/core/components/button/icon_button.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 

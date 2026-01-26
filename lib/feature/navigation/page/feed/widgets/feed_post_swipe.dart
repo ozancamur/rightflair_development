@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rightflair/core/components/post/post.dart';
 
 import '../../../../../core/extensions/context.dart';
 import '../../../../comments/page/dialog_comments.dart';
 import '../../../../create_post/model/post.dart';
 import '../bloc/feed_bloc.dart';
 import '../models/swipe_direction.dart';
-import 'post/post_actions.dart';
-import 'post/post_image.dart';
-import 'post/post_shadow.dart';
-import 'post/post_user_info.dart';
 
 class FeedPostItem extends StatefulWidget {
   final PostModel post;
@@ -150,38 +147,22 @@ class _FeedPostItemState extends State<FeedPostItem>
         angle: _getRotation(currentOffset, context),
         child: Opacity(
           opacity: _getOpacity(currentOffset, context),
-          child: Container(
-            height: context.height,
-            width: context.width,
-            decoration: BoxDecoration(
-              color: context.colors.primary,
-              borderRadius: BorderRadius.circular(context.width * 0.06),
-            ),
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                PostImageWidget(url: widget.post.postImageUrl ?? ""),
-                if (currentOffset.dx > 0) _right(context),
-
-                if (currentOffset.dx < 0) _left(context),
-
-                const PostShadowWidget(),
-
-                const PostUserInfoWidget(),
-                PostActionsWidget(
-                  comment: widget.post.commentsCount ?? 0,
-                  saved: widget.post.savesCount ?? 0,
-                  shared: widget.post.sharesCount ?? 0,
-                  postId: widget.post.id ?? "",
-                  onComment: () =>
-                      dialogComments(context, postId: widget.post.id ?? ""),
-                  onSave: () => context.read<FeedBloc>().add(
-                    SavePostEvent(postId: widget.post.id),
-                  ),
-                  onShare: () {},
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              PostComponent(
+                post: widget.post,
+                onComment: () =>
+                    dialogComments(context, postId: widget.post.id ?? ""),
+                onSave: () => context.read<FeedBloc>().add(
+                  SavePostEvent(postId: widget.post.id),
                 ),
-              ],
-            ),
+                onShare: () {},
+              ),
+              if (currentOffset.dx > 0) _right(context),
+
+              if (currentOffset.dx < 0) _left(context),
+            ],
           ),
         ),
       ),

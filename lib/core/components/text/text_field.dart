@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../extensions/context.dart';
+import '../../extensions/context.dart';
 
 class TextFieldComponent extends StatelessWidget {
   final TextEditingController controller;

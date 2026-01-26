@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../components/text.dart';
+import '../../components/text/text.dart';
 import '../../constants/font/font_size.dart';
 import '../../constants/string.dart';
 import '../../extensions/context.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
-import '../../../../core/components/text.dart';
+import '../../../core/components/text/text.dart';
 import '../../../../core/extensions/context.dart';
 
 class SettingsListItemWidget extends StatelessWidget {

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rightflair/core/constants/route.dart';
 
-import '../../../../core/components/button_text_with_icon.dart';
-import '../../../../core/components/elevated_button.dart';
+import '../../../../core/components/text/button_text_with_icon.dart';
+import '../../../../core/components/button/elevated_button.dart';
 import '../../../../core/constants/icons.dart';
 import '../../../../core/constants/string.dart';
 import '../../../../core/extensions/context.dart';

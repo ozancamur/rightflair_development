@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/components/text.dart';
+import '../../../core/components/text/text.dart';
 import '../../../../core/extensions/context.dart';
 
 class SettingsButtonWidget extends StatelessWidget {
