@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rightflair/feature/create_post/model/post_user.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/request_post.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/style_tags.dart';
 import 'package:rightflair/feature/navigation/page/profile/repository/profile_repository_impl.dart';
@@ -130,21 +129,11 @@ class ProfileCubit extends Cubit<ProfileState> {
     final response = await _repo.getUserPosts(
       parameters: RequestPostModel().requestSortByDateOrderDesc(page: 1),
     );
-    final PostUserModel user = PostUserModel(
-      id: state.user.id,
-      fullName: state.user.fullName,
-      profilePhotoUrl: state.user.profilePhotoUrl,
-      username: state.user.username,
-    );
-    if (response?.posts?.length == 0) return;
-    final posts = response!.posts
-        ?.map((post) => post.copyWith(user: user))
-        .toList();
     emit(
       state.copyWith(
         isPostsLoading: false,
-        posts: posts,
-        postsPagination: response.pagination,
+        posts: response?.posts ?? [],
+        postsPagination: response?.pagination,
       ),
     );
   }

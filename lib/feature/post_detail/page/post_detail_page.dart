@@ -7,6 +7,7 @@ import 'package:rightflair/core/components/post/post.dart';
 import 'package:rightflair/core/constants/icons.dart';
 import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
 import '../../comments/page/dialog_comments.dart';
@@ -20,6 +21,11 @@ class PostDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUserId = Supabase.instance.client.auth.currentUser?.id;
+    final isOwner = currentUserId != null && currentUserId == post.user?.id;
+    print("POST USER ID: ${post.user?.id}");
+    print("CURRENT USER ID: $currentUserId");
+
     return BlocProvider(
       create: (context) =>
           PostDetailCubit(PostDetailRepositoryImpl())..init(post: post),
@@ -29,10 +35,12 @@ class PostDetailPage extends StatelessWidget {
             appBar: AppBarComponent(
               leading: BackButtonComponent(),
               actions: [
-                IconButtonComponent(onTap: () {}, icon: AppIcons.EDIT),
-                SizedBox(width: context.width * 0.03),
-                IconButtonComponent(onTap: () {}, icon: AppIcons.DELETE),
-                SizedBox(width: context.width * 0.04),
+                if (isOwner) ...[
+                  IconButtonComponent(onTap: () {}, icon: AppIcons.EDIT),
+                  SizedBox(width: context.width * 0.03),
+                  IconButtonComponent(onTap: () {}, icon: AppIcons.DELETE),
+                  SizedBox(width: context.width * 0.04),
+                ],
               ],
             ),
             body: BlocBuilder<PostDetailCubit, PostDetailState>(
