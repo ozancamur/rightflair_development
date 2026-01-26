@@ -5,16 +5,38 @@ import '../../../core/constants/font/font_size.dart';
 import '../../../core/constants/string.dart';
 import '../../../core/extensions/context.dart';
 
-class AddCommentWidget extends StatelessWidget {
+class AddCommentWidget extends StatefulWidget {
   final bool isReply;
   final Function(String text) onAddComment;
-  AddCommentWidget({
+  const AddCommentWidget({
     super.key,
     required this.isReply,
     required this.onAddComment,
   });
 
-  final TextEditingController _commentController = TextEditingController();
+  @override
+  State<AddCommentWidget> createState() => _AddCommentWidgetState();
+}
+
+class _AddCommentWidgetState extends State<AddCommentWidget> {
+  late final TextEditingController _commentController;
+  late final FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _commentController = TextEditingController();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.unfocus();
+    _focusNode.dispose();
+    _commentController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +53,7 @@ class AddCommentWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          isReply
+          widget.isReply
               ? Padding(
                   padding: EdgeInsets.only(right: context.width * 0.01),
                   child: Icon(
@@ -53,6 +75,7 @@ class AddCommentWidget extends StatelessWidget {
               ),
               child: TextField(
                 controller: _commentController,
+                focusNode: _focusNode,
                 style: TextStyle(
                   color: context.colors.primary,
                   fontSize: FontSizeConstants.SMALL[1],
@@ -77,7 +100,7 @@ class AddCommentWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (_commentController.text.trim().isNotEmpty) {
-                onAddComment(_commentController.text.trim());
+                widget.onAddComment(_commentController.text.trim());
                 _commentController.clear();
               }
             },

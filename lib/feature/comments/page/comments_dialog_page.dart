@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/loading.dart';
+import 'package:rightflair/feature/comments/cubit/comments_cubit.dart';
 
 import '../../../core/components/drag_handle.dart';
 import '../../../core/extensions/context.dart';
-import '../../navigation/page/feed/bloc/feed_bloc.dart';
 import '../widgets/add_comment.dart';
 import '../widgets/comments_header.dart';
 import '../widgets/comments_list.dart';
 
 class CommentsDialogPage extends StatefulWidget {
   final String postId;
-
-  const CommentsDialogPage({super.key, required this.postId});
+  final VoidCallback onAddComment;
+  const CommentsDialogPage({
+    super.key,
+    required this.postId,
+    required this.onAddComment,
+  });
 
   @override
   State<CommentsDialogPage> createState() => _CommentsDialogPageState();
@@ -24,12 +28,12 @@ class _CommentsDialogPageState extends State<CommentsDialogPage> {
   @override
   void initState() {
     super.initState();
-    context.read<FeedBloc>().add(LoadPostCommentsEvent(postId: widget.postId));
+    context.read<CommentsCubit>().init(pId: widget.postId);
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FeedBloc, FeedState>(
+    return BlocBuilder<CommentsCubit, CommentsState>(
       builder: (context, state) {
         return Container(
           height: context.height * 0.85,
@@ -40,7 +44,7 @@ class _CommentsDialogPageState extends State<CommentsDialogPage> {
               topRight: Radius.circular(context.width * 0.05),
             ),
           ),
-          child: state.isLoadingComments
+          child: state.isLoading
               ? LoadingComponent()
               : Column(
                   children: [
@@ -67,13 +71,14 @@ class _CommentsDialogPageState extends State<CommentsDialogPage> {
                     ),
                     AddCommentWidget(
                       isReply: _isReply,
-                      onAddComment: (text) => context.read<FeedBloc>().add(
-                        SendCommentToPostEvent(
+                      onAddComment: (text) {
+                        widget.onAddComment();
+                        context.read<CommentsCubit>().addComment(
                           postId: widget.postId,
                           content: text,
                           parentId: _isReply ? _commentId : null,
-                        ),
-                      ),
+                        );
+                      },
                     ),
                   ],
                 ),

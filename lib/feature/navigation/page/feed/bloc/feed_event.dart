@@ -59,17 +59,11 @@ class SwipeLeftEvent extends FeedEvent {
 
 class SendCommentToPostEvent extends FeedEvent {
   final String postId;
-  final String content;
-  final String? parentId;
 
-  const SendCommentToPostEvent({
-    required this.postId,
-    required this.content,
-    this.parentId,
-  });
+  const SendCommentToPostEvent({required this.postId});
 
   @override
-  List<Object?> get props => [postId, content, parentId];
+  List<Object?> get props => [postId];
 }
 
 class SavePostEvent extends FeedEvent {

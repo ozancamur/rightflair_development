@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../core/extensions/context.dart';
 import '../../navigation/page/feed/models/comment.dart';
 import 'comment.dart';
-import 'content/comment_replies_button.dart';
-import 'content/comment_text.dart';
-import 'content/comment_time_and_reply.dart';
-import 'content/comment_username.dart';
+import 'comment_replies_button.dart';
+import 'comment_text.dart';
+import 'comment_time_and_reply.dart';
+import 'comment_username.dart';
 
 class CommentContentWidget extends StatefulWidget {
   final CommentModel comment;

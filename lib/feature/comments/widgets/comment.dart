@@ -4,7 +4,7 @@ import '../../../core/extensions/context.dart';
 import '../../navigation/page/feed/models/comment.dart';
 import 'comment_avatar.dart';
 import 'comment_content.dart';
-import 'content/comment_like_button.dart';
+import 'comment_like_button.dart';
 
 class CommentWidget extends StatelessWidget {
   final CommentModel comment;

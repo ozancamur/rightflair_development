@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/extensions/context.dart';
+import '../../../core/extensions/context.dart';
 
 class CommentLikeButtonWidget extends StatelessWidget {
   final bool isLiked;

@@ -152,8 +152,13 @@ class _FeedPostItemState extends State<FeedPostItem>
             children: [
               PostComponent(
                 post: widget.post,
-                onComment: () =>
-                    dialogComments(context, postId: widget.post.id ?? ""),
+                onComment: () => dialogComments(
+                  context,
+                  postId: widget.post.id ?? "",
+                  onAddComment: () => context.read<FeedBloc>().add(
+                    SendCommentToPostEvent(postId: widget.post.id ?? ""),
+                  ),
+                ),
                 onSave: () => context.read<FeedBloc>().add(
                   SavePostEvent(postId: widget.post.id),
                 ),

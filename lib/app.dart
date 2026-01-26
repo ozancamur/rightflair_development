@@ -7,6 +7,8 @@ import 'package:rightflair/feature/authentication/bloc/authentication_bloc.dart'
 import 'package:rightflair/feature/authentication/repository/authentication_repository_impl.dart';
 import 'package:rightflair/feature/choose_username/cubit/choose_username_cubit.dart';
 import 'package:rightflair/feature/choose_username/repository/choose_username_repository_impl.dart';
+import 'package:rightflair/feature/comments/cubit/comments_cubit.dart';
+import 'package:rightflair/feature/comments/repository/comments_repository_impl.dart';
 import 'package:rightflair/feature/create_post/repository/create_post_repository.dart';
 import 'package:rightflair/feature/navigation/page/inbox/cubit/inbox_cubit.dart';
 import 'package:rightflair/feature/location/cubit/location_cubit.dart';
@@ -56,10 +58,12 @@ class RightFlair extends StatelessWidget {
         BlocProvider(create: (_) => UserCubit(UserRepositoryImpl())),
         BlocProvider(create: (_) => PostDetailCubit()),
         BlocProvider(create: (_) => SettingsCubit(SettingsRepositoryImpl())),
-
         
         BlocProvider(create: (_) => CreatePostCubit(CreatePostRepositoryImpl())),
         BlocProvider(create: (_) => LocationCubit(LocationRepositoryImpl())),
+
+        BlocProvider(create: (_) => CommentsCubit(CommentsRepositoryImpl())),
+
       ],
       child: MaterialApp.router(
         title: 'RightFlair',

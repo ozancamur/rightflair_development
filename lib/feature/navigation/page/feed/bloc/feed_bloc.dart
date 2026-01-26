@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rightflair/feature/navigation/page/feed/models/request_comment.dart';
 import 'package:rightflair/feature/navigation/page/feed/repository/feed_repository_impl.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/request_post.dart';
 import 'package:rightflair/feature/navigation/page/profile/model/response_post.dart';
@@ -162,31 +161,18 @@ class FeedBloc extends Bloc<FeedEvent, FeedState> {
     SendCommentToPostEvent event,
     Emitter<FeedState> emit,
   ) async {
-    final RequestCommentModel request = RequestCommentModel(
-      parentId: event.parentId,
-      postId: event.postId,
-      content: event.content,
-    );
+    final updatedPosts = state.posts?.map((post) {
+      if (post.id == event.postId) {
+        return post.copyWith(commentsCount: (post.commentsCount ?? 0) + 1);
+      }
+      return post;
+    }).toList();
 
-    final response = await _repo.sendCommentToPost(body: request);
-
-    if (response != null) {
-      final updatedComments = List<CommentModel>.from(state.comments ?? [])
-        ..insert(0, response);
-
-      final updatedPosts = state.posts?.map((post) {
-        if (post.id == event.postId) {
-          return post.copyWith(commentsCount: (post.commentsCount ?? 0) + 1);
-        }
-        return post;
-      }).toList();
-
-      emit(state.copyWith(comments: updatedComments, posts: updatedPosts));
-    }
+    emit(state.copyWith(posts: updatedPosts));
   }
 
   Future<void> _onSavePost(SavePostEvent event, Emitter<FeedState> emit) async {
-    if(event.postId == null) return;
+    if (event.postId == null) return;
     final updatedPosts = state.posts?.map((post) {
       if (post.id == event.postId) {
         final isSaved = post.isSaved ?? false;

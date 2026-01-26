@@ -10,7 +10,6 @@ import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
 import '../../create_post/model/post.dart';
-import '../../navigation/page/feed/widgets/feed_post_swipe.dart';
 
 class PostDetailPage extends StatelessWidget {
   final PostModel post;

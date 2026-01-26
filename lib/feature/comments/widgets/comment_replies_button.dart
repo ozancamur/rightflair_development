@@ -4,7 +4,7 @@ import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 
-import '../../../../core/extensions/context.dart';
+import '../../../core/extensions/context.dart';
 
 class CommentRepliesButtonWidget extends StatelessWidget {
   final int replyCount;

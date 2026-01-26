@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 
-import '../../../../core/extensions/context.dart';
+import '../../../core/extensions/context.dart';
 
 class CommentUsernameWidget extends StatelessWidget {
   final String username;

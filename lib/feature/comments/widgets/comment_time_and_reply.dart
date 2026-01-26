@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
 import 'package:rightflair/core/constants/string.dart';
 
-import '../../../../core/components/text/text.dart';
-import '../../../../core/extensions/context.dart';
+import '../../../core/components/text/text.dart';
+import '../../../core/extensions/context.dart';
 
 class CommentTimeAndReplyWidget extends StatelessWidget {
   final DateTime createdAt;
