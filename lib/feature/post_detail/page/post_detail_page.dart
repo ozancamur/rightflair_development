@@ -9,6 +9,7 @@ import 'package:rightflair/core/extensions/context.dart';
 import 'package:rightflair/feature/post_detail/cubit/post_detail_cubit.dart';
 
 import '../../../core/base/page/base_scaffold.dart';
+import '../../comments/page/dialog_comments.dart';
 import '../../create_post/model/post.dart';
 
 class PostDetailPage extends StatelessWidget {
@@ -42,7 +43,12 @@ class PostDetailPage extends StatelessWidget {
                   ),
                   child: PostComponent(
                     post: state.post,
-                    onComment: () {},
+                    onComment: () => dialogComments(
+                      context,
+                      postId: post.id ?? "",
+                      onAddComment: () =>
+                          context.read<PostDetailCubit>().addComment(),
+                    ),
                     onSave: () {},
                     onShare: () {},
                   ),

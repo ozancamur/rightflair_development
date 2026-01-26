@@ -9,4 +9,12 @@ class PostDetailCubit extends Cubit<PostDetailState> {
   PostDetailCubit() : super(PostDetailState(post: PostModel()));
 
   void init({required PostModel post}) => emit(state.copyWith(post: post));
+
+  void addComment() {
+    final updatedPost = state.post.copyWith(
+      commentsCount: (state.post.commentsCount ?? 0) + 1,
+    );
+
+    emit(state.copyWith(post: updatedPost));
+  }
 }
