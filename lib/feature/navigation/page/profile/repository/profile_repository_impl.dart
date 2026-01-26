@@ -165,21 +165,9 @@ class ProfileRepositoryImpl extends ProfileRepository {
         Endpoint.GET_USER_DRAFTS,
         parameters: parameters.toJson(),
       );
-      final responseData = request.data as Map<String, dynamic>;
-      final dataObject = responseData['data'] as Map<String, dynamic>?;
-
-      if (dataObject == null) return null;
-
-      final saves = dataObject['saves'] as List?;
-      final posts = saves?.map((save) => save['post']).toList();
-
-      final transformedData = {
-        'posts': posts,
-        'pagination': dataObject['pagination'],
-      };
 
       final ResponsePostModel data = ResponsePostModel().fromJson(
-        transformedData,
+        request.data as Map<String, dynamic>,
       );
       return data;
     } catch (e) {
