@@ -35,10 +35,12 @@ class PostUserInfoComponent extends StatelessWidget {
       ),
       child: (user.profilePhotoUrl == null || user.profilePhotoUrl == "")
           ? _null(context)
-          : Image.network(
-              user.profilePhotoUrl ?? "",
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => _null(context),
+          : ClipOval(
+              child: Image.network(
+                user.profilePhotoUrl ?? "",
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => _null(context),
+              ),
             ),
     );
   }
