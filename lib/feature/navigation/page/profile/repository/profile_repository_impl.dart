@@ -128,8 +128,26 @@ class ProfileRepositoryImpl extends ProfileRepository {
         Endpoint.GET_USER_SAVED_POSTS,
         parameters: parameters.toJson(),
       );
+
+      // API returns {success: true, data: {posts: [...], pagination: {...}}}
+      // Extract the data object
+      final responseData = request.data as Map<String, dynamic>;
+      final dataObject = responseData['data'] as Map<String, dynamic>?;
+
+      if (dataObject == null) return null;
+
+      // Each item in posts array has a nested "post" object - extract them
+      final postsArray = dataObject['posts'] as List?;
+      final actualPosts = postsArray?.map((item) => item['post']).toList();
+
+      // Create the structure that ResponsePostModel expects
+      final transformedData = {
+        'posts': actualPosts,
+        'pagination': dataObject['pagination'],
+      };
+
       final ResponsePostModel data = ResponsePostModel().fromJson(
-        request.data as Map<String, dynamic>,
+        transformedData,
       );
       return data;
     } catch (e) {
@@ -147,9 +165,21 @@ class ProfileRepositoryImpl extends ProfileRepository {
         Endpoint.GET_USER_DRAFTS,
         parameters: parameters.toJson(),
       );
-      // ResponseModel wrapper'ı kaldırdık çünkü API direkt olarak posts ve pagination dönüyor
+      final responseData = request.data as Map<String, dynamic>;
+      final dataObject = responseData['data'] as Map<String, dynamic>?;
+
+      if (dataObject == null) return null;
+
+      final saves = dataObject['saves'] as List?;
+      final posts = saves?.map((save) => save['post']).toList();
+
+      final transformedData = {
+        'posts': posts,
+        'pagination': dataObject['pagination'],
+      };
+
       final ResponsePostModel data = ResponsePostModel().fromJson(
-        request.data as Map<String, dynamic>,
+        transformedData,
       );
       return data;
     } catch (e) {
