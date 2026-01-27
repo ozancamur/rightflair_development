@@ -26,7 +26,9 @@ class PostDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentUserId = Supabase.instance.client.auth.currentUser?.id;
-    final isOwner = currentUserId != null && currentUserId == post.user?.id;
+    final isOwner = isDraft
+        ? true
+        : currentUserId != null && currentUserId == post.user?.id;
 
     return BlocProvider(
       create: (context) =>
