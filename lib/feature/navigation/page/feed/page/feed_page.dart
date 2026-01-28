@@ -13,12 +13,17 @@ class FeedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FeedBloc(FeedRepositoryImpl())..add(LoadPostInitializeEvent()),
+      create: (context) =>
+          FeedBloc(FeedRepositoryImpl())..add(LoadPostInitializeEvent()),
       child: DefaultTabController(
         length: 3,
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.width * .05),
+            padding: EdgeInsets.only(
+              right: context.width * .05,
+              left: context.width * .05,
+              bottom: context.height * .02,
+            ),
             child: _body(context),
           ),
         ),
