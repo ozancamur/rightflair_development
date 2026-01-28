@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../extensions/context.dart';
 
@@ -15,6 +16,7 @@ class TextFieldComponent extends StatelessWidget {
   final Function(String)? onFieldSubmitted;
   final int maxLines;
   final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
   const TextFieldComponent({
     super.key,
     required this.controller,
@@ -28,6 +30,7 @@ class TextFieldComponent extends StatelessWidget {
     this.onFieldSubmitted,
     this.maxLines = 1,
     this.maxLength,
+    this.inputFormatters,
   });
 
   @override
@@ -44,6 +47,7 @@ class TextFieldComponent extends StatelessWidget {
       cursorColor: context.colors.primary,
       onFieldSubmitted: onFieldSubmitted,
       textCapitalization: textCapitalization ?? TextCapitalization.none,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
           horizontal: context.width * .075,

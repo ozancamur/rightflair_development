@@ -23,7 +23,7 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
       emit(state.copyWith(isLoading: true));
 
       final bool isUnique = await _repo.checkUsername(
-        username: controller.text,
+        username: controller.text.toLowerCase(),
       );
       emit(state.copyWith(isLoading: false, isUnique: isUnique));
     } catch (e) {
@@ -36,7 +36,9 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
     try {
       if (controller.text.trim().isEmpty) return;
       emit(state.copyWith(isLoading: true));
-      final response = await _repo.updatedUser(username: controller.text);
+      final response = await _repo.updatedUser(
+        username: controller.text.toLowerCase(),
+      );
       if (response == null || response.success != true) {
         emit(state.copyWith(isLoading: false));
         return;

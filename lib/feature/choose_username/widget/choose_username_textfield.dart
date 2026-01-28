@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rightflair/core/components/text/text.dart';
 import 'package:rightflair/core/constants/font/font_size.dart';
@@ -45,6 +46,7 @@ class ChooseUsernameTextField extends StatelessWidget {
       hintText: hintText,
       regExp: RegExp(''),
       errorText: "",
+      inputFormatters: [LowerCaseTextFormatter()],
     );
   }
 
@@ -77,6 +79,19 @@ class ChooseUsernameTextField extends StatelessWidget {
         size: FontSizeConstants.XX_SMALL,
         weight: FontWeight.w400,
       ),
+    );
+  }
+}
+
+class LowerCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    return TextEditingValue(
+      text: newValue.text.toLowerCase(),
+      selection: newValue.selection,
     );
   }
 }

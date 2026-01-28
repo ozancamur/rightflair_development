@@ -24,10 +24,6 @@ class ChooseUsernameValidationWidget extends StatelessWidget {
             label: AppStrings.CHOOSE_USERNAME_UNIQUE,
             isUnique: isUnique,
           ),
-          ChooseUsernameValidationItem(
-            isUnique: true,
-            label: AppStrings.CHOOSE_USERNAME_CASE_INSENSITIVE,
-          ),
         ],
       ),
     );
