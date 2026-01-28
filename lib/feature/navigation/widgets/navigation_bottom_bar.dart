@@ -18,33 +18,32 @@ class NavigationBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.width * .05,
-        vertical: context.height * .02,
+    return Container(
+      height: context.height * .07,
+      padding: EdgeInsets.symmetric(horizontal: context.width * .04),
+      margin: EdgeInsets.only(
+        right: context.width * .05,
+        left: context.width * .05,
+        bottom: context.height * .02,
       ),
-      child: Container(
-        height: context.height * .07,
-        padding: EdgeInsets.symmetric(horizontal: context.width * .04),
-        decoration: BoxDecoration(
-          color: AppColors.NAVIGATION,
-          borderRadius: BorderRadius.circular(100),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _item(context, 0, AppIcons.HOME, AppStrings.NAVIGATION_HOME),
-            _item(
-              context,
-              1,
-              AppIcons.ANALYTICS,
-              AppStrings.NAVIGATION_ANALYTICS,
-            ),
-            _add(context),
-            _item(context, 2, AppIcons.INBOX, AppStrings.NAVIGATION_INBOX),
-            _item(context, 3, AppIcons.PROFILE, AppStrings.NAVIGATION_PROFILE),
-          ],
-        ),
+      decoration: BoxDecoration(
+        color: AppColors.NAVIGATION,
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _item(context, 0, AppIcons.HOME, AppStrings.NAVIGATION_HOME),
+          _item(
+            context,
+            1,
+            AppIcons.ANALYTICS,
+            AppStrings.NAVIGATION_ANALYTICS,
+          ),
+          _add(context),
+          _item(context, 2, AppIcons.INBOX, AppStrings.NAVIGATION_INBOX),
+          _item(context, 3, AppIcons.PROFILE, AppStrings.NAVIGATION_PROFILE),
+        ],
       ),
     );
   }
