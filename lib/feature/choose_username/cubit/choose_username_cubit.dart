@@ -20,7 +20,13 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
   void onTextChanged() {
     final currentText = controller.text.toLowerCase().trim();
     if (state.checkedUsername != null && state.checkedUsername != currentText) {
-      emit(state.copyWith(isUnique: false, checkedUsername: null));
+      emit(
+        state.copyWith(
+          isUnique: null,
+          checkedUsername: null,
+          suggestions: null,
+        ),
+      );
     }
   }
 
@@ -30,12 +36,17 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
       final username = controller.text.toLowerCase();
       emit(state.copyWith(isLoading: true));
 
-      final bool isUnique = await _repo.checkUsername(username: username);
+      final result = await _repo.checkUsername(username: username);
+      final bool isUnique = result['isUnique'] as bool;
+      final List<String> suggestions =
+          result['suggestions'] as List<String>? ?? [];
+
       emit(
         state.copyWith(
           isLoading: false,
           isUnique: isUnique,
           checkedUsername: username,
+          suggestions: suggestions.isNotEmpty ? suggestions : null,
         ),
       );
     } catch (e) {
@@ -61,7 +72,7 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
           } else {
             context.go(RouteConstants.NAVIGATION);
           }
-          emit(state.copyWith(isLoading: false, isUnique: false));
+          emit(state.copyWith(isLoading: false, isUnique: null));
           controller.clear();
         }
       }

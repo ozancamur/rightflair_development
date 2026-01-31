@@ -17,6 +17,7 @@ class TextFieldComponent extends StatelessWidget {
   final Function(String)? onChanged;
   final int maxLines;
   final int? maxLength;
+  final Color? borderColor;
   final List<TextInputFormatter>? inputFormatters;
   const TextFieldComponent({
     super.key,
@@ -32,6 +33,7 @@ class TextFieldComponent extends StatelessWidget {
     this.onChanged,
     this.maxLines = 1,
     this.maxLength,
+    this.borderColor,
     this.inputFormatters,
   });
 
@@ -64,9 +66,11 @@ class TextFieldComponent extends StatelessWidget {
         fillColor: context.colors.shadow,
         hintText: hintText.tr(),
         hintStyle: _hintStyle(context),
-        enabledBorder: _buildBorderField(color: context.colors.secondaryFixed),
+        enabledBorder: _buildBorderField(
+          color: borderColor ?? context.colors.secondaryFixed,
+        ),
         focusedBorder: _buildBorderField(
-          color: context.colors.onSecondaryFixed,
+          color: borderColor ?? context.colors.onSecondaryFixed,
         ),
         errorBorder: _buildBorderField(color: Colors.red),
         focusedErrorBorder: _buildBorderField(color: context.colors.error),

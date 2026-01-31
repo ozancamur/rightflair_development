@@ -12,6 +12,7 @@ import '../../authentication/widgets/authentication_text.dart';
 import '../widget/choose_username_button.dart';
 import '../widget/choose_username_textfield.dart';
 import '../widget/choose_username_validation.dart';
+import '../widget/choose_username_suggestions.dart';
 
 class ChooseUsernamePage extends StatelessWidget {
   final String? username;
@@ -49,7 +50,7 @@ class ChooseUsernamePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: context.height * .005,
+        spacing: context.height * .01,
         children: [
           const AuthenticationTextWidget(
             title: AppStrings.CHOOSE_USERNAME_TITLE,
@@ -60,8 +61,10 @@ class ChooseUsernamePage extends StatelessWidget {
             hintText: username ?? AppStrings.CHOOSE_USERNAME_USERNAME,
             isLoading: state.isLoading,
           ),
+          if (state.suggestions != null && state.suggestions!.isNotEmpty)
+            ChooseUsernameSuggestions(suggestions: state.suggestions!),
           ChooseUsernameValidationWidget(isUnique: state.isUnique),
-          SizedBox(height: context.height * .025),
+          SizedBox(height: context.height * .01),
           ChooseUsernameButtonWidget(
             isLoading: state.isLoading,
             isUnique: state.isUnique,

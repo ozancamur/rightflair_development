@@ -10,23 +10,26 @@ class ChooseUsernameRepositoryImpl extends ChooseUsernameRepository {
   ChooseUsernameRepositoryImpl({ApiService? api}) : _api = api ?? ApiService();
 
   @override
-  Future<bool> checkUsername({required String username}) async {
+  Future<Map<String, dynamic>> checkUsername({required String username}) async {
     try {
       final request = await _api.post(
         Endpoint.CHECK_USERNAME,
         data: {'username': username},
       );
-      if (request == null) return false;
+      if (request == null) return {'isUnique': false, 'suggestions': []};
       final data = ResponseModel().fromJson(
         request.data as Map<String, dynamic>,
       );
-      if (request.data == null) return false;
-      final bool isUnique =
-          (data.data as Map<String, dynamic>)['isUnique'] as bool;
-      return isUnique;
+      if (request.data == null) return {'isUnique': false, 'suggestions': []};
+      final responseData = data.data as Map<String, dynamic>;
+      final bool isUnique = responseData['isUnique'] as bool;
+      final List<String> suggestions = responseData['suggestions'] != null
+          ? List<String>.from(responseData['suggestions'] as List)
+          : [];
+      return {'isUnique': isUnique, 'suggestions': suggestions};
     } catch (e) {
       debugPrint("❌ ChooseUsernameRepository ERROR in checkUsername :> $e");
-      return false;
+      return {'isUnique': false, 'suggestions': []};
     }
   }
 

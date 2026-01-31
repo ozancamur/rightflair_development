@@ -47,6 +47,11 @@ class ChooseUsernameTextField extends StatelessWidget {
       hintText: hintText,
       regExp: RegExp(''),
       errorText: "",
+      borderColor: isValid == true
+          ? Colors.green
+          : isValid == false
+          ? context.colors.error
+          : null,
       inputFormatters: [LowerCaseTextFormatter()],
       onChanged: (value) {
         context.read<ChooseUsernameCubit>().onTextChanged();

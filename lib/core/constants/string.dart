@@ -58,6 +58,8 @@ class AppStrings {
       'authentication.pageChooseUsername.isAvailable';
   static const String CHOOSE_USERNAME_IS_NOT_AVAILABLE =
       'authentication.pageChooseUsername.isNotAvailable';
+  static const String CHOOSE_USERNAME_SUGGESTIONS =
+      'authentication.pageChooseUsername.suggestions';
   // AUTHENTICATION - LOGIN
   static const String LOGIN_TITLE = 'authentication.pageLogin.title';
   static const String LOGIN_SUBTITLE = 'authentication.pageLogin.subtitle';

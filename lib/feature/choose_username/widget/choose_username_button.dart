@@ -10,7 +10,7 @@ import '../../../core/extensions/context.dart';
 import '../cubit/choose_username_cubit.dart';
 
 class ChooseUsernameButtonWidget extends StatelessWidget {
-  final bool isUnique;
+  final bool? isUnique;
   final bool isLoading;
   final bool canPop;
   const ChooseUsernameButtonWidget({
@@ -28,14 +28,14 @@ class ChooseUsernameButtonWidget extends StatelessWidget {
       color: context.colors.outline.withOpacity(0.5),
       onPressed: () => isLoading
           ? null
-          : isUnique
+          : (isUnique == true)
           ? cubit.onSave(context, canPop)
           : cubit.onCheck(context),
       child: isLoading
           ? LoadingComponent()
           : TextComponent(
               color: context.colors.primaryContainer,
-              text: isUnique ? AppStrings.CONTINUE : AppStrings.CHECK,
+              text: (isUnique == true) ? AppStrings.CONTINUE : AppStrings.CHECK,
               size: FontSizeConstants.LARGE,
               weight: FontWeight.w600,
             ),

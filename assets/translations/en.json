@@ -47,7 +47,8 @@
             "unique": "Unique",
             "caseInsensitive": "Case-insensitive",
             "isAvailable": "@{} is available",
-            "isNotAvailable": "@{} is not available"
+            "isNotAvailable": "@{} is not available",
+            "suggestions": "Suggestions:"
         },
         "pageLogin": {
             "title": "Rightflair",
