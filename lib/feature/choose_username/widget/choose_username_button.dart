@@ -22,20 +22,18 @@ class ChooseUsernameButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isUnique != true) return const SizedBox.shrink();
+
     final ChooseUsernameCubit cubit = context.read<ChooseUsernameCubit>();
     return ElevatedButtonComponent(
       radius: 100,
       color: context.colors.outline.withOpacity(0.5),
-      onPressed: () => isLoading
-          ? null
-          : (isUnique == true)
-          ? cubit.onSave(context, canPop)
-          : cubit.onCheck(context),
+      onPressed: () => isLoading ? null : cubit.onSave(context, canPop),
       child: isLoading
           ? LoadingComponent()
           : TextComponent(
               color: context.colors.primaryContainer,
-              text: (isUnique == true) ? AppStrings.CONTINUE : AppStrings.CHECK,
+              text: AppStrings.CONTINUE,
               size: FontSizeConstants.LARGE,
               weight: FontWeight.w600,
             ),

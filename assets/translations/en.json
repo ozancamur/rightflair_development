@@ -45,6 +45,7 @@
             "subtitle": "This is how others will find you on Rightflair",
             "username": "Username",
             "unique": "Unique",
+            "minLength": "At least 4 characters",
             "caseInsensitive": "Case-insensitive",
             "isAvailable": "@{} is available",
             "isNotAvailable": "@{} is not available",

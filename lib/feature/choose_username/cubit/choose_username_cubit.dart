@@ -13,12 +13,18 @@ part 'choose_username_state.dart';
 class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
   final FocusNode focusNode = FocusNode();
   final TextEditingController controller = TextEditingController();
+  Timer? _debounceTimer;
+
+  static const int minUsernameLength = 4;
 
   final ChooseUsernameRepositoryImpl _repo;
   ChooseUsernameCubit(this._repo) : super(ChooseUsernameState());
 
   void onTextChanged() {
     final currentText = controller.text.toLowerCase().trim();
+
+    _debounceTimer?.cancel();
+
     if (state.checkedUsername != null && state.checkedUsername != currentText) {
       emit(
         state.copyWith(
@@ -28,12 +34,16 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
         ),
       );
     }
+
+    if (currentText.length >= minUsernameLength) {
+      _debounceTimer = Timer(const Duration(seconds: 1), () {
+        _checkUsername(currentText);
+      });
+    }
   }
 
-  Future<void> onCheck(BuildContext context) async {
+  Future<void> _checkUsername(String username) async {
     try {
-      if (controller.text.trim().isEmpty) return;
-      final username = controller.text.toLowerCase();
       emit(state.copyWith(isLoading: true));
 
       final result = await _repo.checkUsername(username: username);
@@ -50,17 +60,33 @@ class ChooseUsernameCubit extends Cubit<ChooseUsernameState> {
         ),
       );
     } catch (e) {
-      debugPrint('Username kaydedilemedi: $e');
+      debugPrint('Username kontrol edilemedi: $e');
       emit(state.copyWith(isLoading: false));
     }
   }
 
+  @override
+  Future<void> close() {
+    _debounceTimer?.cancel();
+    controller.dispose();
+    focusNode.dispose();
+    return super.close();
+  }
+
+  Future<void> onCheck(BuildContext context) async {
+    final username = controller.text.toLowerCase().trim();
+    if (username.length < minUsernameLength) return;
+    _debounceTimer?.cancel();
+    await _checkUsername(username);
+  }
+
   Future<void> onSave(BuildContext context, bool canPop) async {
     try {
-      if (controller.text.trim().isEmpty) return;
+      final username = controller.text.toLowerCase().trim();
+      if (username.length < minUsernameLength) return;
       emit(state.copyWith(isLoading: true));
       final response = await _repo.updatedUser(
-        username: controller.text.toLowerCase(),
+        username: username,
       );
       if (response == null || response.success != true) {
         emit(state.copyWith(isLoading: false));

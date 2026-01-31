@@ -52,6 +52,8 @@ class AppStrings {
       'authentication.pageChooseUsername.username';
   static const String CHOOSE_USERNAME_UNIQUE =
       'authentication.pageChooseUsername.unique';
+  static const String CHOOSE_USERNAME_MIN_LENGTH =
+      'authentication.pageChooseUsername.minLength';
   static const String CHOOSE_USERNAME_CASE_INSENSITIVE =
       'authentication.pageChooseUsername.caseInsensitive';
   static const String CHOOSE_USERNAME_IS_AVAILABLE =

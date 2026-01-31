@@ -6,11 +6,18 @@ import 'choose_username_validation_item.dart';
 
 class ChooseUsernameValidationWidget extends StatelessWidget {
   final bool? isUnique;
+  final int textLength;
 
-  const ChooseUsernameValidationWidget({super.key, required this.isUnique});
+  const ChooseUsernameValidationWidget({
+    super.key,
+    required this.isUnique,
+    required this.textLength,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final bool isMinLengthValid = textLength >= 4;
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: context.width * .03),
       child: Column(
@@ -18,8 +25,12 @@ class ChooseUsernameValidationWidget extends StatelessWidget {
         spacing: context.height * .015,
         children: [
           ChooseUsernameValidationItem(
+            label: AppStrings.CHOOSE_USERNAME_MIN_LENGTH,
+            isUnique: isMinLengthValid,
+          ),
+          ChooseUsernameValidationItem(
             label: AppStrings.CHOOSE_USERNAME_UNIQUE,
-            isUnique: isUnique ?? false,
+            isUnique: isMinLengthValid ? (isUnique ?? false) : false,
           ),
         ],
       ),

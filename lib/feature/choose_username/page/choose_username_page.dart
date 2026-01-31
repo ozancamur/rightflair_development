@@ -63,7 +63,10 @@ class ChooseUsernamePage extends StatelessWidget {
           ),
           if (state.suggestions != null && state.suggestions!.isNotEmpty)
             ChooseUsernameSuggestions(suggestions: state.suggestions!),
-          ChooseUsernameValidationWidget(isUnique: state.isUnique),
+          ChooseUsernameValidationWidget(
+            isUnique: state.isUnique,
+            textLength: context.read<ChooseUsernameCubit>().controller.text.length,
+          ),
           SizedBox(height: context.height * .01),
           ChooseUsernameButtonWidget(
             isLoading: state.isLoading,
