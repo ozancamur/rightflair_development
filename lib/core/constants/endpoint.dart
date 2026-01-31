@@ -1,9 +1,8 @@
 enum Endpoint {
-  
   CREATE_USER("create-user"),
   CHECK_USERNAME("check-username"),
   UPDATE_USER("update-user"),
-  
+
   GET_USER("get-user"),
   GET_USER_POSTS("get-user-posts"),
   GET_USER_SAVED_POSTS("get-user-saved-posts"),
@@ -29,8 +28,8 @@ enum Endpoint {
   DELETE_POST("delete-post"),
 
   GET_CONVERSATIONS("get-conversations"),
-
-  ;
+  GET_CONVERSATION_MESSAGES("get-conversation-messages"),
+  SEND_MESSAGE("send-message");
 
   final String value;
   const Endpoint(this.value);

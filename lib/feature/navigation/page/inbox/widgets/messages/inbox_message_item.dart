@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rightflair/core/constants/route.dart';
 
 import '../../../../../../core/extensions/context.dart';
 import '../../model/conversation.dart';
@@ -15,7 +17,17 @@ class InboxMessageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        context.push(
+          RouteConstants.CHAT,
+          extra: {
+            'conversationId': conversation.id ?? '',
+            'otherUserName': conversation.participant?.fullName ?? 'User',
+            'otherUserPhoto': conversation.participant?.profilePhotoUrl,
+            'otherUserId': conversation.participant?.id ?? '',
+          },
+        );
+      },
       child: Container(
         padding: EdgeInsets.symmetric(
           vertical: MediaQuery.of(context).size.height * 0.015,

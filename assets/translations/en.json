@@ -154,6 +154,11 @@
         "remove": "Remove",
         "follow": "Follow"
     },
+    "chat": {
+        "typeMessage": "Type a message...",
+        "noMessages": "No messages yet",
+        "yesterday": "Yesterday"
+    },
     "location": {
         "noResults": "No results found"
     },

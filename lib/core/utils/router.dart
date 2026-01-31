@@ -12,6 +12,7 @@ import 'package:rightflair/feature/navigation/page/inbox/page/new_followers_page
 import 'package:rightflair/feature/settings/page/settings_page.dart';
 
 import '../../feature/authentication/pages/register_page.dart';
+import '../../feature/chat/page/chat_page.dart';
 import '../../feature/create_post/model/post.dart';
 import '../../feature/post_detail/page/post_detail_page.dart';
 import '../../feature/profile_edit/page/profile_edit_page.dart';
@@ -106,6 +107,19 @@ final GoRouter router = GoRouter(
       path: RouteConstants.NEW_FOLLOWERS,
       name: RouteConstants.NEW_FOLLOWERS,
       builder: (context, state) => const NewFollowersPage(),
+    ),
+    GoRoute(
+      path: RouteConstants.CHAT,
+      name: RouteConstants.CHAT,
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>;
+        return ChatPage(
+          conversationId: data['conversationId'] as String,
+          otherUserName: data['otherUserName'] as String,
+          otherUserPhoto: data['otherUserPhoto'] as String?,
+          otherUserId: data['otherUserId'] as String,
+        );
+      },
     ),
     GoRoute(
       path: RouteConstants.SETTINGS,

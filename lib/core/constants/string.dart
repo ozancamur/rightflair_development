@@ -169,6 +169,11 @@ class AppStrings {
   static const String INBOX_TODAYS_ACTIVITY = 'inbox.todaysActivity';
   static const String INBOX_KEEP_POSTING = 'inbox.keepPosting';
 
+  // CHAT
+  static const String CHAT_TYPE_MESSAGE = 'chat.typeMessage';
+  static const String CHAT_NO_MESSAGES = 'chat.noMessages';
+  static const String CHAT_YESTERDAY = 'chat.yesterday';
+
   // ERROR STATES
   static const String ERROR_OCCURRED = 'error.occurred';
   static const String ERROR_TRY_AGAIN = 'error.tryAgain';

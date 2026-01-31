@@ -74,6 +74,7 @@ class AppIcons {
   static const String SAVE_FILLED = '${_path}save_filled.svg';
   static const String SAVED = '${_path}saved.svg';
   static const String SEARCH_FILLED = '${_path}search_filled.svg';
+  static const String SEND = '${_path}send.svg';
   static const String SETTINGS = '${_path}settings.svg';
   static const String SHARE = '${_path}share.svg';
   static const String SHARE_FILLED = '${_path}share_filled.svg';
